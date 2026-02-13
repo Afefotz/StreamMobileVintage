@@ -1,3 +1,4 @@
+// Función para actualizar el reloj
 function updateClock() {
             const now = new Date();
             
@@ -17,3 +18,8 @@ function updateClock() {
         
         // Llamada inicial para evitar el retraso de 1 segundo
         updateClock();
+
+// Función para actualizar los puntos
+function updatePoints(points) {
+    document.getElementById('points').textContent = `Puntos: ${points}`;
+}

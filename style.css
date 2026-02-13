@@ -1,33 +1,111 @@
 /* Estilos para que se vea bien sobre el video */
-        body {
-            margin: 0;
-            padding: 20px;
-            overflow: hidden;
-            background-color: transparent; /* Fondo transparente */
-            font-family: 'MS Sans Serif', sans-serif;
-            color: white;
-        }
+    body {
+        margin: 0;
+        padding: 20px;
+        overflow: hidden;
+        background-color: transparent; /* Fondo transparente */
+        font-family: 'MS Sans Serif', sans-serif;
+        color: white;
+    }
 
-        #container {
-            display: inline-block;
-            background: rgba(0, 0, 0, 0.6); /* Fondo oscuro semitransparente */
-            padding: 15px 25px;
-            border-radius: 10px;
-            border-left: 5px solid #00c8ff; /* Detalle estético */
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-        }
+    #container {
+        display: inline-block;
+        background: rgba(0, 0, 0, 0.6); /* Fondo oscuro semitransparente */
+        padding: 15px 25px;
+        border-radius: 10px;
+        border-left: 5px solid #00c8ff; /* Detalle estético */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    }
 
-        #time {
-            font-size: 48px;
-            font-weight: bold;
-            margin: 0;
-            line-height: 1;
-        }
+    #time {
+        font-size: 48px;
+        font-weight: bold;
+        margin: 0;
+        line-height: 1;
+    }
 
-        #date {
-            font-size: 18px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-top: 5px;
-            opacity: 0.9;
-        }
+    #date {
+        font-size: 18px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-top: 5px;
+        opacity: 0.9;
+    }
+
+/* Estilo de botones para incrementar/decrementar puntos */
+    .win95-button-points {
+    background-color: #C0C0C0;
+    border-top: 2px solid #FFFFFF;
+    border-left: 2px solid #FFFFFF;
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+    padding: 4px 10px;
+    font-family: "MS Sans Serif", sans-serif;
+    font-size: 12px;
+    cursor: pointer;
+    }
+
+    .win95-button:active {
+    border-top: 2px solid #808080;
+    border-left: 2px solid #808080;
+    border-right: 2px solid #FFFFFF;
+    border-bottom: 2px solid #FFFFFF;
+    }
+
+/* Estilo para el contador de puntos */
+    #points {
+        font-size: 18px;
+        margin-top: 10px;
+        opacity: 0.9;
+        font-family: 'MS Sans Serif', sans-serif;
+        color: black;
+    }
+
+/* Estilo para el contenedor de puntos */
+    #containerW95 {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 15px;
+        font-family: 'MS Sans Serif', sans-serif;
+        color: black;
+    }
+
+    /*  Estilos para las tarjetas de información */
+.card{
+    border: solid;
+    border-width: 2px;
+    border-bottom-color: #424242;
+    border-right-color: #424242;
+    border-left-color: #fff;
+    border-top-color: #fff;
+    background: silver;
+    color:#212529;
+}
+.card.square{
+    border-radius: 0px;
+}
+.card.square .card-header{
+    border-radius: 0px;
+}
+.card.w95 .card-header{
+    background: #08216b;
+    /* OR #000082 is better?*/
+}
+.card-header{
+    background: -webkit-linear-gradient(left,#08216b,#a5cef7);
+    color: #fff;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-top: 2px;
+    padding-bottom: 1px;
+    text-align: left;
+}
+.card-header.icon{
+    padding-left: 4px;
+}
+.header-inactive{
+    background: gray !important;
+}
