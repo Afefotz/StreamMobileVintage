@@ -58,6 +58,22 @@
 
         .vs { font-weight: bold; color: #808080; font-style: italic; font-size: 20px; }
 
+        /* --- ESTILOS PARA EL MODO SIN FOTOS --- */
+        .modo-texto .photo-frame {
+            display: none !important; /* Desaparece el cuadro 3D por completo */
+        }
+        
+        .modo-texto .player-card {
+            flex-direction: column !important; /* Apila el nombre sobre el marcador */
+            justify-content: center;
+        }
+        
+        .modo-texto .player-name {
+            font-size: 16px;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
     </style>
     
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
@@ -130,10 +146,18 @@
                 updatePlayer('p1', data.p1);
                 updatePlayer('p2', data.p2);
 
-                // Controlar la visibilidad de las fotos
+                // Controlar el modo visual (con o sin fotos)
                 const showPhotos = data.settings && data.settings.showPhotos !== undefined 
                                    ? data.settings.showPhotos 
-                                   : true; // Por defecto es true
+                                   : true;
+                
+                const contentDiv = document.querySelector('.content');
+                
+                if (showPhotos) {
+                    contentDiv.classList.remove('modo-texto'); // Se ven los cuadros y fotos
+                } else {
+                    contentDiv.classList.add('modo-texto');    // Desaparecen los cuadros, se centra el texto
+                }
                 
                 // Seleccionamos todos los marcos de fotos y los ocultamos/mostramos
                 const photoFrames = document.querySelectorAll('.photo-frame');

@@ -49,8 +49,10 @@
             <label>Nombre:</label>
             <input type="text" id="p1-name" placeholder="Ej: Goku">
             
-            <label>URL Foto:</label>
-            <input type="text" id="p1-photo" placeholder="https://...">
+            <div id="photo-input-p1" style="margin-top: 10px;">
+                <label>URL Foto:</label>
+                <input type="text" id="p1-photo" placeholder="https://...">
+            </div>
             
             <button class="btn-update" onclick="updateInfo('p1')">💾 Actualizar Datos P1</button>
 
@@ -69,8 +71,10 @@
             <label>Nombre:</label>
             <input type="text" id="p2-name" placeholder="Ej: Vegeta">
             
-            <label>URL Foto:</label>
-            <input type="text" id="p2-photo" placeholder="https://...">
+            <div id="photo-input-p2" style="margin-top: 10px;">
+                <label>URL Foto:</label>
+                <input type="text" id="p2-photo" placeholder="https://...">
+            </div>
 
             <button class="btn-update" onclick="updateInfo('p2')">💾 Actualizar Datos P2</button>
 
@@ -155,13 +159,19 @@
                     // Actualizar el display del marcador P2
                     document.getElementById('p2-current-score').innerText = data.p2.score || 0;
                 }
+                
+                // Sincronizar el estado del checkbox y la UI
+                const showPhotos = data.settings && data.settings.showPhotos !== undefined 
+                                   ? data.settings.showPhotos 
+                                   : true; // Por defecto encendido
+                
+                // Actualiza el checkbox visualmente
+                document.getElementById('toggle-photos').checked = showPhotos;
 
-                // Sincronizar el estado del checkbox
-                if (data.settings && data.settings.showPhotos !== undefined) {
-                    document.getElementById('toggle-photos').checked = data.settings.showPhotos;
-                } else {
-                    document.getElementById('toggle-photos').checked = true; // Por defecto encendido
-                }
+                // Oculta o muestra los campos de texto para las URLs
+                const displayStyle = showPhotos ? 'block' : 'none';
+                document.getElementById('photo-input-p1').style.display = displayStyle;
+                document.getElementById('photo-input-p2').style.display = displayStyle;
             }
         });
 
