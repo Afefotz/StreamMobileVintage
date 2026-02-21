@@ -54,12 +54,12 @@
             
             <button class="btn-update" onclick="updateInfo('p1')">💾 Actualizar Datos P1</button>
 
-            <div class="score-controls">
-                <div style="text-align: center; margin: 10px 0; background: #000; color: #0f0; padding: 5px; border: 2px solid; border-color: #808080 #fff #fff #808080; font-family: monospace; font-size: 20px;">
-                <span id="p1-current-score">0</span>
-                </div>
-                <button onclick="changeScore('p1', 1)"> +1 </button>
+            <div class="score-controls">                
                 <button onclick="changeScore('p1', -1)"> -1 </button>
+                <div style="text-align: center; margin: 10px 0; background: #000; color: #0f0; padding: 5px; border: 2px solid; border-color: #808080 #fff #fff #808080; font-family: monospace; font-size: 20px;">
+                <span id="p1-current-score"> 0 </span>
+                </div>
+                <button onclick="changeScore('p1', 1)"> +1 </button>                
             </div>            
         </div>
 
@@ -74,12 +74,12 @@
 
             <button class="btn-update" onclick="updateInfo('p2')">💾 Actualizar Datos P2</button>
 
-            <div class="score-controls">
-                <div style="text-align: center; margin: 10px 0; background: #000; color: #0f0; padding: 5px; border: 2px solid; border-color: #808080 #fff #fff #808080; font-family: monospace; font-size: 20px;">
-                <span id="p2-current-score">0</span>
-                </div>
-                <button onclick="changeScore('p2', 1)"> +1 </button>
+            <div class="score-controls">                
                 <button onclick="changeScore('p2', -1)"> -1 </button>
+                <div style="text-align: center; margin: 10px 0; background: #000; color: #0f0; padding: 5px; border: 2px solid; border-color: #808080 #fff #fff #808080; font-family: monospace; font-size: 20px;">
+                <span id="p2-current-score"> 0 </span>
+                </div>
+                <button onclick="changeScore('p2', 1)"> +1 </button>                
             </div>            
         </div>
 
@@ -126,13 +126,7 @@
         }
 
         // Apuntar Firebase a la sala específica
-        const db = firebase.database().ref(`rooms/${currentRoom}`);
-
-        // Función para guardar la configuración global
-        function updateSettings() {
-            const show = document.getElementById('toggle-photos').checked;
-            db.child('settings').update({ showPhotos: show });
-        }
+        const db = firebase.database().ref(`rooms/${currentRoom}`);        
 
         // Sincronizar el panel con los datos existentes (Nombres, Fotos y Puntos - mostrar fotos o no)
         db.on('value', (snapshot) => {
@@ -170,6 +164,12 @@
                 }
             }
         });
+
+        // Función para guardar la configuración global
+        function updateSettings() {
+            const show = document.getElementById('toggle-photos').checked;
+            db.child('settings').update({ showPhotos: show });
+        }
 
         // Función para actualizar Nombre y Foto
         function updateInfo(player) {
