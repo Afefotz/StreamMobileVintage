@@ -34,7 +34,7 @@
 <body>
 
     <div class="window">
-        <div class="title-bar">Tournament_Admin_v2.exe</div>
+        <div class="title-bar">Versus_Admin_v1.exe</div>
 
         <div class="player-section">
             <div class="section-title">PLAYER 1</div>
@@ -69,6 +69,11 @@
                 <button onclick="changeScore('p2', -1)">Puntos -1</button>
             </div>
         </div>
+
+        <div style="background: #fff; border: 2px inset #fff; padding: 5px; margin-bottom: 15px; font-size: 12px;">
+            <strong>Tu link para PRISM/OBS:</strong><br>
+            <input type="text" id="overlayLink" readonly style="width: 100%; margin-top: 5px; background: #e0e0e0;">
+        </div>
         
         <button onclick="resetAll()" style="width:100%; color:red; margin-top:10px;">⚠️ RESETEAR TODO</button>
     </div>
@@ -87,7 +92,20 @@
         };
 
         if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-        const db = firebase.database().ref('match_data'); // Cambié el nodo a 'match_data' para limpiar lo anterior
+        //const db = firebase.database().ref('match_data'); // Cambié el nodo a 'match_data' para limpiar lo anterior NO MULTIUSUARIO
+
+        // 1. Obtener el parámetro 'room' de la URL (ej: control.html?room=mistream)
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentRoom = urlParams.get('room');
+
+        // 2. Validación de seguridad básica
+        if (!currentRoom) {
+            alert("No se especificó ninguna sala. Redirigiendo al inicio...");
+            window.location.href = "index.html"; // Regresa al login si intentan entrar directo
+        }
+
+        // Apuntar Firebase a la sala específica
+        const db = firebase.database().ref(`rooms/${currentRoom}`);
 
         // Función para actualizar Nombre y Foto
         function updateInfo(player) {
@@ -105,6 +123,11 @@
         function changeScore(player, amount) {
             db.child(player + '/score').transaction((score) => (score || 0) + amount);
         }
+
+        // Construir la URL absoluta para el overlay
+        const baseURL = window.location.origin + window.location.pathname.replace('control.html', '');
+        const finalOverlayURL = `${baseURL}overlay.html?room=${currentRoom}`;
+        document.getElementById('overlayLink').value = finalOverlayURL;
 
         // Reset total
         function resetAll() {

@@ -2,135 +2,32 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Win95 Scoreboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <title>Generador de Overlay Win95</title>
     <style>
-        body { margin: 0; padding: 20px; background-color: transparent; font-family: Arial, sans-serif; }
-
-        .window {
-            background-color: #c0c0c0;
-            width: fit-content;
-            border-top: 3px solid #fff; border-left: 3px solid #fff;
-            border-right: 3px solid #000; border-bottom: 3px solid #000;
-            box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
-            display: flex; flex-direction: column;
-        }
-
-        .title-bar {
-            background: linear-gradient(90deg, #000080, #1084d0);
-            padding: 4px; color: white; font-weight: bold; font-size: 14px;
-        }
-
-        .content {
-            padding: 10px;
-            display: flex; gap: 15px; align-items: center;
-        }
-
-        /* Tarjeta de Jugador */
-        .player-card {
-            display: flex; align-items: center; gap: 8px;
-        }
-
-        /* Marco de la foto hundido */
-        .photo-frame {
-            width: 50px; height: 50px;
-            background: #fff;
-            border: 2px solid; border-color: #808080 #fff #fff #808080;
-            display: flex; justify-content: center; align-items: center; overflow: hidden;
-        }
-        .photo-frame img { width: 100%; height: 100%; object-fit: cover; }
-
-        .player-info { display: flex; flex-direction: column; }
-        
-        .player-name {
-            font-weight: bold; font-size: 14px; color: #000; margin-bottom: 2px;
-            text-transform: uppercase;
-        }
-
-        /* Marcador estilo digital */
-        .score-box {
-            background: #000; color: #0f0; /* Verde matrix */
-            font-family: 'VT323', monospace; font-size: 35px;
-            padding: 0 10px; min-width: 40px; text-align: center;
-            border: 2px solid; border-color: #808080 #fff #fff #808080;
-        }
-
-        .vs { font-weight: bold; color: #808080; font-style: italic; font-size: 20px; }
-
+        body { font-family: sans-serif; background: #008080; padding: 50px; text-align: center; }
+        .window { background: #c0c0c0; border: 2px solid; border-color: #fff #808080 #808080 #fff; padding: 20px; max-width: 400px; margin: 0 auto; }
+        input { padding: 5px; width: 80%; margin-bottom: 15px; }
+        button { padding: 10px; font-weight: bold; cursor: pointer; }
     </style>
-    
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 </head>
 <body>
-
     <div class="window">
-        <div class="title-bar">Live_Match.exe</div>
-        <div class="content">
-            
-            <div class="player-card">
-                <div class="photo-frame">
-                    <img id="img-p1" src="https://via.placeholder.com/50?text=P1">
-                </div>
-                <div class="player-info">
-                    <div id="name-p1" class="player-name">Player 1</div>
-                    <div id="score-p1" class="score-box">0</div>
-                </div>
-            </div>
-
-            <div class="vs">VS</div>
-
-            <div class="player-card" style="flex-direction: row-reverse; text-align: right;">
-                <div class="photo-frame">
-                    <img id="img-p2" src="https://via.placeholder.com/50?text=P2">
-                </div>
-                <div class="player-info">
-                    <div id="name-p2" class="player-name">Player 2</div>
-                    <div id="score-p2" class="score-box">0</div>
-                </div>
-            </div>
-
-        </div>
+        <h2>Crear nueva sala de Stream</h2>
+        <p>Ingresa tu nombre de usuario (sin espacios):</p>
+        <input type="text" id="roomName" placeholder="ejemplo: mistream">
+        <button onclick="generarLinks()">Entrar al Panel</button>
     </div>
 
     <script>
-        const firebaseConfig = {
-            apiKey: "AIzaSyAcB2svnoMb1YOKQmwrrAa9i9vbSqxNprw",
-            authDomain: "score-w95.firebaseapp.com",
-            databaseURL: "https://score-w95-default-rtdb.firebaseio.com",
-            projectId: "score-w95",
-            storageBucket: "score-w95.firebasestorage.app",
-            messagingSenderId: "244357143300",
-            appId: "1:244357143300:web:e30629d5dbf0034f5bce51",
-            measurementId: "G-R8VN2XHYM4"
-        };
+        function generarLinks() {
+            let room = document.getElementById('roomName').value.trim().toLowerCase();
+            room = room.replace(/[^a-z0-9]/g, ''); // Limpiar caracteres raros
 
-        if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-        const db = firebase.database().ref('match_data');
-
-        // Escuchar cambios
-        db.on('value', (snapshot) => {
-            const data = snapshot.val();
-            if (data) {
-                updatePlayer('p1', data.p1);
-                updatePlayer('p2', data.p2);
-            }
-        });
-
-        function updatePlayer(id, data) {
-            if (!data) return;
-            
-            // Actualizar texto
-            document.getElementById(`name-${id}`).innerText = data.name || "PLAYER";
-            document.getElementById(`score-${id}`).innerText = data.score || 0;
-            
-            // Actualizar imagen (si hay URL, úsala; si no, placeholder)
-            const imgElement = document.getElementById(`img-${id}`);
-            if (data.photo && data.photo.startsWith('http')) {
-                imgElement.src = data.photo;
+            if(room.length > 0) {
+                // Redirigir al panel de control pasando el nombre como parámetro
+                window.location.href = `control.html?room=${room}`;
             } else {
-                imgElement.src = `https://via.placeholder.com/50?text=${id.toUpperCase()}`;
+                alert("Por favor ingresa un nombre válido.");
             }
         }
     </script>
