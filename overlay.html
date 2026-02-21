@@ -126,8 +126,20 @@
         db.on('value', (snapshot) => {
             const data = snapshot.val();
             if (data) {
+                // Actualizar jugadores
                 updatePlayer('p1', data.p1);
                 updatePlayer('p2', data.p2);
+
+                // Controlar la visibilidad de las fotos
+                const showPhotos = data.settings && data.settings.showPhotos !== undefined 
+                                   ? data.settings.showPhotos 
+                                   : true; // Por defecto es true
+                
+                // Seleccionamos todos los marcos de fotos y los ocultamos/mostramos
+                const photoFrames = document.querySelectorAll('.photo-frame');
+                photoFrames.forEach(frame => {
+                    frame.style.display = showPhotos ? 'flex' : 'none';
+                });
             }
         });
 
