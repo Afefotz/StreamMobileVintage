@@ -26,6 +26,43 @@
         }
         button:active { border-color: #808080 #fff #fff #808080; transform: translate(1px, 1px); }
         .btn-update { width: 100%; margin-top: 5px; background: #000080; color: white; border-color: #fff #000 #000 #fff; }
+
+        /* Apagar el diseño nativo del navegador */
+        input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            background-color: #ffffff;
+            /* Bordes invertidos para el efecto hundido */
+            border: 2px solid; 
+            border-color: #808080 #ffffff #ffffff #808080; 
+            margin: 0;
+            cursor: pointer;
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            outline: none;
+        }
+
+        /* Dibujar la palomita negra cuando está activado */
+        input[type="checkbox"]:checked::before {
+            content: "✔"; /* Símbolo unicode clásico */
+            color: #000000;
+            font-size: 14px;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-weight: bold;
+            position: absolute;
+            top: -2px; /* Ajuste fino para centrar la palomita */
+            left: 1px;
+        }
+
+        /* Foco punteado clásico al hacer clic */
+        input[type="checkbox"]:focus {
+            outline: 1px dotted #000000;
+            outline-offset: 2px;
+        }
     </style>
     
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
@@ -37,11 +74,11 @@
         <div class="title-bar">Versus_Admin_v1.exe</div>
 
         <div style="background: #c0c0c0; border: 2px solid; border-color: #808080 #fff #fff #808080; padding: 10px; margin-bottom: 15px;">
-            <label style="font-weight: bold; font-size: 13px; display: flex; align-items: center; gap: 8px; cursor: pointer;">
+            <label style="font-family: 'Segoe UI', sans-serif; font-size: 13px; display: flex; align-items: center; gap: 8px; cursor: pointer; color: #000;">
             <input type="checkbox" id="toggle-photos" onchange="updateSettings()" checked>
-            Photo?
+            Mostrar Fotos
             </label>
-        </div>
+        </div>        
 
         <div class="player-section">
             <div class="section-title">PLAYER 1</div>
@@ -159,7 +196,7 @@
                     // Actualizar el display del marcador P2
                     document.getElementById('p2-current-score').innerText = data.p2.score || 0;
                 }
-                
+
                 // Sincronizar el estado del checkbox y la UI
                 const showPhotos = data.settings && data.settings.showPhotos !== undefined 
                                    ? data.settings.showPhotos 
