@@ -150,7 +150,7 @@
             .then(() => {
                 // Feedback visual: Cambiamos el texto temporalmente
                 const textoOriginal = btn.innerHTML;
-                btn.innerHTML = "✅ ¡Copiado! Usa este link en tu software de streaming.";
+                btn.innerHTML = "✅ ¡Copiado! Pega este link en tu software de streaming.";
                 btn.style.color = "green"; // Un toque de color para confirmar
             
                 // Regresamos al estado original después de 5 segundos
@@ -173,7 +173,7 @@
             navigator.clipboard.writeText(linkInput.value)
                 .then(() => {
                     const textoOriginal = btn.innerHTML;
-                    btn.innerHTML = "✅ ¡Copiado!";
+                    btn.innerHTML = "✅ ¡Copiado! Guarda este link para administrar tu sala en el futuro.";
                     btn.style.color = "green";
             
                     setTimeout(() => {
