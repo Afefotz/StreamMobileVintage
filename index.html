@@ -2,34 +2,77 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generador de Overlay Win95</title>
     <style>
-        body { font-family: sans-serif; background: #008080; padding: 50px; text-align: center; }
-        .window { background: #c0c0c0; border: 2px solid; border-color: #fff #808080 #808080 #fff; padding: 20px; max-width: 400px; margin: 0 auto; }
-        input { padding: 5px; width: 80%; margin-bottom: 15px; }
-        button { padding: 10px; font-weight: bold; cursor: pointer; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #008080; padding: 50px; text-align: center; }
+        
+        .window { 
+            background: #c0c0c0; 
+            border: 2px solid; border-color: #fff #808080 #808080 #fff; 
+            padding: 15px; max-width: 400px; margin: 0 auto; 
+            box-shadow: 4px 4px 10px rgba(0,0,0,0.5); 
+        }
+        
+        .title-bar { 
+            background: linear-gradient(90deg, #000080, #1084d0); 
+            color: white; padding: 4px 8px; margin-bottom: 15px; 
+            font-weight: bold; text-align: left; font-size: 14px;
+        }
+        
+        input { 
+            padding: 6px; width: 85%; margin-bottom: 20px; 
+            border: 2px solid; border-color: #808080 #fff #fff #808080; /* Efecto hundido */
+        }
+        
+        button { 
+            padding: 8px 15px; font-weight: bold; cursor: pointer; 
+            background: #c0c0c0; border: 2px solid; border-color: #fff #808080 #808080 #fff; 
+        }
+        
+        button:active { 
+            border-color: #808080 #fff #fff #808080; /* Efecto presionado */
+            transform: translate(1px, 1px);
+        }
     </style>
 </head>
 <body>
     <div class="window">
-        <h2>Crear nueva sala de Stream</h2>
-        <p>Ingresa tu nombre de usuario (sin espacios):</p>
-        <input type="text" id="roomName" placeholder="ejemplo: mistream">
-        <button onclick="generarLinks()">Entrar al Panel</button>
+        <div class="title-bar">Room_Creator.exe</div>
+        <h3 style="margin-top: 5px; color: #000;">Crear Sala de Stream</h3>
+        <p style="font-size: 14px; color: #333;">Ingresa el nombre de tu evento (sin espacios):</p>
+        
+        <input type="text" id="roomName" placeholder="ejemplo: torneo2026">
+        <br>
+        <button onclick="generarLinks()">Generar y Entrar</button>
     </div>
 
     <script>
         function generarLinks() {
+            // 1. Obtenemos el valor y lo limpiamos (solo letras y números)
             let room = document.getElementById('roomName').value.trim().toLowerCase();
-            room = room.replace(/[^a-z0-9]/g, ''); // Limpiar caracteres raros
+            room = room.replace(/[^a-z0-9]/g, ''); 
 
             if(room.length > 0) {
-                // Redirigir al panel de control pasando el nombre como parámetro
-                window.location.href = `control.html?room=${room}`;
+                // 2. Generamos el sufijo aleatorio de 4 caracteres alfanuméricos
+                const randomPin = Math.random().toString(36).substring(2, 6);
+                
+                // 3. Unimos el nombre con el pin (ej. torneo2026-a7b2)
+                const uniqueRoom = `${room}-${randomPin}`;
+                
+                // 4. Redirigimos al panel de control pasando la sala única en la URL
+                window.location.href = `control.html?room=${uniqueRoom}`;
             } else {
-                alert("Por favor ingresa un nombre válido.");
+                alert("Por favor ingresa un nombre válido (solo letras y números).");
             }
         }
+
+        // Permite presionar "Enter" para generar la sala
+        document.getElementById('roomName').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                generarLinks();
+            }
+        });
     </script>
 </body>
 </html>
