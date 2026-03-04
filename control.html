@@ -215,6 +215,13 @@
                 document.getElementById('photo-input-p1').style.display = displayStyle;
                 document.getElementById('photo-input-p2').style.display = displayStyle;
             }
+
+            // Sincronizar el estado del checkbox de intercambio
+            const swapPlayers = data.settings && data.settings.swapPlayers !== undefined 
+                                ? data.settings.swapPlayers 
+                                : false; // Por defecto apagado (P1 a la izquierda)
+                
+            document.getElementById('toggle-swap').checked = swapPlayers;
         });
 
         // Función para guardar la configuración global
@@ -238,14 +245,7 @@
                 name: name || "Player", // Si está vacío, pone Player
                 photo: photo || ""      // Si está vacío, queda sin foto
             });
-        }
-
-        // Sincronizar el estado del checkbox de intercambio
-        const swapPlayers = data.settings && data.settings.swapPlayers !== undefined 
-                            ? data.settings.swapPlayers 
-                            : false; // Por defecto apagado (P1 a la izquierda)
-                
-        document.getElementById('toggle-swap').checked = swapPlayers;
+        }        
 
         // Función para Puntos (ahora busca dentro de /score)
         function changeScore(player, amount) {
