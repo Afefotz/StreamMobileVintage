@@ -156,7 +156,19 @@
                                    ? data.settings.showPhotos 
                                    : true;
                 
+                // Controlar la posición de los jugadores (Swap)
+                const swapPlayers = data.settings && data.settings.swapPlayers !== undefined 
+                            ? data.settings.swapPlayers 
+                            : false;
+                
+                // Aplicamos la clase al contenedor que envuelve a los jugadores y el "VS"
                 const contentDiv = document.querySelector('.content');
+                
+                if (swapPlayers) {
+                    contentDiv.classList.add('jugadores-invertidos'); // P2 - VS - P1
+                } else {
+                    contentDiv.classList.remove('jugadores-invertidos'); // P1 - VS - P2
+                }
                 
                 if (showPhotos) {
                     contentDiv.classList.remove('modo-texto'); // Se ven los cuadros y fotos
@@ -186,21 +198,7 @@
             } else {
                 imgElement.src = `https://via.placeholder.com/50?text=${id.toUpperCase()}`;
             }
-        }
-
-        // Controlar la posición de los jugadores (Swap)
-        const swapPlayers = data.settings && data.settings.swapPlayers !== undefined 
-                            ? data.settings.swapPlayers 
-                            : false;
-                
-        // Aplicamos la clase al contenedor que envuelve a los jugadores y el "VS"
-        const contentDiv = document.querySelector('.content');
-                
-        if (swapPlayers) {
-            contentDiv.classList.add('jugadores-invertidos'); // P2 - VS - P1
-        } else {
-            contentDiv.classList.remove('jugadores-invertidos'); // P1 - VS - P2
-        }
+        }        
     </script>
 </body>
 </html>
