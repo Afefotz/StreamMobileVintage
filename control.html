@@ -92,8 +92,9 @@
             <input type="text" id="p1-name" placeholder="Ej: Goku">
             
             <div id="photo-input-p1" style="margin-top: 10px;">
-                <label>URL Foto:</label>
-                <input type="text" id="p1-photo" placeholder="https://...">
+                <label>Subir Foto:</label>
+                <input type="file" accept="image/*" onchange="comprimirImagen(event, 'p1')" style="width: 100%; font-size: 11px;">
+                <input type="hidden" id="p1-photo"> 
             </div>
             
             <button class="btn-update" onclick="updateInfo('p1')">💾 Actualizar Datos P1</button>
@@ -114,8 +115,9 @@
             <input type="text" id="p2-name" placeholder="Ej: Vegeta">
             
             <div id="photo-input-p2" style="margin-top: 10px;">
-                <label>URL Foto:</label>
-                <input type="text" id="p2-photo" placeholder="https://...">
+                <label>Subir Foto:</label>
+                <input type="file" accept="image/*" onchange="comprimirImagen(event, 'p2')" style="width: 100%; font-size: 11px;">
+                <input type="hidden" id="p2-photo">
             </div>
 
             <button class="btn-update" onclick="updateInfo('p2')">💾 Actualizar Datos P2</button>
@@ -245,6 +247,49 @@
                 name: name || "Player", // Si está vacío, pone Player
                 photo: photo || ""      // Si está vacío, queda sin foto
             });
+        }
+        // Función para procesar, comprimir y convertir la imagen a Base64
+        function comprimirImagen(event, player) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+    
+            // Cuando el archivo local se termina de leer...
+            reader.onload = function(e) {
+                const img = new Image();
+        
+                // Cuando la imagen se carga en memoria...
+                img.onload = function() {
+                    // 1. Creamos un canvas virtual
+                    const canvas = document.createElement('canvas');
+                    const size = 150; // Redimensionamos a 150x150px (suficiente para el overlay)
+                    canvas.width = size;
+                    canvas.height = size;
+            
+                    const ctx = canvas.getContext('2d');
+            
+                    // 2. Rellenamos con fondo blanco (por si suben PNGs transparentes)
+                    ctx.fillStyle = "#ffffff";
+                    ctx.fillRect(0, 0, size, size);
+            
+                    // 3. Dibujamos la imagen estirada al cuadro
+                    ctx.drawImage(img, 0, 0, size, size);
+            
+                    // 4. Convertimos el canvas a texto Base64 (JPEG al 70% de calidad)
+                    const base64String = canvas.toDataURL('image/jpeg', 0.7);
+            
+                    // 5. Metemos ese texto en el input oculto que ya teníamos
+                    document.getElementById(player + '-photo').value = base64String;
+            
+                    // Feedback visual retro
+                    console.log(`Imagen de ${player} procesada y lista para subir.`);
+                };
+        
+                img.src = e.target.result;
+            };
+    
+            reader.readAsDataURL(file);
         }        
 
         // Función para Puntos (ahora busca dentro de /score)
