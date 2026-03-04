@@ -76,7 +76,12 @@
         <div style="background: #c0c0c0; border: 2px solid; border-color: #808080 #fff #fff #808080; padding: 10px; margin-bottom: 15px;">
             <label style="font-family: 'Segoe UI', sans-serif; font-size: 13px; display: flex; align-items: center; gap: 8px; cursor: pointer; color: #000;">
             <input type="checkbox" id="toggle-photos" onchange="updateSettings()" checked>
-            Mostrar Fotos
+                Mostrar Fotos
+            </label>
+
+            <label style="font-family: 'Segoe UI', sans-serif; font-size: 13px; display: flex; align-items: center; gap: 8px; cursor: pointer; color: #000;">
+            <input type="checkbox" id="toggle-swap" onchange="updateSettings()">
+                Voltear
             </label>
         </div>        
 
@@ -215,7 +220,12 @@
         // Función para guardar la configuración global
         function updateSettings() {
             const show = document.getElementById('toggle-photos').checked;
-            db.child('settings').update({ showPhotos: show });
+            const swap = document.getElementById('toggle-swap').checked; // Capturamos el nuevo checkbox
+    
+            db.child('settings').update({ 
+                showPhotos: show,
+                swapPlayers: swap // Lo guardamos en Firebase
+            });
         }
 
         // Función para actualizar Nombre y Foto
@@ -229,6 +239,13 @@
                 photo: photo || ""      // Si está vacío, queda sin foto
             });
         }
+
+        // Sincronizar el estado del checkbox de intercambio
+        const swapPlayers = data.settings && data.settings.swapPlayers !== undefined 
+                            ? data.settings.swapPlayers 
+                            : false; // Por defecto apagado (P1 a la izquierda)
+                
+        document.getElementById('toggle-swap').checked = swapPlayers;
 
         // Función para Puntos (ahora busca dentro de /score)
         function changeScore(player, amount) {
