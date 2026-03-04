@@ -191,12 +191,18 @@
             document.getElementById(`name-${id}`).innerText = data.name || "PLAYER";
             document.getElementById(`score-${id}`).innerText = data.score || 0;
             
-            // Actualizar imagen (si hay URL, úsala; si no, placeholder)
+            // Actualizar imagen
             const imgElement = document.getElementById(`img-${id}`);
-            if (data.photo && data.photo.startsWith('http')) {
+            
+            // Si hay foto guardada (ya sea un link http o un Base64 largo)
+            if (data.photo && data.photo.length > 10) {
                 imgElement.src = data.photo;
             } else {
-                imgElement.src = `https://via.placeholder.com/50?text=${id.toUpperCase()}`;
+                // Generamos un placeholder local con SVG (no requiere internet)
+                // Usamos %23 en lugar de # para los colores hexadecimales en la URL
+                const svgPlaceholder = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50"><rect width="50" height="50" fill="%23cccccc"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="18px" fill="%23333333">${id.toUpperCase()}</text></svg>`;
+                
+                imgElement.src = svgPlaceholder;
             }
         }        
     </script>
