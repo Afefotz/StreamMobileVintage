@@ -94,7 +94,11 @@
             <div id="photo-input-p1" style="margin-top: 10px;">
                 <label>Subir Foto:</label>
                 <input type="file" accept="image/*" onchange="comprimirImagen(event, 'p1')" style="width: 100%; font-size: 11px;">
-                <input type="hidden" id="p1-photo"> 
+                <input type="hidden" id="p1-photo">
+
+                <div style="margin-top: 5px; min-height: 54px;">
+                    <img id="preview-p1" style="display: none; width: 50px; height: 50px; border: 2px solid; border-color: #808080 #fff #fff #808080; object-fit: cover; background: #fff;">
+                </div>
             </div>
             
             <button class="btn-update" onclick="updateInfo('p1')">💾 Actualizar Datos P1</button>
@@ -118,6 +122,10 @@
                 <label>Subir Foto:</label>
                 <input type="file" accept="image/*" onchange="comprimirImagen(event, 'p2')" style="width: 100%; font-size: 11px;">
                 <input type="hidden" id="p2-photo">
+
+                <div style="margin-top: 5px; min-height: 54px;">
+                    <img id="preview-p2" style="display: none; width: 50px; height: 50px; border: 2px solid; border-color: #808080 #fff #fff #808080; object-fit: cover; background: #fff;">
+                </div>
             </div>
 
             <button class="btn-update" onclick="updateInfo('p2')">💾 Actualizar Datos P2</button>
@@ -186,7 +194,18 @@
                     const p1Photo = document.getElementById('p1-photo');
                     
                     if (document.activeElement !== p1Name) p1Name.value = data.p1.name || '';
-                    if (document.activeElement !== p1Photo) p1Photo.value = data.p1.photo || '';
+                    if (document.activeElement !== p1Photo) {
+                        p1Photo.value = data.p1.photo || '';
+                        
+                        // Mostrar vista previa si ya hay foto guardada
+                        const previewP1 = document.getElementById('preview-p1');
+                        if (data.p1.photo && data.p1.photo.length > 10) {
+                            previewP1.src = data.p1.photo;
+                            previewP1.style.display = 'block';
+                        } else {
+                            previewP1.style.display = 'none';
+                        }
+                    }
                     
                     // Actualizar el display del marcador P1
                     document.getElementById('p1-current-score').innerText = data.p1.score || 0;
@@ -198,7 +217,18 @@
                     const p2Photo = document.getElementById('p2-photo');
                     
                     if (document.activeElement !== p2Name) p2Name.value = data.p2.name || '';
-                    if (document.activeElement !== p2Photo) p2Photo.value = data.p2.photo || '';
+                    if (document.activeElement !== p2Photo) {
+                        p2Photo.value = data.p2.photo || '';
+                        
+                        // Mostrar vista previa si ya hay foto guardada
+                        const previewP2 = document.getElementById('preview-p2');
+                        if (data.p2.photo && data.p2.photo.length > 10) {
+                            previewP2.src = data.p2.photo;
+                            previewP2.style.display = 'block';
+                        } else {
+                            previewP2.style.display = 'none';
+                        }
+                    }
                     
                     // Actualizar el display del marcador P2
                     document.getElementById('p2-current-score').innerText = data.p2.score || 0;
@@ -281,6 +311,11 @@
             
                     // 5. Metemos ese texto en el input oculto que ya teníamos
                     document.getElementById(player + '-photo').value = base64String;
+
+                    // 6. Mostrar la vista previa en el panel de control
+                    const previewImg = document.getElementById('preview-' + player);
+                    previewImg.src = base64String;
+                    previewImg.style.display = 'block';
             
                     // Feedback visual retro
                     console.log(`Imagen de ${player} procesada y lista para subir.`);
