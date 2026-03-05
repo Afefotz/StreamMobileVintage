@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Control Win95</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="control.css">
     
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
@@ -28,13 +30,16 @@
             </label>        
             </div>
 
-            <div style="margin-top: 10px; border-top: 1px solid #808080; padding-top: 10px;">
-                <label style="font-family: 'Segoe UI', sans-serif; font-size: 12px; font-weight: bold; color: #000;">Tema Visual del Overlay:</label>
-                <select id="theme-selector" onchange="updateSettings()" style="width: 100%; margin-top: 5px; font-size: 12px; padding: 4px; border: 2px solid; border-color: #808080 #fff #fff #808080;">
+            <div style="margin-top: 10px; border-top: 1px solid #808080; padding-top: 10px;">        
+                <label style="font-family: 'Segoe UI', sans-serif; font-size: 12px; font-weight: bold; color: #000;">Tema Visual:</label>
+                <select id="theme-selector" onchange="cambiarTemaAutomatico()" style="width: 100%; margin-top: 5px; margin-bottom: 10px; font-size: 12px; padding: 4px; border: 2px solid; border-color: #808080 #fff #fff #808080;">
                     <option value="theme-win95">Retro (Windows 95)</option>
                     <option value="theme-modern">Moderno (Redondeado Oscuro)</option>
                     <option value="theme-neon">Cyberpunk (Neón Brillante)</option>
                 </select>
+
+                <label style="font-family: 'Segoe UI', sans-serif; font-size: 12px; font-weight: bold; color: #000;">Título del Overlay:</label>
+                <input type="text" id="custom-title" onchange="updateSettings()" style="width: 100%; margin-top: 5px; font-size: 12px; padding: 4px; border: 2px solid; border-color: #808080 #fff #fff #808080; box-sizing: border-box;">        
             </div>
         </div>       
 
@@ -106,6 +111,6 @@
         <button onclick="resetAll()" style="width:100%; color:red; margin-top:10px;">⚠️ RESETEAR TODO</button>
     </div>
 
-    <script src="control.js"></script>
+    <script defer src="control.js"></script>
 </body>
 </html>

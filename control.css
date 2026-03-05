@@ -111,3 +111,79 @@ input[type="checkbox"]:focus {
   outline: 1px dotted #000000;
   outline-offset: 2px;
 }
+
+/* =========================================
+TEMA 2: MODERNO OSCURO (.theme-modern)
+========================================= */
+.theme-modern .window {
+  background-color: rgba(30, 30, 30, 0.95);
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+}
+.theme-modern .title-bar {
+  background: transparent;
+  color: #aaaaaa;
+  border-bottom: 1px solid #444;
+  font-family: "Segoe UI", sans-serif;
+}
+.theme-modern .player-name {
+  color: #ffffff;
+  font-family: "Segoe UI", sans-serif;
+}
+.theme-modern .photo-frame {
+  border: 3px solid #4a90e2;
+  border-radius: 50%; /* Fotos circulares */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+.theme-modern .score-box {
+  background: #2d2d2d;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-family: "Segoe UI", sans-serif;
+  font-weight: bold;
+}
+.theme-modern .vs {
+  color: #ff4757;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* =========================================
+TEMA 3: CYBERPUNK NEÓN (.theme-neon)
+========================================= */
+.theme-neon .window {
+  background-color: rgba(10, 10, 20, 0.85);
+  backdrop-filter: blur(4px);
+  border: 2px solid #0ff;
+  border-radius: 0;
+  box-shadow:
+    0 0 15px #0ff,
+    inset 0 0 10px #0ff;
+}
+.theme-neon .title-bar {
+  background: #0ff;
+  color: #000;
+  font-family: "VT323", monospace;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+.theme-neon .player-name {
+  color: #f0f;
+  text-shadow: 0 0 5px #f0f;
+}
+.theme-neon .photo-frame {
+  border: 2px solid #f0f;
+  border-radius: 10%;
+  box-shadow: 0 0 10px #f0f;
+}
+.theme-neon .score-box {
+  background: transparent;
+  color: #0ff;
+  border: 1px solid #0ff;
+  text-shadow: 0 0 8px #0ff;
+}
+.theme-neon .vs {
+  color: #ff0;
+  text-shadow: 0 0 5px #ff0;
+}

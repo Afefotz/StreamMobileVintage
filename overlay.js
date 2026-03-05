@@ -68,6 +68,13 @@ const firebaseConfig = {
             // Controlar el tema visual
                 const activeTheme = data.settings && data.settings.theme ? data.settings.theme : 'theme-win95';
                 document.body.className = activeTheme; // Cambia la clase del <body>
+
+            // Controlar el texto del título
+                const customTitle = data.settings && data.settings.customTitle !== undefined 
+                                    ? data.settings.customTitle 
+                                    : 'Online_Match.exe';
+                
+                document.getElementById('overlay-title').innerText = customTitle;    
         });
 
         function updatePlayer(id, data) {
