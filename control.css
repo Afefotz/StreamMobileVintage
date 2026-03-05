@@ -1,282 +1,518 @@
 body {
-  font-family: "Segoe UI", sans-serif;
-  background: #008080;
-  padding: 20px;
+    font-family: "Segoe UI", sans-serif;
+    background: #008080;
+    padding: 20px;
 }
+
 .window {
-  background: #c0c0c0;
-  border: 2px solid;
-  border-color: #fff #808080 #808080 #fff;
-  padding: 10px;
-  max-width: 400px;
-  margin: 0 auto;
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #fff #808080 #808080 #fff;
+    padding: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
 }
+
 .title-bar {
-  background: navy;
-  color: white;
-  padding: 3px 6px;
-  margin-bottom: 15px;
-  font-weight: bold;
-  letter-spacing: 1px;
+    background: navy;
+    color: white;
+    padding: 3px 6px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    letter-spacing: 1px;
 }
 
 .player-section {
-  border: 1px solid #808080;
-  padding: 10px;
-  margin-bottom: 15px;
-  position: relative;
+    border: 1px solid #808080;
+    padding: 10px;
+    margin-bottom: 15px;
+    position: relative;
 }
+
 .section-title {
-  position: absolute;
-  top: -10px;
-  left: 10px;
-  background: #c0c0c0;
-  padding: 0 5px;
-  font-weight: bold;
-  color: navy;
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    background: #c0c0c0;
+    padding: 0 5px;
+    font-weight: bold;
+    color: navy;
 }
 
 label {
-  display: block;
-  margin-top: 5px;
-  font-size: 12px;
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
 }
+
 input[type="text"] {
-  width: 95%;
-  padding: 3px;
-  border: 2px solid;
-  border-color: #808080 #fff #fff #808080; /* Inset 3D */
+    width: 95%;
+    padding: 3px;
+    border: 2px solid;
+    border-color: #808080 #fff #fff #808080;
+    /* Inset 3D */
 }
 
 .score-controls {
-  display: flex;
-  gap: 5px;
-  margin-top: 10px;
+    display: flex;
+    gap: 5px;
+    margin-top: 10px;
 }
+
 button {
-  flex: 1;
-  padding: 5px;
-  background: #c0c0c0;
-  border: 2px solid;
-  border-color: #fff #808080 #808080 #fff;
-  font-weight: bold;
-  cursor: pointer;
+    flex: 1;
+    padding: 5px;
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #fff #808080 #808080 #fff;
+    font-weight: bold;
+    cursor: pointer;
 }
+
 button:active {
-  border-color: #808080 #fff #fff #808080;
-  transform: translate(1px, 1px);
+    border-color: #808080 #fff #fff #808080;
+    transform: translate(1px, 1px);
 }
+
 .btn-update {
-  width: 100%;
-  margin-top: 5px;
-  background: #000080;
-  color: white;
-  border-color: #fff #000 #000 #fff;
+    width: 100%;
+    margin-top: 5px;
+    background: #000080;
+    color: white;
+    border-color: #fff #000 #000 #fff;
 }
 
 /* Apagar el diseño nativo del navegador */
 input[type="checkbox"] {
-  appearance: none;
-  -webkit-appearance: none;
-  width: 16px;
-  height: 16px;
-  background-color: #ffffff;
-  /* Bordes invertidos para el efecto hundido */
-  border: 2px solid;
-  border-color: #808080 #ffffff #ffffff #808080;
-  margin: 0;
-  cursor: pointer;
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    background-color: #ffffff;
+    /* Bordes invertidos para el efecto hundido */
+    border: 2px solid;
+    border-color: #808080 #ffffff #ffffff #808080;
+    margin: 0;
+    cursor: pointer;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
 }
 
 /* Dibujar la palomita negra cuando está activado */
 input[type="checkbox"]:checked::before {
-  content: "✔"; /* Símbolo unicode clásico */
-  color: #000000;
-  font-size: 14px;
-  font-family: "Segoe UI", Arial, sans-serif;
-  font-weight: bold;
-  position: absolute;
-  top: -2px; /* Ajuste fino para centrar la palomita */
-  left: 1px;
+    content: "✔";
+    /* Símbolo unicode clásico */
+    color: #000000;
+    font-size: 14px;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-weight: bold;
+    position: absolute;
+    top: -2px;
+    /* Ajuste fino para centrar la palomita */
+    left: 1px;
 }
 
 /* Foco punteado clásico al hacer clic */
 input[type="checkbox"]:focus {
-  outline: 1px dotted #000000;
-  outline-offset: 2px;
+    outline: 1px dotted #000000;
+    outline-offset: 2px;
 }
 
 /* =========================================
 TEMA 2: MODERNO OSCURO (Panel de Control)
 ========================================= */
 .theme-modern {
-  background: #121212;
-  color: #e0e0e0;
-  font-family: "Segoe UI", sans-serif;
+    background: #121212;
+    color: #e0e0e0;
+    font-family: "Segoe UI", sans-serif;
 }
+
 .theme-modern .window {
-  background: #1e1e1e;
-  border: none;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    background: #1e1e1e;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
+
 .theme-modern .title-bar {
-  background: transparent;
-  color: #fff;
-  border-bottom: 1px solid #333;
-  font-size: 16px;
-  text-align: center;
-  margin-bottom: 20px;
-  letter-spacing: normal;
+    background: transparent;
+    color: #fff;
+    border-bottom: 1px solid #333;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 20px;
+    letter-spacing: normal;
 }
+
 .theme-modern .player-section {
-  border: 1px solid #333;
-  border-radius: 8px;
-  padding: 15px;
-  background: #252525;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 15px;
+    background: #252525;
 }
+
 .theme-modern .section-title {
-  background: #1e1e1e;
-  color: #4a90e2;
-  top: -12px;
-  border-radius: 4px;
-  padding: 2px 8px;
+    background: #1e1e1e;
+    color: #4a90e2;
+    top: -12px;
+    border-radius: 4px;
+    padding: 2px 8px;
 }
+
 .theme-modern button {
-  background: #333;
-  color: #fff;
-  border: 1px solid #555;
-  border-radius: 6px;
-  transition: 0.2s;
+    background: #333;
+    color: #fff;
+    border: 1px solid #555;
+    border-radius: 6px;
+    transition: 0.2s;
 }
+
 .theme-modern button:active {
-  background: #555;
-  transform: scale(0.98);
-  border-color: #777;
+    background: #555;
+    transform: scale(0.98);
+    border-color: #777;
 }
+
 .theme-modern input[type="text"],
 .theme-modern select {
-  background: #333;
-  color: #fff;
-  border: 1px solid #555;
-  border-radius: 4px;
-  padding: 6px;
+    background: #333;
+    color: #fff;
+    border: 1px solid #555;
+    border-radius: 4px;
+    padding: 6px;
 }
+
 .theme-modern .btn-update {
-  background: #4a90e2;
-  color: #fff;
-  border: none;
+    background: #4a90e2;
+    color: #fff;
+    border: none;
 }
+
 .theme-modern input[type="checkbox"] {
-  border: 2px solid #555;
-  background: #222;
-  border-radius: 4px;
+    border: 2px solid #555;
+    background: #222;
+    border-radius: 4px;
 }
+
 .theme-modern input[type="checkbox"]:checked::before {
-  color: #4a90e2;
+    color: #4a90e2;
 }
+
 .theme-modern div[style*="background: #c0c0c0"] {
-  background: #252525 !important;
-  border: 1px solid #333 !important;
-  border-radius: 8px;
+    background: #252525 !important;
+    border: 1px solid #333 !important;
+    border-radius: 8px;
 }
+
 .theme-modern div[style*="background: #000"] {
-  border: none !important;
-  border-radius: 6px;
-} /* Recuadro del marcador */
+    border: none !important;
+    border-radius: 6px;
+}
+
+/* Recuadro del marcador */
 
 /* =========================================
 TEMA 3: CYBERPUNK NEÓN (Panel de Control)
 ========================================= */
 .theme-neon {
-  background: #050510;
-  color: #0ff;
-  font-family: "VT323", monospace, sans-serif;
+    background: #050510;
+    color: #0ff;
+    font-family: "VT323", monospace, sans-serif;
 }
+
 .theme-neon .window {
-  background: rgba(10, 10, 20, 0.9);
-  border: 1px solid #0ff;
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
-  border-radius: 0;
+    background: rgba(10, 10, 20, 0.9);
+    border: 1px solid #0ff;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+    border-radius: 0;
 }
+
 .theme-neon .title-bar {
-  background: #0ff;
-  color: #000;
-  text-transform: uppercase;
-  font-weight: bold;
-  text-align: center;
+    background: #0ff;
+    color: #000;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
 }
+
 .theme-neon .player-section {
-  border: 1px solid #f0f;
-  box-shadow: inset 0 0 10px rgba(255, 0, 255, 0.1);
-  background: transparent;
+    border: 1px solid #f0f;
+    box-shadow: inset 0 0 10px rgba(255, 0, 255, 0.1);
+    background: transparent;
 }
+
 .theme-neon .section-title {
-  background: #050510;
-  color: #f0f;
-  text-shadow: 0 0 5px #f0f;
-  top: -10px;
-  border: 1px solid #f0f;
+    background: #050510;
+    color: #f0f;
+    text-shadow: 0 0 5px #f0f;
+    top: -10px;
+    border: 1px solid #f0f;
 }
+
 .theme-neon button {
-  background: transparent;
-  color: #0ff;
-  border: 1px solid #0ff;
-  text-transform: uppercase;
-  transition: 0.2s;
+    background: transparent;
+    color: #0ff;
+    border: 1px solid #0ff;
+    text-transform: uppercase;
+    transition: 0.2s;
 }
+
 .theme-neon button:active {
-  background: #0ff;
-  color: #000;
-  box-shadow: 0 0 15px #0ff;
+    background: #0ff;
+    color: #000;
+    box-shadow: 0 0 15px #0ff;
 }
+
 .theme-neon input[type="text"],
 .theme-neon select {
-  background: transparent;
-  color: #0ff;
-  border: 1px solid #0ff;
-  outline: none;
+    background: transparent;
+    color: #0ff;
+    border: 1px solid #0ff;
+    outline: none;
 }
+
 .theme-neon input[type="text"]:focus {
-  box-shadow: 0 0 8px #0ff;
+    box-shadow: 0 0 8px #0ff;
 }
+
 .theme-neon .btn-update {
-  background: transparent;
-  color: #f0f;
-  border-color: #f0f;
+    background: transparent;
+    color: #f0f;
+    border-color: #f0f;
 }
+
 .theme-neon .btn-update:active {
-  background: #f0f;
-  color: #000;
-  box-shadow: 0 0 15px #f0f;
+    background: #f0f;
+    color: #000;
+    box-shadow: 0 0 15px #f0f;
 }
+
 .theme-neon input[type="checkbox"] {
-  border: 1px solid #0ff;
-  background: #000;
+    border: 1px solid #0ff;
+    background: #000;
 }
+
 .theme-neon input[type="checkbox"]:checked::before {
-  color: #f0f;
-  content: "X";
-  font-family: monospace;
+    color: #f0f;
+    content: "X";
+    font-family: monospace;
 }
+
 .theme-neon div[style*="background: #c0c0c0"] {
-  background: transparent !important;
-  border: 1px solid #0ff !important;
-  box-shadow: inset 0 0 8px rgba(0, 255, 255, 0.2);
+    background: transparent !important;
+    border: 1px solid #0ff !important;
+    box-shadow: inset 0 0 8px rgba(0, 255, 255, 0.2);
 }
+
 .theme-neon div[style*="background: #000"] {
-  border-color: #f0f !important;
-  color: #f0f !important;
-  text-shadow: 0 0 8px #f0f;
-} /* Recuadro del marcador */
+    border-color: #f0f !important;
+    color: #f0f !important;
+    text-shadow: 0 0 8px #f0f;
+}
+
+/* Recuadro del marcador */
 .theme-neon label,
 .theme-neon p,
 .theme-neon strong {
-  color: #0ff !important;
+    color: #0ff !important;
+}
+
+/* =========================================
+TEMA 4: MODERNO CLARO (Panel de Control)
+========================================= */
+.theme-modern-light {
+    background: #f0f2f5;
+    color: #333;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.theme-modern-light .window {
+    background: #ffffff;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.theme-modern-light .title-bar {
+    background: transparent;
+    color: #1a1a1a;
+    border-bottom: 2px solid #f0f2f5;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.theme-modern-light .player-section {
+    border: 1px solid #e1e4e8;
+    border-radius: 8px;
+    padding: 15px;
+    background: #fafbfc;
+}
+
+.theme-modern-light .section-title {
+    background: #ffffff;
+    color: #0366d6;
+    top: -12px;
+    border-radius: 4px;
+    padding: 2px 8px;
+    border: 1px solid #e1e4e8;
+}
+
+.theme-modern-light button {
+    background: #f3f4f6;
+    color: #333;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+.theme-modern-light button:hover {
+    background: #e5e7eb;
+}
+
+.theme-modern-light input[type="text"],
+.theme-modern-light select {
+    background: #fff;
+    color: #333;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    padding: 6px;
+}
+
+.theme-modern-light .btn-update {
+    background: #0366d6;
+    color: #fff;
+    border: none;
+}
+
+.theme-modern-light input[type="checkbox"] {
+    border: 2px solid #d1d5db;
+    background: #fff;
+    border-radius: 4px;
+}
+
+.theme-modern-light input[type="checkbox"]:checked::before {
+    color: #0366d6;
+}
+
+.theme-modern-light div[style*="background: #c0c0c0"] {
+    background: #fafbfc !important;
+    border: 1px solid #e1e4e8 !important;
+    border-radius: 8px;
+}
+
+.theme-modern-light div[style*="background: #000"] {
+    background: #f3f4f6 !important;
+    color: #0366d6 !important;
+    border: none !important;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+/* =========================================
+TEMA 5: PASTEL (Panel de Control)
+========================================= */
+.theme-pastel {
+    background: #fff0f5;
+    color: #835c75;
+    font-family: 'Quicksand', 'Segoe UI', sans-serif;
+}
+
+.theme-pastel .window {
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid #ffb6c1;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(255, 182, 193, 0.3);
+}
+
+.theme-pastel .title-bar {
+    background: transparent;
+    color: #d87093;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 2px dashed #ffb6c1;
+    margin-bottom: 20px;
+}
+
+.theme-pastel .player-section {
+    border: 2px solid #ffe4e1;
+    border-radius: 15px;
+    padding: 15px;
+    background: #fff9fa;
+}
+
+.theme-pastel .section-title {
+    background: #fff;
+    color: #d87093;
+    top: -12px;
+    border-radius: 10px;
+    padding: 2px 10px;
+    border: 2px solid #ffb6c1;
+    font-weight: bold;
+}
+
+.theme-pastel button {
+    background: #fff;
+    color: #d87093;
+    border: 2px solid #ffb6c1;
+    border-radius: 10px;
+    transition: 0.2s;
+    font-weight: bold;
+}
+
+.theme-pastel button:hover {
+    background: #ffe4e1;
+}
+
+.theme-pastel input[type="text"],
+.theme-pastel select {
+    background: #fff;
+    color: #835c75;
+    border: 2px solid #ffe4e1;
+    border-radius: 10px;
+    padding: 6px;
+    outline: none;
+}
+
+.theme-pastel input[type="text"]:focus {
+    border-color: #ffb6c1;
+}
+
+.theme-pastel .btn-update {
+    background: #ffb6c1;
+    color: #fff;
+    border: none;
+}
+
+.theme-pastel input[type="checkbox"] {
+    border: 2px solid #ffb6c1;
+    background: #fff;
+    border-radius: 6px;
+}
+
+.theme-pastel input[type="checkbox"]:checked::before {
+    color: #d87093;
+    content: "♥";
+    font-size: 16px;
+    top: -4px;
+}
+
+.theme-pastel div[style*="background: #c0c0c0"] {
+    background: #fff9fa !important;
+    border: 2px solid #ffe4e1 !important;
+    border-radius: 15px;
+}
+
+.theme-pastel div[style*="background: #000"] {
+    background: #fff !important;
+    color: #d87093 !important;
+    border: 2px solid #ffb6c1 !important;
+    border-radius: 10px;
+    font-weight: bold;
 }

@@ -110,14 +110,12 @@ db.on("value", (snapshot) => {
   document.body.className = activeTheme;
 
   // Cambiar el título superior del panel de control
-  const panelTitle = document.getElementById("panel-title");
-  if (activeTheme === "theme-win95") {
-    panelTitle.innerText = "Versus_Admin_v1.exe";
-  } else if (activeTheme === "theme-modern") {
-    panelTitle.innerText = "Admin Dashboard Control";
-  } else if (activeTheme === "theme-neon") {
-    panelTitle.innerText = "SYS_ADMIN // OVERRIDE";
-  }
+  const panelTitle = document.getElementById('panel-title');
+  if (activeTheme === 'theme-win95') panelTitle.innerText = 'Versus_Admin_v1.exe';
+  else if (activeTheme === 'theme-modern') panelTitle.innerText = 'Admin Dashboard Control';
+  else if (activeTheme === 'theme-modern-light') panelTitle.innerText = 'Panel de Control';
+  else if (activeTheme === 'theme-neon') panelTitle.innerText = 'SYS_ADMIN // OVERRIDE';
+  else if (activeTheme === 'theme-pastel') panelTitle.innerText = '✧ Stream Admin ✧';
 
   // Sincronizar Título Personalizado
   const customTitle =
@@ -137,13 +135,11 @@ function cambiarTemaAutomatico() {
   const theme = document.getElementById("theme-selector").value;
   const titleInput = document.getElementById("custom-title");
 
-  if (theme === "theme-win95") {
-    titleInput.value = "Online_Match.exe";
-  } else if (theme === "theme-modern") {
-    titleInput.value = "Online Matching";
-  } else if (theme === "theme-neon") {
-    titleInput.value = "VERSUS";
-  }
+  if (theme === 'theme-win95') titleInput.value = 'Live_Match.exe';
+    else if (theme === 'theme-modern') titleInput.value = 'Online Matching';
+    else if (theme === 'theme-modern-light') titleInput.value = 'Online Matching';
+    else if (theme === 'theme-neon') titleInput.value = 'VERSUS';
+    else if (theme === 'theme-pastel') titleInput.value = '♡ Sweet Match ♡';
 
   // Guardamos los cambios inmediatamente
   updateSettings();

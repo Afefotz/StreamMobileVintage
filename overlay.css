@@ -1,188 +1,300 @@
 body {
-  margin: 0;
-  padding: 20px;
-  background-color: transparent;
-  font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: transparent;
+    font-family: Arial, sans-serif;
 }
 
 .window {
-  background-color: #c0c0c0;
-  width: fit-content;
-  border-top: 3px solid #fff;
-  border-left: 3px solid #fff;
-  border-right: 3px solid #000;
-  border-bottom: 3px solid #000;
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
-  display: flex;
-  flex-direction: column;
+    background-color: #c0c0c0;
+    width: fit-content;
+    border-top: 3px solid #fff;
+    border-left: 3px solid #fff;
+    border-right: 3px solid #000;
+    border-bottom: 3px solid #000;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
 }
 
 .title-bar {
-  background: linear-gradient(90deg, #000080, #1084d0);
-  padding: 4px;
-  color: white;
-  font-weight: bold;
-  font-size: 14px;
+    background: linear-gradient(90deg, #000080, #1084d0);
+    padding: 4px;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
 }
 
 .content {
-  padding: 10px;
-  display: flex;
-  gap: 15px;
-  align-items: center;
+    padding: 10px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
 }
 
 /* Tarjeta de Jugador */
 .player-card {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 /* Marco de la foto hundido */
 .photo-frame {
-  width: 50px;
-  height: 50px;
-  background: #fff;
-  border: 2px solid;
-  border-color: #808080 #fff #fff #808080;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    border: 2px solid;
+    border-color: #808080 #fff #fff #808080;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
+
 .photo-frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .player-info {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .player-name {
-  font-weight: bold;
-  font-size: 14px;
-  color: #000;
-  margin-bottom: 2px;
-  text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+    color: #000;
+    margin-bottom: 2px;
+    text-transform: uppercase;
 }
 
 /* Marcador estilo digital */
 .score-box {
-  background: #000;
-  color: #0f0; /* Verde matrix */
-  font-family: "VT323", monospace;
-  font-size: 35px;
-  padding: 0 10px;
-  min-width: 40px;
-  text-align: center;
-  border: 2px solid;
-  border-color: #808080 #fff #fff #808080;
+    background: #000;
+    color: #0f0;
+    /* Verde matrix */
+    font-family: "VT323", monospace;
+    font-size: 35px;
+    padding: 0 10px;
+    min-width: 40px;
+    text-align: center;
+    border: 2px solid;
+    border-color: #808080 #fff #fff #808080;
 }
 
 .vs {
-  font-weight: bold;
-  color: #808080;
-  font-style: italic;
-  font-size: 20px;
+    font-weight: bold;
+    color: #808080;
+    font-style: italic;
+    font-size: 20px;
 }
 
 /* --- ESTILOS PARA EL MODO SIN FOTOS --- */
 .modo-texto .photo-frame {
-  display: none !important; /* Desaparece el cuadro 3D por completo */
+    display: none !important;
+    /* Desaparece el cuadro 3D por completo */
 }
 
 .modo-texto .player-card {
-  flex-direction: column !important; /* Apila el nombre sobre el marcador */
-  justify-content: center;
+    flex-direction: column !important;
+    /* Apila el nombre sobre el marcador */
+    justify-content: center;
 }
 
 .modo-texto .player-name {
-  font-size: 16px;
-  margin-bottom: 5px;
-  text-align: center;
+    font-size: 16px;
+    margin-bottom: 5px;
+    text-align: center;
 }
 
 /* Clase dinámica para invertir a los jugadores */
 .jugadores-invertidos {
-  flex-direction: row-reverse !important;
+    flex-direction: row-reverse !important;
 }
 
 /* =========================================
 TEMA 2: MODERNO OSCURO (.theme-modern)
 ========================================= */
 .theme-modern .window {
-  background-color: rgba(30, 30, 30, 0.95);
-  border: none;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    background-color: rgba(30, 30, 30, 0.95);
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
 }
+
 .theme-modern .title-bar {
-  background: transparent;
-  color: #aaaaaa;
-  border-bottom: 1px solid #444;
-  font-family: "Segoe UI", sans-serif;
+    background: transparent;
+    color: #aaaaaa;
+    border-bottom: 1px solid #444;
+    font-family: "Segoe UI", sans-serif;
 }
+
 .theme-modern .player-name {
-  color: #ffffff;
-  font-family: "Segoe UI", sans-serif;
+    color: #ffffff;
+    font-family: "Segoe UI", sans-serif;
 }
+
 .theme-modern .photo-frame {
-  border: 3px solid #4a90e2;
-  border-radius: 50%; /* Fotos circulares */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    border: 3px solid #4a90e2;
+    border-radius: 50%;
+    /* Fotos circulares */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
+
 .theme-modern .score-box {
-  background: #2d2d2d;
-  color: #ffffff;
-  border: none;
-  border-radius: 8px;
-  font-family: "Segoe UI", sans-serif;
-  font-weight: bold;
+    background: #2d2d2d;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-family: "Segoe UI", sans-serif;
+    font-weight: bold;
 }
+
 .theme-modern .vs {
-  color: #ff4757;
-  font-family: "Segoe UI", sans-serif;
+    color: #ff4757;
+    font-family: "Segoe UI", sans-serif;
 }
 
 /* =========================================
 TEMA 3: CYBERPUNK NEÓN (.theme-neon)
 ========================================= */
 .theme-neon .window {
-  background-color: rgba(10, 10, 20, 0.85);
-  backdrop-filter: blur(4px);
-  border: 2px solid #0ff;
-  border-radius: 0;
-  box-shadow:
-    0 0 15px #0ff,
-    inset 0 0 10px #0ff;
+    background-color: rgba(10, 10, 20, 0.85);
+    backdrop-filter: blur(4px);
+    border: 2px solid #0ff;
+    border-radius: 0;
+    box-shadow:
+        0 0 15px #0ff,
+        inset 0 0 10px #0ff;
 }
+
 .theme-neon .title-bar {
-  background: #0ff;
-  color: #000;
-  font-family: "VT323", monospace;
-  font-size: 18px;
-  text-transform: uppercase;
+    background: #0ff;
+    color: #000;
+    font-family: "VT323", monospace;
+    font-size: 18px;
+    text-transform: uppercase;
 }
+
 .theme-neon .player-name {
-  color: #f0f;
-  text-shadow: 0 0 5px #f0f;
+    color: #f0f;
+    text-shadow: 0 0 5px #f0f;
 }
+
 .theme-neon .photo-frame {
-  border: 2px solid #f0f;
-  border-radius: 10%;
-  box-shadow: 0 0 10px #f0f;
+    border: 2px solid #f0f;
+    border-radius: 10%;
+    box-shadow: 0 0 10px #f0f;
 }
+
 .theme-neon .score-box {
-  background: transparent;
-  color: #0ff;
-  border: 1px solid #0ff;
-  text-shadow: 0 0 8px #0ff;
+    background: transparent;
+    color: #0ff;
+    border: 1px solid #0ff;
+    text-shadow: 0 0 8px #0ff;
 }
+
 .theme-neon .vs {
-  color: #ff0;
-  text-shadow: 0 0 5px #ff0;
+    color: #ff0;
+    text-shadow: 0 0 5px #ff0;
+}
+
+/* =========================================
+TEMA 4: MODERNO CLARO (.theme-modern-light)
+========================================= */
+.theme-modern-light .window {
+    background-color: rgba(255, 255, 255, 0.95);
+    border: 1px solid #e1e4e8;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+.theme-modern-light .title-bar {
+    background: transparent;
+    color: #333;
+    border-bottom: 1px solid #e1e4e8;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+}
+
+.theme-modern-light .player-name {
+    color: #333;
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: 700;
+}
+
+.theme-modern-light .photo-frame {
+    border: 3px solid #0366d6;
+    border-radius: 50%;
+    /* Fotos circulares */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    background: #fff;
+}
+
+.theme-modern-light .score-box {
+    background: #f3f4f6;
+    color: #0366d6;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: bold;
+}
+
+.theme-modern-light .vs {
+    color: #9ca3af;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* =========================================
+TEMA 5: PASTEL (.theme-pastel)
+========================================= */
+.theme-pastel .window {
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(5px);
+    border: 3px solid #ffb6c1;
+    border-radius: 24px;
+    box-shadow: 0 10px 25px rgba(255, 182, 193, 0.4);
+}
+
+.theme-pastel .title-bar {
+    background: #ffe4e1;
+    color: #d87093;
+    border-bottom: none;
+    border-radius: 20px 20px 0 0;
+    font-family: 'Quicksand', 'Segoe UI', sans-serif;
+    text-align: center;
+    font-weight: bold;
+}
+
+.theme-pastel .player-name {
+    color: #835c75;
+    font-family: 'Quicksand', 'Segoe UI', sans-serif;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.theme-pastel .photo-frame {
+    border: 4px solid #ffb6c1;
+    border-radius: 25%;
+    /* Forma de "Squircle" (cuadrado redondeado) */
+    box-shadow: 0 4px 12px rgba(255, 182, 193, 0.5);
+    background: #fff;
+}
+
+.theme-pastel .score-box {
+    background: #fff0f5;
+    color: #d87093;
+    border: 2px dashed #ffb6c1;
+    border-radius: 12px;
+    font-family: 'Quicksand', 'Segoe UI', sans-serif;
+    font-weight: bold;
+}
+
+.theme-pastel .vs {
+    color: #ffb6c1;
+    font-family: 'Quicksand', 'Segoe UI', sans-serif;
+    font-style: italic;
 }
