@@ -18,29 +18,30 @@
 
         <div style="background: #c0c0c0; border: 2px solid; border-color: #808080 #fff #fff #808080; padding: 10px; margin-bottom: 15px;">
     
-            <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap;">        
-            <label style="font-family: 'Segoe UI', sans-serif; font-size: 12px; display: flex; align-items: center; gap: 5px; cursor: pointer; color: #000; margin: 0;">
-                <input type="checkbox" id="toggle-photos" onchange="updateSettings()" checked>
-                Mostrar fotos
-            </label>
-
-            <label style="font-family: 'Segoe UI', sans-serif; font-size: 12px; display: flex; align-items: center; gap: 5px; cursor: pointer; color: #000; margin: 0;">
-                <input type="checkbox" id="toggle-swap" onchange="updateSettings()">
-                Invertir (P2 - P1)
-            </label>        
-            </div>
-
-            <div style="margin-top: 10px; border-top: 1px solid #808080; padding-top: 10px;">        
-                <label style="font-family: 'Segoe UI', sans-serif; font-size: 12px; font-weight: bold; color: #000;">Tema Visual:</label>
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap;">
+                <label style="font-family: 'Segoe UI', sans-serif; font-size: 12px; font-weight: bold;">Tema Visual:</label>
                 <select id="theme-selector" onchange="cambiarTemaAutomatico()" style="width: 100%; margin-top: 5px; margin-bottom: 10px; font-size: 12px; padding: 4px; border: 2px solid; border-color: #808080 #fff #fff #808080;">
                     <option value="theme-win95">Retro (Windows 95)</option>
-                    <option value="theme-modern">Moderno (Redondeado Oscuro)</option>
+                    <option value="theme-modern">Moderno (Oscuro)</option>
                     <option value="theme-neon">Cyberpunk (Neón Brillante)</option>
                 </select>
 
-                <label style="font-family: 'Segoe UI', sans-serif; font-size: 12px; font-weight: bold; color: #000;">Título del Overlay:</label>
+                <label style="font-family: 'Segoe UI', sans-serif; font-size: 12px; display: flex; align-items: center; gap: 5px; cursor: pointer; margin: 0;">
+                    <input type="checkbox" id="toggle-photos" onchange="updateSettings()" checked>
+                    Mostrar fotos
+                </label>
+
+                <label style="font-family: 'Segoe UI', sans-serif; font-size: 12px; display: flex; align-items: center; gap: 5px; cursor: pointer; margin: 0;">
+                    <input type="checkbox" id="toggle-swap" onchange="updateSettings()">
+                    Invertir (P2 - P1)
+                </label>        
+            </div>
+
+            <div style="margin-top: 10px; border-top: 1px solid #808080; padding-top: 10px;">               
+                <label style="font-family: 'Segoe UI', sans-serif; font-size: 12px; font-weight: bold;">Título del Overlay:</label>
                 <input type="text" id="custom-title" onchange="updateSettings()" style="width: 100%; margin-top: 5px; font-size: 12px; padding: 4px; border: 2px solid; border-color: #808080 #fff #fff #808080; box-sizing: border-box;">        
             </div>
+
         </div>       
 
         <div class="player-section">
