@@ -116,6 +116,8 @@ db.on("value", (snapshot) => {
   else if (activeTheme === 'theme-modern-light') panelTitle.innerText = 'Panel de Control';
   else if (activeTheme === 'theme-neon') panelTitle.innerText = 'SYS_ADMIN // OVERRIDE';
   else if (activeTheme === 'theme-pastel') panelTitle.innerText = '✧ Stream Admin ✧';
+  else if (activeTheme === 'theme-stone') panelTitle.innerText = 'Colosseum Admin';
+  else if (activeTheme === 'theme-laser') panelTitle.innerText = 'LASER_COMMAND_CTR';
 
   // Sincronizar Título Personalizado
   const customTitle =
@@ -140,6 +142,8 @@ function cambiarTemaAutomatico() {
     else if (theme === 'theme-modern-light') titleInput.value = 'Online Matching';
     else if (theme === 'theme-neon') titleInput.value = 'VERSUS';
     else if (theme === 'theme-pastel') titleInput.value = '♡ Sweet Match ♡';
+    else if (theme === 'theme-stone') titleInput.value = 'EPIC DUEL';
+    else if (theme === 'theme-laser') titleInput.value = 'LASER // DEATHMATCH';
 
   // Guardamos los cambios inmediatamente
   updateSettings();
