@@ -106,8 +106,18 @@ db.on("value", (snapshot) => {
     data.settings && data.settings.theme ? data.settings.theme : "theme-win95";
   document.getElementById("theme-selector").value = activeTheme;
 
-  // Opcional: También puedes hacer que el panel cambie de tema
+  // Cambia el look del panel
   document.body.className = activeTheme;
+
+  // Cambiar el título superior del panel de control
+  const panelTitle = document.getElementById("panel-title");
+  if (activeTheme === "theme-win95") {
+    panelTitle.innerText = "Versus_Admin_v1.exe";
+  } else if (activeTheme === "theme-modern") {
+    panelTitle.innerText = "Admin Dashboard Control";
+  } else if (activeTheme === "theme-neon") {
+    panelTitle.innerText = "SYS_ADMIN // OVERRIDE";
+  }
 
   // Sincronizar Título Personalizado
   const customTitle =
