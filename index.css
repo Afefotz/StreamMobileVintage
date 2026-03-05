@@ -1,0 +1,29 @@
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #008080; padding: 50px; text-align: center; }
+        
+.window { 
+    background: #c0c0c0; 
+    border: 2px solid; border-color: #fff #808080 #808080 #fff; 
+    padding: 15px; max-width: 400px; margin: 0 auto; 
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.5); 
+}
+        
+.title-bar { 
+    background: linear-gradient(90deg, #000080, #1084d0); 
+    color: white; padding: 4px 8px; margin-bottom: 15px; 
+    font-weight: bold; text-align: left; font-size: 14px;
+}
+        
+input { 
+    padding: 6px; width: 85%; margin-bottom: 20px; 
+    border: 2px solid; border-color: #808080 #fff #fff #808080; /* Efecto hundido */
+}
+        
+button { 
+    padding: 8px 15px; font-weight: bold; cursor: pointer; 
+    background: #c0c0c0; border: 2px solid; border-color: #fff #808080 #808080 #fff; 
+}
+        
+button:active { 
+    border-color: #808080 #fff #fff #808080; /* Efecto presionado */
+    transform: translate(1px, 1px);
+}

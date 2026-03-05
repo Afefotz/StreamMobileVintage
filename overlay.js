@@ -64,6 +64,10 @@ const firebaseConfig = {
                     frame.style.display = showPhotos ? 'flex' : 'none';
                 });
             }
+
+            // Controlar el tema visual
+                const activeTheme = data.settings && data.settings.theme ? data.settings.theme : 'theme-win95';
+                document.body.className = activeTheme; // Cambia la clase del <body>
         });
 
         function updatePlayer(id, data) {

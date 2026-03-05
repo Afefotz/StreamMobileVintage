@@ -4,66 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Control Win95</title>
-    <style>
-        body { font-family: 'Segoe UI', sans-serif; background: #008080; padding: 20px; }
-        .window { background: #c0c0c0; border: 2px solid; border-color: #fff #808080 #808080 #fff; padding: 10px; max-width: 400px; margin: 0 auto; box-shadow: 4px 4px 10px rgba(0,0,0,0.5); }
-        .title-bar { background: navy; color: white; padding: 3px 6px; margin-bottom: 15px; font-weight: bold; letter-spacing: 1px;}
-        
-        .player-section { border: 1px solid #808080; padding: 10px; margin-bottom: 15px; position: relative; }
-        .section-title { position: absolute; top: -10px; left: 10px; background: #c0c0c0; padding: 0 5px; font-weight: bold; color: navy; }
-
-        label { display: block; margin-top: 5px; font-size: 12px; }
-        input[type="text"] { 
-            width: 95%; padding: 3px; 
-            border: 2px solid; border-color: #808080 #fff #fff #808080; /* Inset 3D */
-        }
-
-        .score-controls { display: flex; gap: 5px; margin-top: 10px; }
-        button { 
-            flex: 1; padding: 5px; background: #c0c0c0; 
-            border: 2px solid; border-color: #fff #808080 #808080 #fff; 
-            font-weight: bold; cursor: pointer;
-        }
-        button:active { border-color: #808080 #fff #fff #808080; transform: translate(1px, 1px); }
-        .btn-update { width: 100%; margin-top: 5px; background: #000080; color: white; border-color: #fff #000 #000 #fff; }
-
-        /* Apagar el diseño nativo del navegador */
-        input[type="checkbox"] {
-            appearance: none;
-            -webkit-appearance: none;
-            width: 16px;
-            height: 16px;
-            background-color: #ffffff;
-            /* Bordes invertidos para el efecto hundido */
-            border: 2px solid; 
-            border-color: #808080 #ffffff #ffffff #808080; 
-            margin: 0;
-            cursor: pointer;
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            outline: none;
-        }
-
-        /* Dibujar la palomita negra cuando está activado */
-        input[type="checkbox"]:checked::before {
-            content: "✔"; /* Símbolo unicode clásico */
-            color: #000000;
-            font-size: 14px;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            font-weight: bold;
-            position: absolute;
-            top: -2px; /* Ajuste fino para centrar la palomita */
-            left: 1px;
-        }
-
-        /* Foco punteado clásico al hacer clic */
-        input[type="checkbox"]:focus {
-            outline: 1px dotted #000000;
-            outline-offset: 2px;
-        }
-    </style>
+    <style src="control.css"></style>
     
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
@@ -87,6 +28,14 @@
             </label>        
             </div>
 
+            <div style="margin-top: 10px; border-top: 1px solid #808080; padding-top: 10px;">
+                <label style="font-family: 'Segoe UI', sans-serif; font-size: 12px; font-weight: bold; color: #000;">Tema Visual del Overlay:</label>
+                <select id="theme-selector" onchange="updateSettings()" style="width: 100%; margin-top: 5px; font-size: 12px; padding: 4px; border: 2px solid; border-color: #808080 #fff #fff #808080;">
+                    <option value="theme-win95">Retro (Windows 95)</option>
+                    <option value="theme-modern">Moderno (Redondeado Oscuro)</option>
+                    <option value="theme-neon">Cyberpunk (Neón Brillante)</option>
+                </select>
+            </div>
         </div>       
 
         <div class="player-section">

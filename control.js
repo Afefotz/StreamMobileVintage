@@ -96,16 +96,25 @@
                                 : false; // Por defecto apagado (P1 a la izquierda)
                 
             document.getElementById('toggle-swap').checked = swapPlayers;
+
+            // Sincronizar el selector de temas
+                const activeTheme = data.settings && data.settings.theme ? data.settings.theme : 'theme-win95';
+                document.getElementById('theme-selector').value = activeTheme;
+                
+                // Opcional: También puedes hacer que el panel cambie de tema
+                document.body.className = activeTheme;
         });
 
         // Función para guardar la configuración global
         function updateSettings() {
             const show = document.getElementById('toggle-photos').checked;
             const swap = document.getElementById('toggle-swap').checked; // Capturamos el nuevo checkbox
+            const theme = document.getElementById('theme-selector').value; // Capturamos el tema seleccionado
     
             db.child('settings').update({ 
                 showPhotos: show,
-                swapPlayers: swap // Lo guardamos en Firebase
+                swapPlayers: swap, // Lo guardamos en Firebase
+                theme: theme // Lo guardamos en Firebase
             });
         }
 
