@@ -83,6 +83,14 @@ body {
     text-align: center;
     border: 2px solid;
     border-color: #808080 #fff #fff #808080;
+    /* NUEVO: Le decimos que cualquier cambio de tamaño o color tome 0.2 segundos */
+    transition: transform 0.1s ease-out, color 0.1s ease-out, text-shadow 0.1s ease-out;
+}
+/* NUEVO: La clase que inyectaremos con JavaScript al sumar un punto */
+.score-animating {
+    transform: scale(1.5); /* Crece un 50% */
+    color: #FFFF00 !important; /* Se vuelve amarillo brillante */
+    text-shadow: 0 0 15px #FFFF00; /* Efecto de resplandor */
 }
 
 .vs {

@@ -25,6 +25,9 @@ const firebaseConfig = {
         // 3. Apuntar Firebase a la sala específica
         const db = firebase.database().ref(`rooms/${currentRoom}`);
 
+        // Memoria para saber si el puntaje subió
+        let lastScores = { p1: 0, p2: 0 };
+
         // Escuchar cambios
         db.on('value', (snapshot) => {
             const data = snapshot.val();
@@ -82,7 +85,7 @@ const firebaseConfig = {
             
             // Actualizar texto
             document.getElementById(`name-${id}`).innerText = data.name || "PLAYER";
-            document.getElementById(`score-${id}`).innerText = data.score || 0;
+            //document.getElementById(`score-${id}`).innerText = data.score || 0; Se agregó lógica de animación, así que esto se hace más abajo para comparar el puntaje nuevo con el anterior
             
             // Actualizar imagen
             const imgElement = document.getElementById(`img-${id}`);
@@ -97,4 +100,23 @@ const firebaseConfig = {
                 
                 imgElement.src = svgPlaceholder;
             }
+
+            // Lógica de Animación para el Marcador
+            const currentScore = data.score || 0;
+            const scoreElement = document.getElementById(`score-${id}`);
+            
+            // Si el puntaje nuevo es MAYOR al anterior, disparamos la animación
+            if (currentScore > lastScores[id]) {
+                // Inyectamos la clase
+                scoreElement.classList.add('score-animating');
+                
+                // Le quitamos la clase 300 milisegundos después para que regrese a la normalidad
+                setTimeout(() => {
+                    scoreElement.classList.remove('score-animating');
+                }, 300);
+            }
+            
+            // Actualizamos el texto en pantalla y la memoria
+            scoreElement.innerText = currentScore;
+            lastScores[id] = currentScore;
         }     
