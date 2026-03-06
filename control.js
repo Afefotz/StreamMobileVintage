@@ -1,4 +1,4 @@
-// --- PEGA AQUÍ TU CONFIGURACIÓN DE FIREBASE ---
+// --- CONFIGURACIÓN DE FIREBASE ---
 const firebaseConfig = {
   apiKey: "AIzaSyAcB2svnoMb1YOKQmwrrAa9i9vbSqxNprw",
   authDomain: "score-w95.firebaseapp.com",
@@ -16,6 +16,7 @@ if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
 // 1. Obtener el parámetro 'room' de la URL (ej: control.html?room=mistream)
 const urlParams = new URLSearchParams(window.location.search);
 const currentRoom = urlParams.get("room");
+const initialTheme = urlParams.get('theme');
 
 // 2. Validación de seguridad básica
 if (!currentRoom) {
@@ -24,7 +25,30 @@ if (!currentRoom) {
 }
 
 // Apuntar Firebase a la sala específica
+if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
 const db = firebase.database().ref(`rooms/${currentRoom}`);
+
+// 4. Configuración inicial del Tema
+        if (initialTheme) {
+            // Asignamos el título por defecto según el tema elegido
+            let defaultTitle = 'Live_Match.exe';
+            if (initialTheme === 'theme-modern') defaultTitle = 'Online Matching';
+            else if (initialTheme === 'theme-modern-light') defaultTitle = 'Live Stream';
+            else if (initialTheme === 'theme-neon') defaultTitle = 'VERSUS';
+            else if (initialTheme === 'theme-pastel') defaultTitle = '♡ Sweet Match ♡';
+            else if (initialTheme === 'theme-stone') defaultTitle = 'EPIC DUEL';
+            else if (initialTheme === 'theme-laser') defaultTitle = 'LASER // DEATHMATCH';
+
+            // Guardamos en Firebase instantáneamente
+            db.child('settings').update({ 
+                theme: initialTheme,
+                customTitle: defaultTitle
+            });
+
+            // LIMPIEZA PRO: Borramos el parámetro '?theme=' de la URL sin recargar la página.
+            // Así, si el usuario refresca la página, no se sobreescriben sus cambios futuros.
+            window.history.replaceState(null, '', `control.html?room=${currentRoom}`);
+        }
 
 // Sincronizar el panel con los datos existentes (Nombres, Fotos y Puntos - mostrar fotos o no)
 db.on("value", (snapshot) => {
@@ -229,7 +253,7 @@ function changeScore(player, amount) {
   db.child(player + "/score").transaction((score) => (score || 0) + amount);
 }
 
-// Construir la URL absoluta para el overlay
+// Construir la URL absoluta para el overlay (sin el tema, porque el overlay lo toma de Firebase) y mostrarla en el input para que el usuario la copie fácilmente
 const baseURL =
   window.location.origin + window.location.pathname.replace("control.html", "");
 const finalOverlayURL = `${baseURL}overlay.html?room=${currentRoom}`;

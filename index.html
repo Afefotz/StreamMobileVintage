@@ -10,11 +10,23 @@
 </head>
 <body>
     <div class="window">
-        <div class="title-bar">Room_Creator.exe</div>
-        <h3 style="margin-top: 5px; color: #000;">Crear Sala de Stream</h3>
-        <p style="font-size: 14px; color: #333;">Ingresa el nombre de tu evento (sin espacios):</p>
+        <div class="title-bar">ScoreVS_Room_Creator.exe</div>
+        <h3 style="margin-top: 5px; color: #000;">Crear Sala de Overlay</h3>
         
+        <p style="font-size: 14px; color: #333; margin-bottom: 5px;">Ingresa tu nombre de jugador (sin espacios):</p>
         <input type="text" id="roomName" placeholder="ejemplo: Fefemz">
+        
+        <p style="font-size: 14px; color: #333; margin-bottom: 5px; margin-top: 10px;">Selecciona tu diseño inicial:</p>
+        <select id="start-theme" onchange="cambiarTemaPreview()" style="width: 85%; padding: 6px; margin-bottom: 20px; border: 2px solid; border-color: #808080 #fff #fff #808080;">
+            <option value="theme-win95">Retro (Windows 95)</option>
+            <option value="theme-modern">Moderno Oscuro</option>
+            <option value="theme-modern-light">Moderno Claro</option>
+            <option value="theme-neon">Cyberpunk Neón</option>
+            <option value="theme-pastel">Pastel Femenino</option>
+            <option value="theme-stone">Rocoso / Templo</option>
+            <option value="theme-laser">Láser Rojo</option>
+        </select>
+        
         <br>
         <button onclick="generarLinks()">Generar y Entrar</button>
     </div>
