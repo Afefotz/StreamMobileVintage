@@ -160,14 +160,33 @@ db.on("value", (snapshot) => {
 function cambiarTemaAutomatico() {
   const theme = document.getElementById("theme-selector").value;
   const titleInput = document.getElementById("custom-title");
+  const currentTitle = titleInput.value.trim();
 
-  if (theme === 'theme-win95') titleInput.value = 'Live_Match.exe';
-    else if (theme === 'theme-modern') titleInput.value = 'Online Matching';
-    else if (theme === 'theme-modern-light') titleInput.value = 'Online Matching';
-    else if (theme === 'theme-neon') titleInput.value = 'VERSUS';
-    else if (theme === 'theme-pastel') titleInput.value = '♡ Sweet Match ♡';
-    else if (theme === 'theme-stone') titleInput.value = 'EPIC DUEL';
-    else if (theme === 'theme-laser') titleInput.value = 'LASER // DEATHMATCH';
+  // 1. Definimos cuáles son los títulos "de fábrica"
+    const titulosPredeterminados = [
+        'Live_Match.exe',
+        'Online Matching',
+        'Live Stream',
+        'VERSUS',
+        '♡ Sweet Match ♡',
+        'EPIC DUEL',
+        'LASER // DEATHMATCH',
+        '' // También consideramos "vacío" como predeterminado para que lo llene
+    ];
+
+  // 2. Verificamos si el usuario tiene un título de fábrica o uno propio
+  const esTituloDeFabrica = titulosPredeterminados.includes(currentTitle);
+
+  // 3. SOLO si es de fábrica, le aplicamos el nuevo título del tema
+    if (esTituloDeFabrica) {
+        if (theme === 'theme-win95') titleInput.value = 'Live_Match.exe';
+        else if (theme === 'theme-modern') titleInput.value = 'Online Matching';
+        else if (theme === 'theme-modern-light') titleInput.value = 'Online Matching';
+        else if (theme === 'theme-neon') titleInput.value = 'VERSUS';
+        else if (theme === 'theme-pastel') titleInput.value = '♡ Sweet Match ♡';
+        else if (theme === 'theme-stone') titleInput.value = 'EPIC DUEL';
+        else if (theme === 'theme-laser') titleInput.value = 'LASER // DEATHMATCH';
+    }
 
   // Guardamos los cambios inmediatamente
   updateSettings();
