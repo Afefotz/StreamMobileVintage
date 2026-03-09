@@ -50,7 +50,7 @@ const db = firebase.database().ref(`rooms/${currentRoom}`);
             window.history.replaceState(null, '', `control.html?room=${currentRoom}`);
         }
 
-// Sincronizar el panel con los datos existentes (Nombres, Fotos y Puntos - mostrar fotos o no)
+// Sincronizar el panel con los datos existentes (Nombres, Fotos y Puntos - mostrar fotos o no y Modo Vertical)
 db.on("value", (snapshot) => {
   const data = snapshot.val();
   if (data) {
@@ -154,6 +154,12 @@ db.on("value", (snapshot) => {
   if (document.activeElement !== titleInput) {
     titleInput.value = customTitle;
   }
+
+    // Sincronizar Diseño Vertical
+  const verticalMode = data.settings && data.settings.verticalMode !== undefined 
+                      ? data.settings.verticalMode 
+                      : false;
+  document.getElementById('toggle-vertical').checked = verticalMode;
 });
 
 // Función que detecta el cambio de tema y asigna un título predeterminado
@@ -187,12 +193,6 @@ function cambiarTemaAutomatico() {
         else if (theme === 'theme-stone') titleInput.value = 'EPIC DUEL';
         else if (theme === 'theme-laser') titleInput.value = 'LASER // DEATHMATCH';
     }
-
-  // Sincronizar Diseño Vertical
-  const verticalMode = data.settings && data.settings.verticalMode !== undefined 
-                      ? data.settings.verticalMode 
-                      : false;
-  document.getElementById('toggle-vertical').checked = verticalMode;
 
   // Guardamos los cambios inmediatamente
   updateSettings();
