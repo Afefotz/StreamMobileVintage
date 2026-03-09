@@ -426,3 +426,25 @@ TEMA 7: LÁSER ROJO (.theme-laser)
     text-shadow: 0 0 10px #ff0000;
     transform: skew(-8deg);
 }
+
+
+
+/* =========================================
+MODO VERTICAL (.modo-vertical)
+========================================= */
+.modo-vertical .player-card {
+    flex-direction: column !important;
+    /* Apila foto, nombre y score verticalmente */
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    text-align: center;
+}
+
+/* Aseguramos que si la estructura interna tiene un contenedor info, también se centre */
+.modo-vertical .player-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}

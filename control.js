@@ -188,6 +188,12 @@ function cambiarTemaAutomatico() {
         else if (theme === 'theme-laser') titleInput.value = 'LASER // DEATHMATCH';
     }
 
+  // Sincronizar Diseño Vertical
+  const verticalMode = data.settings && data.settings.verticalMode !== undefined 
+                      ? data.settings.verticalMode 
+                      : false;
+  document.getElementById('toggle-vertical').checked = verticalMode;
+
   // Guardamos los cambios inmediatamente
   updateSettings();
 }
@@ -198,12 +204,14 @@ function updateSettings() {
   const swap = document.getElementById("toggle-swap").checked; // Capturamos el nuevo checkbox
   const theme = document.getElementById("theme-selector").value; // Capturamos el tema seleccionado
   const title = document.getElementById("custom-title").value; // Capturamos el título
+  const vertical = document.getElementById('toggle-vertical').checked; // Capturamos el nuevo checkbox
 
   db.child("settings").update({
     showPhotos: show,
     swapPlayers: swap, // Lo guardamos en Firebase
     theme: theme, // Lo guardamos en Firebase
     customTitle: title, // Lo enviamos a Firebase
+    verticalMode: vertical, // Lo enviamos a Firebase
   });
 }
 

@@ -60,6 +60,17 @@ const firebaseConfig = {
                 } else {
                     contentDiv.classList.add('modo-texto');    // Desaparecen los cuadros, se centra el texto
                 }
+
+                // Controlar el modo vertical
+                const verticalMode = data.settings && data.settings.verticalMode !== undefined 
+                                     ? data.settings.verticalMode 
+                                     : false;
+                
+                if (verticalMode) {
+                    contentDiv.classList.add('modo-vertical');
+                } else {
+                    contentDiv.classList.remove('modo-vertical');
+                }
                 
                 // Seleccionamos todos los marcos de fotos y los ocultamos/mostramos
                 const photoFrames = document.querySelectorAll('.photo-frame');
