@@ -17,9 +17,9 @@ Un widget de marcador interactivo, personalizable y en tiempo real diseñado par
 
 ## 🖼️ Vistas Previas
 
-| Sala Inicial | Panel de Administración | Overlay en OBS (Ejemplo Tema Retro Windows95) |
+| Sala Inicial | Panel de Administración | Overlay en OBS |
 | :---: | :---: | :---: |
-| `<img src="./assets/Sala Inicial.png" width="230"/>` | `<img src="./assets/Panel de Control.png" width="230"/>` | `<img src="./assets/Overlay en OBS.png" width="230"/>` |
+| <img src="assets/Sala%20Inicial.png" width="230"/> | <img src="assets/Panel%20de%20Control.png" width="230"/> | <img src="assets/Overlay%20en%20OBS.png" width="230"/> |
 
 ## 🛠️ Tecnologías y Arquitectura
 
