@@ -19,7 +19,7 @@ Un widget de marcador interactivo, personalizable y en tiempo real diseñado par
 
 | Sala Inicial | Panel de Administración | Overlay en OBS |
 | :---: | :---: | :---: |
-| <img src="assets/Sala%20Inicial.png" width="230"/> | <img src="assets/Panel%20de%20Control.png" width="230"/> | <img src="assets/Overlay%20en%20OBS.png" width="230"/> |
+| <img src="assets/sala-inicial.png" width="230"/> | <img src="assets/panel-control.png" width="230"/> | <img src="assets/overlay-obs.png" width="230"/> |
 
 ## 🛠️ Tecnologías y Arquitectura
 
