@@ -210,16 +210,16 @@ db.on("value", (snapshot) => {
   document.getElementById("toggle-vertical").checked = verticalMode;
 
   // --- SINCRONIZAR COLOR Y VARIABLES CSS ---
-  // 1. Cargar las opciones correctas para el tema actual
-  cargarVariantesDeColor();
+  // 1. Cargar las opciones correctas pasándole el tema que viene de Firebase
+  cargarVariantesDeColor(themeActual);
 
-  // 2. Obtener el color guardado y forzarlo a minúsculas para que coincida con nuestro diccionario
+  // 2. Obtener el color guardado
   let savedColor =
     data.settings && data.settings.accentColor
       ? data.settings.accentColor.toLowerCase()
-      : paletasDeColor[themeActual][0].hex;
+      : paletasDeColor[themeActual][0].hex.toLowerCase();
 
-  // 3. Seleccionar la opción en el menú
+  // 3. Seleccionar la opción en el menú (sin interrumpir si el usuario lo está tocando)
   const variantSelect = document.getElementById("theme-variant");
   if (document.activeElement !== variantSelect) {
     variantSelect.value = savedColor;
@@ -238,7 +238,6 @@ db.on("value", (snapshot) => {
   const textColor = getContrastColor(savedColor);
   document.documentElement.style.setProperty("--main-color", savedColor);
   document.documentElement.style.setProperty("--text-on-accent", textColor);
-  
 });
 
 // Función que detecta el cambio de tema y asigna un título predeterminado
@@ -279,10 +278,19 @@ function cambiarTemaAutomatico() {
   updateSettings();
 }
 
-// Función que inyecta las opciones correctas al menú de variantes
-function cargarVariantesDeColor() {
-  const theme = document.getElementById("theme-selector").value;
+// Memoria para saber qué opciones están cargadas actualmente
+let temaVariantesActual = "";
+
+// Función que inyecta las opciones SOLO si el tema cambió
+function cargarVariantesDeColor(temaFuerza = null) {
+  const theme = temaFuerza || document.getElementById("theme-selector").value;
   const variantSelect = document.getElementById("theme-variant");
+
+  // LA MAGIA: Si las opciones de este tema ya están dibujadas, no las borres.
+  if (temaVariantesActual === theme && variantSelect.options.length > 0) return;
+
+  // Si es un tema nuevo, guardamos en memoria y procedemos
+  temaVariantesActual = theme;
   const colores = paletasDeColor[theme] || paletasDeColor["theme-modern"];
 
   // Limpiar las opciones anteriores
@@ -291,7 +299,7 @@ function cargarVariantesDeColor() {
   // Crear las nuevas opciones
   colores.forEach((color) => {
     const option = document.createElement("option");
-    option.value = color.hex;
+    option.value = color.hex.toLowerCase(); // Forzamos a minúsculas
     option.innerText = color.nombre;
     variantSelect.appendChild(option);
   });
