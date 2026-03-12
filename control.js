@@ -223,6 +223,33 @@ db.on("value", (snapshot) => {
       ? data.settings.accentColor.toLowerCase()
       : paletasDeColor[themeActual][0].hex.toLowerCase();
 
+  // 3.1 Aplicar el color principal a una variable CSS global (como antes)
+document.documentElement.style.setProperty('--main-color', savedColor);
+
+// 3.2 LÓGICA CONDICIONAL: Determinar colores relativos para el tema Neón
+let playerNameColor, vsColor;
+
+if (themeActual === 'theme-neon') {
+    // Si el color principal es rosa magenta (independientemente de la variante exacta, chequeamos por rosa genérico)
+    if (savedColor === '#ff00ff' || savedColor === '#f0f') {
+        playerNameColor = '#00ffff'; // Azul Cian para nombres si el neón es rosa
+        vsColor = '#ffea00';        // Amarillo para VS
+    } else {
+        // Para cualquier otro color de neón (cian por defecto, verde, etc.)
+        playerNameColor = '#f0f';    // Rosa Magenta para nombres
+        vsColor = '#ffea00';        // Amarillo para VS
+    }
+} else {
+    // Para otros temas (Moderno, Pastel, etc.), podemos definir lógicas similares o colores fijos si prefieres
+    // De momento, mantengamos los valores predeterminados para no romper los otros temas
+    playerNameColor = 'var(--main-color)'; // O lo que uses por defecto
+    vsColor = 'var(--text-on-accent)';    // O lo que uses por defecto
+}
+
+// 3.3 Aplicar los colores relativos inteligentes a nuevas variables CSS
+document.documentElement.style.setProperty('--player-name-color', playerNameColor);
+document.documentElement.style.setProperty('--vs-color', vsColor);
+
   // 4. Seleccionar la opción en el menú (sin interrumpir)
   const variantSelect = document.getElementById("theme-variant");
   if (document.activeElement !== variantSelect) {

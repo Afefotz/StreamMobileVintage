@@ -153,20 +153,18 @@ body {
         .theme-modern-light .score-box { background: #fff; color: var(--main-color); border: 1px solid #ddd; border-radius: 8px; font-family: 'Segoe UI', sans-serif; font-weight: bold; }
         .theme-modern-light .vs { color: #666; font-family: 'Segoe UI', sans-serif; }
 
-        /* =========================================
-        TEMA 4: CYBERPUNK NEÓN (Overlay)
-       ========================================= */
+       /* =========================================
+        TEMA 4: CYBERPUNK NEÓN (Dinámico y Condicional)
+        ========================================= */
         .theme-neon .window { background-color: rgba(5, 5, 16, 0.9); border: 2px solid var(--main-color); box-shadow: 0 0 20px var(--main-color); border-radius: 0; }
         .theme-neon .title-bar { background: var(--main-color); color: var(--text-on-accent); text-transform: uppercase; text-align: center; font-family: 'VT323', monospace; font-size: 1.2rem; font-weight: normal; }
-        
-        /* RESTAURADO: Nombres en Rosa Neón */
-        .theme-neon .player-name { color: #f0f; font-family: 'VT323', monospace; text-shadow: 0 0 5px #f0f; } 
-        
+
+        /* USANDO VARIABLES RELATIVAS INTELIGENTES: Nombres y VS */
+        .theme-neon .player-name { color: var(--player-name-color); font-family: 'VT323', monospace; text-shadow: 0 0 5px var(--player-name-color); }
         .theme-neon .photo-frame { border: 2px solid var(--main-color); border-radius: 0; box-shadow: 0 0 15px var(--main-color); }
         .theme-neon .score-box { background: transparent; color: var(--main-color); border: 1px solid var(--main-color); font-family: 'VT323', monospace; text-shadow: 0 0 15px var(--main-color); box-shadow: inset 0 0 10px var(--main-color); }
-        
-        /* RESTAURADO: VS en Amarillo Eléctrico */
-        .theme-neon .vs { color: #ffea00; font-family: 'VT323', monospace; text-shadow: 0 0 10px #ffea00; }
+
+        .theme-neon .vs { color: var(--vs-color); font-family: 'VT323', monospace; text-shadow: 0 0 10px var(--vs-color); }
 
         /* =========================================
            TEMA 5: PASTEL FEMENINO
