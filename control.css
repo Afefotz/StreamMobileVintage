@@ -216,107 +216,34 @@ TEMA 2: MODERNO OSCURO (Panel de Control)
 /* =========================================
 TEMA 3: CYBERPUNK NEÓN (Panel de Control)
 ========================================= */
-.theme-neon {
-  background: #050510;
-  color: var(--main-color);
-  font-family: "VT323", monospace, sans-serif;
-}
+.theme-neon { background: #050510; color: var(--main-color); font-family: "VT323", monospace, sans-serif; }
+.theme-neon .window { background: rgba(10, 10, 20, 0.9); border: 1px solid var(--main-color); box-shadow: 0 0 15px var(--main-color); border-radius: 0; }
+.theme-neon .title-bar { background: var(--main-color); color: var(--text-on-accent); text-transform: uppercase; font-weight: bold; text-align: center; }
 
-.theme-neon .window {
-  background: rgba(10, 10, 20, 0.9);
-  border: 1px solid var(--main-color);
-  box-shadow: 0 0 15px var(--main-color);
-  border-radius: 0;
-}
+/* RESTAURADO: Secciones de jugadores en Rosa */
+.theme-neon .player-section { border: 1px solid #f0f; box-shadow: inset 0 0 10px rgba(255, 0, 255, 0.1); background: transparent; }
+.theme-neon .section-title { background: #050510; color: #f0f; text-shadow: 0 0 5px #f0f; top: -10px; border: 1px solid #f0f; }
 
-.theme-neon .title-bar {
-  background: var(--main-color);
-  color: var(--text-on-accent);
-  text-transform: uppercase;
-  font-weight: bold;
-  text-align: center;
-}
+.theme-neon button { background: transparent; color: var(--main-color); border: 1px solid var(--main-color); text-transform: uppercase; transition: 0.2s; }
+.theme-neon button:active { background: var(--main-color); color: var(--text-on-accent); box-shadow: 0 0 15px var(--main-color); }
+.theme-neon input[type="text"], .theme-neon select { background: transparent; color: var(--main-color); border: 1px solid var(--main-color); outline: none; }
+.theme-neon input[type="text"]:focus { box-shadow: 0 0 8px var(--main-color); }
 
-.theme-neon .player-section {
-  border: 1px solid var(--main-color);
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
-  background: transparent;
-}
+/* RESTAURADO: Botón de Actualizar en Rosa */
+.theme-neon .btn-update { background: transparent; color: #f0f; border-color: #f0f; }
+.theme-neon .btn-update:active { background: #f0f; color: #000; box-shadow: 0 0 15px #f0f; }
 
-.theme-neon .section-title {
-  background: #050510;
-  color: var(--main-color);
-  text-shadow: 0 0 5px var(--main-color);
-  top: -10px;
-  border: 1px solid var(--main-color);
-}
+.theme-neon input[type="checkbox"] { border: 1px solid var(--main-color); background: #000; }
 
-.theme-neon button {
-  background: transparent;
-  color: var(--main-color);
-  border: 1px solid var(--main-color);
-  text-transform: uppercase;
-  transition: 0.2s;
-}
+/* RESTAURADO: Checkbox (la X) en Rosa */
+.theme-neon input[type="checkbox"]:checked::before { color: #f0f; content: "X"; font-family: monospace; }
 
-.theme-neon button:active {
-  background: var(--main-color);
-  color: var(--text-on-accent);
-  box-shadow: 0 0 15px var(--main-color);
-}
+.theme-neon div[style*="background: #c0c0c0"] { background: transparent !important; border: 1px solid var(--main-color) !important; box-shadow: inset 0 0 8px var(--main-color); }
 
-.theme-neon input[type="text"],
-.theme-neon select {
-  background: transparent;
-  color: var(--main-color);
-  border: 1px solid var(--main-color);
-  outline: none;
-}
+/* RESTAURADO: Recuadro del marcador central en Rosa */
+.theme-neon div[style*="background: #000"] { border-color: #f0f !important; color: #f0f !important; text-shadow: 0 0 8px #f0f; }
 
-.theme-neon input[type="text"]:focus {
-  box-shadow: 0 0 8px var(--main-color);
-}
-
-.theme-neon .btn-update {
-  background: transparent;
-  color: var(--main-color);
-  border-color: var(--main-color);
-}
-
-.theme-neon .btn-update:active {
-  background: var(--main-color);
-  color: var(--text-on-accent);
-  box-shadow: 0 0 15px var(--main-color);
-}
-
-.theme-neon input[type="checkbox"] {
-  border: 1px solid var(--main-color);
-  background: #000;
-}
-
-.theme-neon input[type="checkbox"]:checked::before {
-  color: var(--main-color);
-  content: "X";
-  font-family: monospace;
-}
-
-.theme-neon div[style*="background: #c0c0c0"] {
-  background: transparent !important;
-  border: 1px solid var(--main-color) !important;
-  box-shadow: inset 0 0 8px var(--main-color);
-}
-
-.theme-neon div[style*="background: #000"] {
-  border-color: var(--main-color) !important;
-  color: var(--main-color) !important;
-  text-shadow: 0 0 8px var(--main-color);
-}
-
-.theme-neon label,
-.theme-neon p,
-.theme-neon strong {
-  color: var(--main-color) !important;
-}
+.theme-neon label, .theme-neon p, .theme-neon strong { color: var(--main-color) !important; }
 
 /* =========================================
 TEMA 4: MODERNO CLARO (Panel de Control)
