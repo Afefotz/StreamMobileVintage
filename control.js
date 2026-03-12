@@ -50,6 +50,46 @@ const db = firebase.database().ref(`rooms/${currentRoom}`);
             window.history.replaceState(null, '', `control.html?room=${currentRoom}`);
         }
 
+// --- DICCIONARIO DE VARIANTES DE COLOR ---
+const paletasDeColor = {
+    'theme-win95': [
+        { nombre: 'Clásico Win95', hex: '#c0c0c0' } // Win95 es Win95, no se toca
+    ],
+    'theme-modern': [
+        { nombre: 'Gris Claro (Por defecto)', hex: '#e0e0e0' },
+        { nombre: 'Verde Cyber', hex: '#00e676' },
+        { nombre: 'Amarillo Eléctrico', hex: '#ffea00' },
+        { nombre: 'Naranja Fuego', hex: '#ff9100' }
+    ],
+    'theme-modern-light': [
+        { nombre: 'Gris Oscuro (Por defecto)', hex: '#333333' },
+        { nombre: 'Azul Rey', hex: '#2979ff' },
+        { nombre: 'Morado Profundo', hex: '#651fff' }
+    ],
+    'theme-neon': [
+        { nombre: 'Cian (Por defecto)', hex: '#00ffff' },
+        { nombre: 'Rosa Neón', hex: '#ff00ff' },
+        { nombre: 'Verde Tóxico', hex: '#39ff14' }
+    ],
+    'theme-pastel': [
+        { nombre: 'Rosa Fresa', hex: '#ffb7b2' },
+        { nombre: 'Amarillo Vainilla', hex: '#e2f0cb' },
+        { nombre: 'Naranja Durazno', hex: '#ffdac1' },
+        { nombre: 'Verde Menta', hex: '#b5ead7' }
+    ],
+    'theme-stone': [
+        { nombre: 'Gris Volcánico', hex: '#b0b0b0' },
+        { nombre: 'Rojo Ladrillo', hex: '#cc5544' },
+        { nombre: 'Verde Musgo', hex: '#6b8e23' }
+    ],
+    'theme-laser': [
+        { nombre: 'Rojo Peligro', hex: '#ff0000' },
+        { nombre: 'Verde Radiactivo', hex: '#00ff00' },
+        { nombre: 'Amarillo Precaución', hex: '#ffff00' },
+        { nombre: 'Morado Galáctico', hex: '#bf00ff' }
+    ]
+};
+
 // Sincronizar el panel con los datos existentes (Nombres, Fotos y Puntos - mostrar fotos o no y Modo Vertical)
 db.on("value", (snapshot) => {
   const data = snapshot.val();
@@ -161,14 +201,16 @@ db.on("value", (snapshot) => {
                       : false;
   document.getElementById('toggle-vertical').checked = verticalMode;
 
-  // Sincronizar y Aplicar el Color de Acento
-  const savedColor = data.settings && data.settings.accentColor ? data.settings.accentColor : '#ff0000'; // Rojo por defecto
-              
-  // Actualizar el selector visualmente (solo si el usuario no lo está usando)
-  const colorInput = document.getElementById('theme-color');
-  if (document.activeElement !== colorInput) {
-      colorInput.value = savedColor;
-  }
+  
+  cargarVariantesDeColor();
+
+  // Sincronizar el Color de Acento Guardado
+  const savedColor = data.settings && data.settings.accentColor ? data.settings.accentColor : paletasDeColor[themeActual][0].hex;
+  // Actualizar el selector visualmente (solo si el usuario no lo está usando)       
+  const variantSelect = document.getElementById('theme-variant');
+  if (document.activeElement !== variantSelect) {
+    variantSelect.value = savedColor;
+  }     
 
   // MATEMÁTICAS: Calcular contraste (Luminancia)
   function getContrastColor(hex) {
@@ -221,7 +263,26 @@ function cambiarTemaAutomatico() {
     }
 
   // Guardamos los cambios inmediatamente
+  cargarVariantesDeColor();
   updateSettings();
+}
+
+// Función que inyecta las opciones correctas al menú de variantes
+function cargarVariantesDeColor() {
+    const theme = document.getElementById('theme-selector').value;
+    const variantSelect = document.getElementById('theme-variant');
+    const colores = paletasDeColor[theme] || paletasDeColor['theme-modern'];
+
+    // Limpiar las opciones anteriores
+    variantSelect.innerHTML = ''; 
+
+    // Crear las nuevas opciones
+    colores.forEach(color => {
+        const option = document.createElement('option');
+        option.value = color.hex;
+        option.innerText = color.nombre;
+        variantSelect.appendChild(option);
+    });
 }
 
 // Función para guardar la configuración global
@@ -231,7 +292,8 @@ function updateSettings() {
   const theme = document.getElementById("theme-selector").value; // Capturamos el tema seleccionado
   const title = document.getElementById("custom-title").value; // Capturamos el título
   const vertical = document.getElementById('toggle-vertical').checked; // Capturamos el nuevo checkbox
-  const accentColor = document.getElementById('theme-color').value; // Capturamos el nuevo color del tema
+  //const accentColor = document.getElementById('theme-color').value; // Capturamos el nuevo color del tema
+  const accentColor = document.getElementById('theme-variant').value; // Capturamos la variante de color seleccionada
 
   db.child("settings").update({
     showPhotos: show,
