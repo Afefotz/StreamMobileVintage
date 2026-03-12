@@ -123,253 +123,565 @@ input[type="checkbox"]:focus {
 }
 
 /* =========================================
-TEMA 2 & 3: MODERNO (Oscuro y Claro)
+TEMA 2: MODERNO OSCURO (Panel de Control)
 ========================================= */
+.theme-modern {
+  background: #121212;
+  color: #e0e0e0;
+  font-family: "Segoe UI", sans-serif;
+}
+
 .theme-modern .window {
-  background-color: rgba(30, 30, 30, 0.95);
+  background: #1e1e1e;
+  border: none;
   border-radius: 12px;
-  border: 2px solid #333;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
 
 .theme-modern .title-bar {
   background: transparent;
   color: #fff;
-  border-bottom: 2px solid var(--main-color);
+  border-bottom: 1px solid #333;
+  font-size: 16px;
   text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: normal;
 }
 
-.theme-modern .player-name {
-  color: #e0e0e0;
-  font-family: "Segoe UI", sans-serif;
-  font-weight: bold;
+.theme-modern .player-section {
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 15px;
+  background: #252525;
 }
 
-.theme-modern .photo-frame {
-  border: 3px solid var(--main-color);
-  border-radius: 50%;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+.theme-modern .section-title {
+  background: #1e1e1e;
+  color: #4a90e2;
+  top: -12px;
+  border-radius: 4px;
+  padding: 2px 8px;
 }
 
-.theme-modern .score-box {
-  background: #121212;
-  color: var(--main-color);
+.theme-modern button {
+  background: #333;
+  color: #fff;
+  border: 1px solid #555;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+.theme-modern button:active {
+  background: #555;
+  transform: scale(0.98);
+  border-color: #777;
+}
+
+.theme-modern input[type="text"],
+.theme-modern select {
+  background: #333;
+  color: #fff;
+  border: 1px solid #555;
+  border-radius: 4px;
+  padding: 6px;
+}
+
+.theme-modern .btn-update {
+  background: #4a90e2;
+  color: #fff;
   border: none;
+}
+
+.theme-modern input[type="checkbox"] {
+  border: 2px solid #555;
+  background: #222;
+  border-radius: 4px;
+}
+
+.theme-modern input[type="checkbox"]:checked::before {
+  color: #4a90e2;
+}
+
+.theme-modern div[style*="background: #c0c0c0"] {
+  background: #252525 !important;
+  border: 1px solid #333 !important;
   border-radius: 8px;
-  font-family: "Segoe UI", sans-serif;
-  font-weight: bold;
 }
 
-.theme-modern-light .window {
-  background-color: rgba(245, 245, 245, 0.95);
-  border-radius: 12px;
-  border: 2px solid #ccc;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+.theme-modern div[style*="background: #000"] {
+  border: none !important;
+  border-radius: 6px;
 }
 
-.theme-modern-light .title-bar {
-  background: transparent;
-  color: #333;
-  border-bottom: 2px solid var(--main-color);
-  text-align: center;
-}
-
-.theme-modern-light .player-name {
-  color: #333;
-  font-family: "Segoe UI", sans-serif;
-  font-weight: bold;
-}
-
-.theme-modern-light .photo-frame {
-  border: 3px solid var(--main-color);
-  border-radius: 50%;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-}
-
-.theme-modern-light .score-box {
-  background: #fff;
-  color: var(--main-color);
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-family: "Segoe UI", sans-serif;
-  font-weight: bold;
-}
+/* Recuadro del marcador */
 
 /* =========================================
-TEMA 4: CYBERPUNK NEÓN
+TEMA 3: CYBERPUNK NEÓN (Panel de Control)
 ========================================= */
+.theme-neon {
+  background: #050510;
+  color: #0ff;
+  font-family: "VT323", monospace, sans-serif;
+}
+
 .theme-neon .window {
-  background-color: rgba(5, 5, 16, 0.9);
-  border: 2px solid var(--main-color);
-  box-shadow: 0 0 20px var(--main-color);
+  background: rgba(10, 10, 20, 0.9);
+  border: 1px solid #0ff;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
   border-radius: 0;
 }
 
 .theme-neon .title-bar {
-  background: var(--main-color);
-  color: var(--text-on-accent);
+  background: #0ff;
+  color: #000;
   text-transform: uppercase;
-  text-align: center;
   font-weight: bold;
+  text-align: center;
 }
 
-.theme-neon .player-name {
-  color: #fff;
-  font-family: "VT323", monospace;
-  text-shadow: 0 0 5px var(--main-color);
-}
-
-.theme-neon .photo-frame {
-  border: 2px solid var(--main-color);
-  border-radius: 0;
-  box-shadow: 0 0 15px var(--main-color);
-}
-
-.theme-neon .score-box {
+.theme-neon .player-section {
+  border: 1px solid #f0f;
+  box-shadow: inset 0 0 10px rgba(255, 0, 255, 0.1);
   background: transparent;
-  color: var(--main-color);
-  border: 1px solid var(--main-color);
-  text-shadow: 0 0 15px var(--main-color);
-  box-shadow: inset 0 0 10px var(--main-color);
 }
 
-.theme-neon .vs {
-  color: var(--main-color);
-  text-shadow: 0 0 10px var(--main-color);
+.theme-neon .section-title {
+  background: #050510;
+  color: #f0f;
+  text-shadow: 0 0 5px #f0f;
+  top: -10px;
+  border: 1px solid #f0f;
+}
+
+.theme-neon button {
+  background: transparent;
+  color: #0ff;
+  border: 1px solid #0ff;
+  text-transform: uppercase;
+  transition: 0.2s;
+}
+
+.theme-neon button:active {
+  background: #0ff;
+  color: #000;
+  box-shadow: 0 0 15px #0ff;
+}
+
+.theme-neon input[type="text"],
+.theme-neon select {
+  background: transparent;
+  color: #0ff;
+  border: 1px solid #0ff;
+  outline: none;
+}
+
+.theme-neon input[type="text"]:focus {
+  box-shadow: 0 0 8px #0ff;
+}
+
+.theme-neon .btn-update {
+  background: transparent;
+  color: #f0f;
+  border-color: #f0f;
+}
+
+.theme-neon .btn-update:active {
+  background: #f0f;
+  color: #000;
+  box-shadow: 0 0 15px #f0f;
+}
+
+.theme-neon input[type="checkbox"] {
+  border: 1px solid #0ff;
+  background: #000;
+}
+
+.theme-neon input[type="checkbox"]:checked::before {
+  color: #f0f;
+  content: "X";
+  font-family: monospace;
+}
+
+.theme-neon div[style*="background: #c0c0c0"] {
+  background: transparent !important;
+  border: 1px solid #0ff !important;
+  box-shadow: inset 0 0 8px rgba(0, 255, 255, 0.2);
+}
+
+.theme-neon div[style*="background: #000"] {
+  border-color: #f0f !important;
+  color: #f0f !important;
+  text-shadow: 0 0 8px #f0f;
+}
+
+/* Recuadro del marcador */
+.theme-neon label,
+.theme-neon p,
+.theme-neon strong {
+  color: #0ff !important;
 }
 
 /* =========================================
-TEMA 5: PASTEL
+TEMA 4: MODERNO CLARO (Panel de Control)
 ========================================= */
+.theme-modern-light {
+  background: #f0f2f5;
+  color: #333;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.theme-modern-light .window {
+  background: #ffffff;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.theme-modern-light .title-bar {
+  background: transparent;
+  color: #1a1a1a;
+  border-bottom: 2px solid #f0f2f5;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.theme-modern-light .player-section {
+  border: 1px solid #e1e4e8;
+  border-radius: 8px;
+  padding: 15px;
+  background: #fafbfc;
+}
+
+.theme-modern-light .section-title {
+  background: #ffffff;
+  color: #0366d6;
+  top: -12px;
+  border-radius: 4px;
+  padding: 2px 8px;
+  border: 1px solid #e1e4e8;
+}
+
+.theme-modern-light button {
+  background: #f3f4f6;
+  color: #333;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+.theme-modern-light button:hover {
+  background: #e5e7eb;
+}
+
+.theme-modern-light input[type="text"],
+.theme-modern-light select {
+  background: #fff;
+  color: #333;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  padding: 6px;
+}
+
+.theme-modern-light .btn-update {
+  background: #0366d6;
+  color: #fff;
+  border: none;
+}
+
+.theme-modern-light input[type="checkbox"] {
+  border: 2px solid #d1d5db;
+  background: #fff;
+  border-radius: 4px;
+}
+
+.theme-modern-light input[type="checkbox"]:checked::before {
+  color: #0366d6;
+}
+
+.theme-modern-light div[style*="background: #c0c0c0"] {
+  background: #fafbfc !important;
+  border: 1px solid #e1e4e8 !important;
+  border-radius: 8px;
+}
+
+.theme-modern-light div[style*="background: #000"] {
+  background: #f3f4f6 !important;
+  color: #0366d6 !important;
+  border: none !important;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+/* =========================================
+TEMA 5: PASTEL (Panel de Control)
+========================================= */
+.theme-pastel {
+  background: #fff0f5;
+  color: #835c75;
+  font-family: "Quicksand", "Segoe UI", sans-serif;
+}
+
 .theme-pastel .window {
-  background-color: rgba(255, 255, 255, 0.95);
-  border: 3px solid var(--main-color);
-  border-radius: 24px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid #ffb6c1;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(255, 182, 193, 0.3);
 }
 
 .theme-pastel .title-bar {
-  background: var(--main-color);
-  color: var(--text-on-accent);
-  border-radius: 20px 20px 0 0;
-  text-align: center;
-  font-weight: bold;
-}
-
-.theme-pastel .player-name {
-  color: #555;
-  font-weight: bold;
-}
-
-.theme-pastel .photo-frame {
-  border: 4px solid var(--main-color);
-  border-radius: 25%;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  background: #fff;
-}
-
-.theme-pastel .score-box {
-  background: #fff;
-  color: var(--main-color);
-  border: 2px dashed var(--main-color);
-  border-radius: 12px;
-  font-weight: bold;
-}
-
-.theme-pastel .vs {
-  color: var(--main-color);
-  font-style: italic;
-}
-
-/* =========================================
-TEMA 6: ROCOSO / TEMPLO
-========================================= */
-.theme-stone .window {
-  background-color: #2c3e50;
-  border: 4px solid var(--main-color);
-  border-radius: 8px;
-  box-shadow:
-    inset 0 0 20px rgba(0, 0, 0, 0.8),
-    0 10px 20px rgba(0, 0, 0, 0.6);
-}
-
-.theme-stone .title-bar {
-  background: var(--main-color);
-  color: var(--text-on-accent);
-  text-align: center;
-  font-weight: bold;
-  border-bottom: 3px solid rgba(0, 0, 0, 0.5);
-}
-
-.theme-stone .player-name {
-  color: #f0f0f0;
-  font-family: "Georgia", serif;
-  text-shadow: 2px 2px 4px #000;
-}
-
-.theme-stone .photo-frame {
-  border: 3px solid var(--main-color);
-  border-radius: 8px;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-}
-
-.theme-stone .score-box {
-  background: rgba(0, 0, 0, 0.5);
-  color: var(--main-color);
-  border: 2px solid var(--main-color);
-  border-radius: 4px;
-  font-family: "Georgia", serif;
-  text-shadow: 1px 1px 2px #000;
-}
-
-/* =========================================
-TEMA 7: LÁSER 
-========================================= */
-.theme-laser .window {
-  background-color: rgba(10, 0, 0, 0.9);
-  border: 2px solid var(--main-color);
-  border-radius: 0;
-  box-shadow: 0 0 20px var(--main-color);
-}
-
-.theme-laser .title-bar {
-  background: var(--main-color);
-  color: var(--text-on-accent);
-  text-align: center;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 4px;
-}
-
-.theme-laser .player-name {
-  color: var(--main-color);
-  font-weight: 900;
-  text-transform: uppercase;
-  text-shadow: 0 0 8px var(--main-color);
-  transform: skew(-8deg);
-}
-
-.theme-laser .photo-frame {
-  border: 2px solid var(--main-color);
-  border-radius: 0;
-  box-shadow: 0 0 12px var(--main-color);
-  background: #000;
-  transform: skew(-8deg);
-}
-
-.theme-laser .score-box {
   background: transparent;
-  color: var(--main-color);
-  border: 1px solid var(--main-color);
-  border-radius: 0;
-  text-shadow: 0 0 12px var(--main-color);
-  box-shadow: inset 0 0 8px var(--main-color);
-  transform: skew(-8deg);
+  color: #d87093;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  border-bottom: 2px dashed #ffb6c1;
+  margin-bottom: 20px;
 }
 
-.theme-laser .vs {
+.theme-pastel .player-section {
+  border: 2px solid #ffe4e1;
+  border-radius: 15px;
+  padding: 15px;
+  background: #fff9fa;
+}
+
+.theme-pastel .section-title {
+  background: #fff;
+  color: #d87093;
+  top: -12px;
+  border-radius: 10px;
+  padding: 2px 10px;
+  border: 2px solid #ffb6c1;
+  font-weight: bold;
+}
+
+.theme-pastel button {
+  background: #fff;
+  color: #d87093;
+  border: 2px solid #ffb6c1;
+  border-radius: 10px;
+  transition: 0.2s;
+  font-weight: bold;
+}
+
+.theme-pastel button:hover {
+  background: #ffe4e1;
+}
+
+.theme-pastel input[type="text"],
+.theme-pastel select {
+  background: #fff;
+  color: #835c75;
+  border: 2px solid #ffe4e1;
+  border-radius: 10px;
+  padding: 6px;
+  outline: none;
+}
+
+.theme-pastel input[type="text"]:focus {
+  border-color: #ffb6c1;
+}
+
+.theme-pastel .btn-update {
+  background: #ffb6c1;
   color: #fff;
+  border: none;
+}
+
+.theme-pastel input[type="checkbox"] {
+  border: 2px solid #ffb6c1;
+  background: #fff;
+  border-radius: 6px;
+}
+
+.theme-pastel input[type="checkbox"]:checked::before {
+  color: #d87093;
+  content: "♥";
+  font-size: 16px;
+  top: -4px;
+}
+
+.theme-pastel div[style*="background: #c0c0c0"] {
+  background: #fff9fa !important;
+  border: 2px solid #ffe4e1 !important;
+  border-radius: 15px;
+}
+
+.theme-pastel div[style*="background: #000"] {
+  background: #fff !important;
+  color: #d87093 !important;
+  border: 2px solid #ffb6c1 !important;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+/* =========================================
+TEMA 6: PIEDRA / ROCOSO (Panel de Control)
+========================================= */
+.theme-stone {
+  background: #3a3a3a;
+  color: #e0e0e0;
+  font-family: "Georgia", serif;
+}
+.theme-stone .window {
+  background: #6b6b6b;
+  border: 4px solid;
+  border-color: #8c8c8c #2b2b2b #2b2b2b #8c8c8c;
+  border-radius: 4px;
+  box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.8);
+}
+.theme-stone .title-bar {
+  background: #2b2b2b;
+  color: #d4d4d4;
+  text-align: center;
+  border: 2px solid #1a1a1a;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.theme-stone .player-section {
+  background: #5c5c5c;
+  border: 4px solid;
+  border-color: #2b2b2b #8c8c8c #8c8c8c #2b2b2b;
+  padding: 15px;
+  border-radius: 2px;
+}
+.theme-stone .section-title {
+  background: #2b2b2b;
+  color: #f0f0f0;
+  border: 2px solid #1a1a1a;
+  top: -14px;
+  padding: 2px 10px;
+  font-weight: bold;
+}
+.theme-stone button {
+  background: #7a7a7a;
+  color: #fff;
+  border: 3px solid;
+  border-color: #a3a3a3 #3a3a3a #3a3a3a #a3a3a3;
+  font-weight: bold;
+  font-family: "Georgia", serif;
+}
+.theme-stone button:active {
+  border-color: #3a3a3a #a3a3a3 #a3a3a3 #3a3a3a;
+}
+.theme-stone input[type="text"],
+.theme-stone select {
+  background: #4a4a4a;
+  color: #fff;
+  border: 2px inset #2b2b2b;
+  padding: 6px;
+  font-family: sans-serif;
+}
+.theme-stone .btn-update {
+  background: #3a3a3a;
+  border-color: #6b6b6b #1a1a1a #1a1a1a #6b6b6b;
+}
+.theme-stone input[type="checkbox"] {
+  border: 2px inset #2b2b2b;
+  background: #4a4a4a;
+}
+.theme-stone input[type="checkbox"]:checked::before {
+  color: #fff;
+  content: "X";
+  font-family: sans-serif;
+}
+.theme-stone div[style*="background: #c0c0c0"] {
+  background: #5c5c5c !important;
+  border: 4px solid !important;
+  border-color: #2b2b2b #8c8c8c #8c8c8c #2b2b2b !important;
+}
+.theme-stone div[style*="background: #000"] {
+  background: #2b2b2b !important;
+  color: #fff !important;
+  border: 3px inset #1a1a1a !important;
+  font-family: "Georgia", serif;
+}
+
+/* =========================================
+TEMA 7: LÁSER ROJO (Panel de Control)
+========================================= */
+.theme-laser {
+  background: #050000;
+  color: #ff0000;
+  font-family: "Arial", sans-serif;
+}
+.theme-laser .window {
+  background: #0a0000;
+  border: 2px solid #ff0000;
+  border-radius: 0;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+}
+.theme-laser .title-bar {
+  background: #ff0000;
+  color: #000;
+  text-align: center;
   font-weight: 900;
-  text-shadow: 0 0 10px var(--main-color);
-  transform: skew(-8deg);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+.theme-laser .player-section {
+  background: rgba(255, 0, 0, 0.05);
+  border: 1px solid #ff0000;
+  padding: 15px;
+}
+.theme-laser .section-title {
+  background: #050000;
+  color: #ff0000;
+  top: -12px;
+  border: 1px solid #ff0000;
+  text-shadow: 0 0 5px #ff0000;
+  padding: 2px 8px;
+}
+.theme-laser button {
+  background: #000;
+  color: #ff0000;
+  border: 1px solid #ff0000;
+  text-transform: uppercase;
+  transition: 0.1s;
+  font-weight: bold;
+}
+.theme-laser button:active {
+  background: #ff0000;
+  color: #000;
+  box-shadow: 0 0 15px #ff0000;
+}
+.theme-laser input[type="text"],
+.theme-laser select {
+  background: #000;
+  color: #ff0000;
+  border: 1px solid #ff0000;
+  padding: 6px;
+  outline: none;
+}
+.theme-laser input[type="text"]:focus {
+  box-shadow: 0 0 10px #ff0000;
+}
+.theme-laser .btn-update {
+  background: #1a0000;
+  border: 1px solid #ff0000;
+}
+.theme-laser input[type="checkbox"] {
+  border: 1px solid #ff0000;
+  background: #000;
+}
+.theme-laser input[type="checkbox"]:checked::before {
+  color: #ff0000;
+  content: "■";
+  font-size: 14px;
+  top: -2px;
+}
+.theme-laser div[style*="background: #c0c0c0"] {
+  background: transparent !important;
+  border: 1px solid #ff0000 !important;
+}
+.theme-laser div[style*="background: #000"] {
+  background: transparent !important;
+  color: #ff0000 !important;
+  border: 1px solid #ff0000 !important;
+  text-shadow: 0 0 10px #ff0000;
 }
