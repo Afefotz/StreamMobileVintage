@@ -210,22 +210,26 @@ db.on("value", (snapshot) => {
   document.getElementById("toggle-vertical").checked = verticalMode;
 
   // --- SINCRONIZAR COLOR Y VARIABLES CSS ---
-  // 1. Cargar las opciones correctas pasándole el tema que viene de Firebase
+  // 1. Definir cuál es el tema actual leyendo de Firebase
+  const themeActual =
+    data.settings && data.settings.theme ? data.settings.theme : "theme-modern";
+
+  // 2. Cargar las opciones correctas pasándole el tema
   cargarVariantesDeColor(themeActual);
 
-  // 2. Obtener el color guardado
+  // 3. Obtener el color guardado
   let savedColor =
     data.settings && data.settings.accentColor
       ? data.settings.accentColor.toLowerCase()
       : paletasDeColor[themeActual][0].hex.toLowerCase();
 
-  // 3. Seleccionar la opción en el menú (sin interrumpir si el usuario lo está tocando)
+  // 4. Seleccionar la opción en el menú (sin interrumpir)
   const variantSelect = document.getElementById("theme-variant");
   if (document.activeElement !== variantSelect) {
     variantSelect.value = savedColor;
   }
 
-  // 4. Calcular contraste y aplicar a toda la página
+  // 5. Calcular contraste y aplicar a toda la página
   function getContrastColor(hex) {
     hex = hex.replace("#", "");
     const r = parseInt(hex.substring(0, 2), 16);
@@ -238,6 +242,7 @@ db.on("value", (snapshot) => {
   const textColor = getContrastColor(savedColor);
   document.documentElement.style.setProperty("--main-color", savedColor);
   document.documentElement.style.setProperty("--text-on-accent", textColor);
+
 });
 
 // Función que detecta el cambio de tema y asigna un título predeterminado
