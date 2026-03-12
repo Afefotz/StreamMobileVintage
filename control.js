@@ -16,7 +16,7 @@ if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
 // 1. Obtener el parámetro 'room' de la URL (ej: control.html?room=mistream)
 const urlParams = new URLSearchParams(window.location.search);
 const currentRoom = urlParams.get("room");
-const initialTheme = urlParams.get('theme');
+const initialTheme = urlParams.get("theme");
 
 // 2. Validación de seguridad básica
 if (!currentRoom) {
@@ -29,65 +29,65 @@ if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
 const db = firebase.database().ref(`rooms/${currentRoom}`);
 
 // 4. Configuración inicial del Tema
-        if (initialTheme) {
-            // Asignamos el título por defecto según el tema elegido
-            let defaultTitle = 'Live_Match.exe';
-            if (initialTheme === 'theme-modern') defaultTitle = 'Online Matching';
-            else if (initialTheme === 'theme-modern-light') defaultTitle = 'Live Stream';
-            else if (initialTheme === 'theme-neon') defaultTitle = 'VERSUS';
-            else if (initialTheme === 'theme-pastel') defaultTitle = '♡ Sweet Match ♡';
-            else if (initialTheme === 'theme-stone') defaultTitle = 'EPIC DUEL';
-            else if (initialTheme === 'theme-laser') defaultTitle = 'LASER // DEATHMATCH';
+if (initialTheme) {
+  // Asignamos el título por defecto según el tema elegido
+  let defaultTitle = "Live_Match.exe";
+  if (initialTheme === "theme-modern") defaultTitle = "Online Matching";
+  else if (initialTheme === "theme-modern-light") defaultTitle = "Live Stream";
+  else if (initialTheme === "theme-neon") defaultTitle = "VERSUS";
+  else if (initialTheme === "theme-pastel") defaultTitle = "♡ Sweet Match ♡";
+  else if (initialTheme === "theme-stone") defaultTitle = "EPIC DUEL";
+  else if (initialTheme === "theme-laser") defaultTitle = "LASER // DEATHMATCH";
 
-            // Guardamos en Firebase instantáneamente
-            db.child('settings').update({ 
-                theme: initialTheme,
-                customTitle: defaultTitle
-            });
+  // Guardamos en Firebase instantáneamente
+  db.child("settings").update({
+    theme: initialTheme,
+    customTitle: defaultTitle,
+  });
 
-            // LIMPIEZA PRO: Borramos el parámetro '?theme=' de la URL sin recargar la página.
-            // Así, si el usuario refresca la página, no se sobreescriben sus cambios futuros.
-            window.history.replaceState(null, '', `control.html?room=${currentRoom}`);
-        }
+  // LIMPIEZA PRO: Borramos el parámetro '?theme=' de la URL sin recargar la página.
+  // Así, si el usuario refresca la página, no se sobreescriben sus cambios futuros.
+  window.history.replaceState(null, "", `control.html?room=${currentRoom}`);
+}
 
 // --- DICCIONARIO DE VARIANTES DE COLOR ---
 const paletasDeColor = {
-    'theme-win95': [
-        { nombre: 'Clásico Win95', hex: '#c0c0c0' } // Win95 es Win95, no se toca
-    ],
-    'theme-modern': [
-        { nombre: 'Gris Claro (Por defecto)', hex: '#e0e0e0' },
-        { nombre: 'Verde Cyber', hex: '#00e676' },
-        { nombre: 'Amarillo Eléctrico', hex: '#ffea00' },
-        { nombre: 'Naranja Fuego', hex: '#ff9100' }
-    ],
-    'theme-modern-light': [
-        { nombre: 'Gris Oscuro (Por defecto)', hex: '#333333' },
-        { nombre: 'Azul Rey', hex: '#2979ff' },
-        { nombre: 'Morado Profundo', hex: '#651fff' }
-    ],
-    'theme-neon': [
-        { nombre: 'Cian (Por defecto)', hex: '#00ffff' },
-        { nombre: 'Rosa Neón', hex: '#ff00ff' },
-        { nombre: 'Verde Tóxico', hex: '#39ff14' }
-    ],
-    'theme-pastel': [
-        { nombre: 'Rosa Fresa', hex: '#ffb7b2' },
-        { nombre: 'Amarillo Vainilla', hex: '#e2f0cb' },
-        { nombre: 'Naranja Durazno', hex: '#ffdac1' },
-        { nombre: 'Verde Menta', hex: '#b5ead7' }
-    ],
-    'theme-stone': [
-        { nombre: 'Gris Volcánico', hex: '#b0b0b0' },
-        { nombre: 'Rojo Ladrillo', hex: '#cc5544' },
-        { nombre: 'Verde Musgo', hex: '#6b8e23' }
-    ],
-    'theme-laser': [
-        { nombre: 'Rojo Peligro', hex: '#ff0000' },
-        { nombre: 'Verde Radiactivo', hex: '#00ff00' },
-        { nombre: 'Amarillo Precaución', hex: '#ffff00' },
-        { nombre: 'Morado Galáctico', hex: '#bf00ff' }
-    ]
+  "theme-win95": [
+    { nombre: "Clásico Win95", hex: "#c0c0c0" }, // Win95 es Win95, no se toca
+  ],
+  "theme-modern": [
+    { nombre: "Gris Claro (Por defecto)", hex: "#e0e0e0" },
+    { nombre: "Verde Cyber", hex: "#00e676" },
+    { nombre: "Amarillo Eléctrico", hex: "#ffea00" },
+    { nombre: "Naranja Fuego", hex: "#ff9100" },
+  ],
+  "theme-modern-light": [
+    { nombre: "Gris Oscuro (Por defecto)", hex: "#333333" },
+    { nombre: "Azul Rey", hex: "#2979ff" },
+    { nombre: "Morado Profundo", hex: "#651fff" },
+  ],
+  "theme-neon": [
+    { nombre: "Cian (Por defecto)", hex: "#00ffff" },
+    { nombre: "Rosa Neón", hex: "#ff00ff" },
+    { nombre: "Verde Tóxico", hex: "#39ff14" },
+  ],
+  "theme-pastel": [
+    { nombre: "Rosa Fresa", hex: "#ffb7b2" },
+    { nombre: "Amarillo Vainilla", hex: "#e2f0cb" },
+    { nombre: "Naranja Durazno", hex: "#ffdac1" },
+    { nombre: "Verde Menta", hex: "#b5ead7" },
+  ],
+  "theme-stone": [
+    { nombre: "Gris Volcánico", hex: "#b0b0b0" },
+    { nombre: "Rojo Ladrillo", hex: "#cc5544" },
+    { nombre: "Verde Musgo", hex: "#6b8e23" },
+  ],
+  "theme-laser": [
+    { nombre: "Rojo Peligro", hex: "#ff0000" },
+    { nombre: "Verde Radiactivo", hex: "#00ff00" },
+    { nombre: "Amarillo Precaución", hex: "#ffff00" },
+    { nombre: "Morado Galáctico", hex: "#bf00ff" },
+  ],
 };
 
 // Sincronizar el panel con los datos existentes (Nombres, Fotos y Puntos - mostrar fotos o no y Modo Vertical)
@@ -174,14 +174,21 @@ db.on("value", (snapshot) => {
   document.body.className = activeTheme;
 
   // Cambiar el título superior del panel de control
-  const panelTitle = document.getElementById('panel-title');
-  if (activeTheme === 'theme-win95') panelTitle.innerText = 'Versus_Admin_v1.exe';
-  else if (activeTheme === 'theme-modern') panelTitle.innerText = 'Admin Dashboard Control';
-  else if (activeTheme === 'theme-modern-light') panelTitle.innerText = 'Panel de Control';
-  else if (activeTheme === 'theme-neon') panelTitle.innerText = 'SYS_ADMIN // OVERRIDE';
-  else if (activeTheme === 'theme-pastel') panelTitle.innerText = '✧ Stream Admin ✧';
-  else if (activeTheme === 'theme-stone') panelTitle.innerText = 'Colosseum Admin';
-  else if (activeTheme === 'theme-laser') panelTitle.innerText = 'LASER_COMMAND_CTR';
+  const panelTitle = document.getElementById("panel-title");
+  if (activeTheme === "theme-win95")
+    panelTitle.innerText = "Versus_Admin_v1.exe";
+  else if (activeTheme === "theme-modern")
+    panelTitle.innerText = "Admin Dashboard Control";
+  else if (activeTheme === "theme-modern-light")
+    panelTitle.innerText = "Panel de Control";
+  else if (activeTheme === "theme-neon")
+    panelTitle.innerText = "SYS_ADMIN // OVERRIDE";
+  else if (activeTheme === "theme-pastel")
+    panelTitle.innerText = "✧ Stream Admin ✧";
+  else if (activeTheme === "theme-stone")
+    panelTitle.innerText = "Colosseum Admin";
+  else if (activeTheme === "theme-laser")
+    panelTitle.innerText = "LASER_COMMAND_CTR";
 
   // Sincronizar Título Personalizado
   const customTitle =
@@ -195,39 +202,43 @@ db.on("value", (snapshot) => {
     titleInput.value = customTitle;
   }
 
-    // Sincronizar Diseño Vertical
-  const verticalMode = data.settings && data.settings.verticalMode !== undefined 
-                      ? data.settings.verticalMode 
-                      : false;
-  document.getElementById('toggle-vertical').checked = verticalMode;
+  // Sincronizar Diseño Vertical
+  const verticalMode =
+    data.settings && data.settings.verticalMode !== undefined
+      ? data.settings.verticalMode
+      : false;
+  document.getElementById("toggle-vertical").checked = verticalMode;
 
-  
+  // --- SINCRONIZAR COLOR Y VARIABLES CSS ---
+  // 1. Cargar las opciones correctas para el tema actual
   cargarVariantesDeColor();
 
-  // Sincronizar el Color de Acento Guardado
-  const savedColor = data.settings && data.settings.accentColor ? data.settings.accentColor : paletasDeColor[themeActual][0].hex;
-  // Actualizar el selector visualmente (solo si el usuario no lo está usando)       
-  const variantSelect = document.getElementById('theme-variant');
+  // 2. Obtener el color guardado y forzarlo a minúsculas para que coincida con nuestro diccionario
+  let savedColor =
+    data.settings && data.settings.accentColor
+      ? data.settings.accentColor.toLowerCase()
+      : paletasDeColor[themeActual][0].hex;
+
+  // 3. Seleccionar la opción en el menú
+  const variantSelect = document.getElementById("theme-variant");
   if (document.activeElement !== variantSelect) {
     variantSelect.value = savedColor;
-  }     
+  }
 
-  // MATEMÁTICAS: Calcular contraste (Luminancia)
+  // 4. Calcular contraste y aplicar a toda la página
   function getContrastColor(hex) {
-    hex = hex.replace('#', '');
+    hex = hex.replace("#", "");
     const r = parseInt(hex.substring(0, 2), 16);
     const g = parseInt(hex.substring(2, 4), 16);
     const b = parseInt(hex.substring(4, 6), 16);
-    const yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
-    return (yiq >= 128) ? '#000000' : '#ffffff'; // Si es muy claro da negro, si es oscuro da blanco
+    const yiq = (r * 299 + g * 587 + b * 114) / 1000;
+    return yiq >= 128 ? "#000000" : "#ffffff";
   }
 
   const textColor = getContrastColor(savedColor);
-
-  // INYECTAR VARIABLES CSS A TODA LA PÁGINA
-  document.documentElement.style.setProperty('--main-color', savedColor);
-  document.documentElement.style.setProperty('--text-on-accent', textColor);
-
+  document.documentElement.style.setProperty("--main-color", savedColor);
+  document.documentElement.style.setProperty("--text-on-accent", textColor);
+  
 });
 
 // Función que detecta el cambio de tema y asigna un título predeterminado
@@ -237,30 +248,31 @@ function cambiarTemaAutomatico() {
   const currentTitle = titleInput.value.trim();
 
   // 1. Definimos cuáles son los títulos "de fábrica"
-    const titulosPredeterminados = [
-        'Live_Match.exe',
-        'Online Matching',
-        'Live Stream',
-        'VERSUS',
-        '♡ Sweet Match ♡',
-        'EPIC DUEL',
-        'LASER // DEATHMATCH',
-        '' // También consideramos "vacío" como predeterminado para que lo llene
-    ];
+  const titulosPredeterminados = [
+    "Live_Match.exe",
+    "Online Matching",
+    "Live Stream",
+    "VERSUS",
+    "♡ Sweet Match ♡",
+    "EPIC DUEL",
+    "LASER // DEATHMATCH",
+    "", // También consideramos "vacío" como predeterminado para que lo llene
+  ];
 
   // 2. Verificamos si el usuario tiene un título de fábrica o uno propio
   const esTituloDeFabrica = titulosPredeterminados.includes(currentTitle);
 
   // 3. SOLO si es de fábrica, le aplicamos el nuevo título del tema
-    if (esTituloDeFabrica) {
-        if (theme === 'theme-win95') titleInput.value = 'Live_Match.exe';
-        else if (theme === 'theme-modern') titleInput.value = 'Online Matching';
-        else if (theme === 'theme-modern-light') titleInput.value = 'Online Matching';
-        else if (theme === 'theme-neon') titleInput.value = 'VERSUS';
-        else if (theme === 'theme-pastel') titleInput.value = '♡ Sweet Match ♡';
-        else if (theme === 'theme-stone') titleInput.value = 'EPIC DUEL';
-        else if (theme === 'theme-laser') titleInput.value = 'LASER // DEATHMATCH';
-    }
+  if (esTituloDeFabrica) {
+    if (theme === "theme-win95") titleInput.value = "Live_Match.exe";
+    else if (theme === "theme-modern") titleInput.value = "Online Matching";
+    else if (theme === "theme-modern-light")
+      titleInput.value = "Online Matching";
+    else if (theme === "theme-neon") titleInput.value = "VERSUS";
+    else if (theme === "theme-pastel") titleInput.value = "♡ Sweet Match ♡";
+    else if (theme === "theme-stone") titleInput.value = "EPIC DUEL";
+    else if (theme === "theme-laser") titleInput.value = "LASER // DEATHMATCH";
+  }
 
   // Guardamos los cambios inmediatamente
   cargarVariantesDeColor();
@@ -269,20 +281,20 @@ function cambiarTemaAutomatico() {
 
 // Función que inyecta las opciones correctas al menú de variantes
 function cargarVariantesDeColor() {
-    const theme = document.getElementById('theme-selector').value;
-    const variantSelect = document.getElementById('theme-variant');
-    const colores = paletasDeColor[theme] || paletasDeColor['theme-modern'];
+  const theme = document.getElementById("theme-selector").value;
+  const variantSelect = document.getElementById("theme-variant");
+  const colores = paletasDeColor[theme] || paletasDeColor["theme-modern"];
 
-    // Limpiar las opciones anteriores
-    variantSelect.innerHTML = ''; 
+  // Limpiar las opciones anteriores
+  variantSelect.innerHTML = "";
 
-    // Crear las nuevas opciones
-    colores.forEach(color => {
-        const option = document.createElement('option');
-        option.value = color.hex;
-        option.innerText = color.nombre;
-        variantSelect.appendChild(option);
-    });
+  // Crear las nuevas opciones
+  colores.forEach((color) => {
+    const option = document.createElement("option");
+    option.value = color.hex;
+    option.innerText = color.nombre;
+    variantSelect.appendChild(option);
+  });
 }
 
 // Función para guardar la configuración global
@@ -291,9 +303,9 @@ function updateSettings() {
   const swap = document.getElementById("toggle-swap").checked; // Capturamos el nuevo checkbox
   const theme = document.getElementById("theme-selector").value; // Capturamos el tema seleccionado
   const title = document.getElementById("custom-title").value; // Capturamos el título
-  const vertical = document.getElementById('toggle-vertical').checked; // Capturamos el nuevo checkbox
+  const vertical = document.getElementById("toggle-vertical").checked; // Capturamos el nuevo checkbox
   //const accentColor = document.getElementById('theme-color').value; // Capturamos el nuevo color del tema
-  const accentColor = document.getElementById('theme-variant').value; // Capturamos la variante de color seleccionada
+  const accentColor = document.getElementById("theme-variant").value; // Capturamos la variante de color seleccionada
 
   db.child("settings").update({
     showPhotos: show,
@@ -301,7 +313,7 @@ function updateSettings() {
     theme: theme, // Lo guardamos en Firebase
     customTitle: title, // Lo enviamos a Firebase
     verticalMode: vertical, // Lo enviamos a Firebase
-    accentColor: accentColor
+    accentColor: accentColor,
   });
 }
 
