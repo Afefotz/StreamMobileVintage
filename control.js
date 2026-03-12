@@ -72,9 +72,9 @@ const paletasDeColor = {
     { nombre: "Verde Tóxico", hex: "#39ff14" },
   ],
   "theme-pastel": [
-    { nombre: "Rosa Fresa", hex: "#ffb7b2" },
-    { nombre: "Amarillo Vainilla", hex: "#e2f0cb" },
-    { nombre: "Naranja Durazno", hex: "#ffdac1" },
+    { nombre: "Rosa Fresa", hex: "#ffb2cc" },
+    { nombre: "Amarillo Vainilla", hex: "#eff0cb" },
+    { nombre: "Naranja Durazno", hex: "#ffd6c1" },
     { nombre: "Verde Menta", hex: "#b5ead7" },
   ],
   "theme-stone": [
