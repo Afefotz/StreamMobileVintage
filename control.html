@@ -19,20 +19,26 @@
         <div style="background: #c0c0c0; border: 2px solid; border-color: #808080 #fff #fff #808080; padding: 10px; margin-bottom: 15px;">
     
             <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap;">
-                <label style="font-family: 'Segoe UI', sans-serif; font-size: 12px; font-weight: bold;">Tema Visual:</label>
-                <select id="theme-selector" onchange="cambiarTemaAutomatico()" style="width: 100%; margin-top: 5px; margin-bottom: 10px; font-size: 12px; padding: 4px; border: 2px solid; border-color: #808080 #fff #fff #808080;">
-                    <option value="theme-win95">Retro (Windows 95)</option>
-                    <option value="theme-modern-light">Moderno (Claro)</option>
-                    <option value="theme-modern">Moderno (Oscuro)</option>
-                    <option value="theme-pastel">Pastel (Suave)</option>
-                    <option value="theme-stone">Rocoso (Piedra)</option>
-                    <option value="theme-laser">Sci-Fi (Rojo Neón)</option>
-                    <option value="theme-neon">Cyberpunk (Neón Brillante)</option>
-                </select>
+                <div style="display: flex; gap: 15px; margin-bottom: 15px;">    
+                    <div style="flex: 1;">
+                        <label style="font-family: 'Segoe UI', sans-serif; font-size: 12px; font-weight: bold; display: block; margin-bottom: 5px;">Tema Visual:</label>
+                        <select id="theme-selector" onchange="cambiarTemaAutomatico()" style="width: 100%; font-size: 12px; padding: 5px; border: 2px solid; border-color: #808080 #fff #fff #808080; box-sizing: border-box;">
+                            <option value="theme-win95">Retro (Windows 95)</option>
+                            <option value="theme-modern-light">Moderno (Claro)</option>
+                            <option value="theme-modern">Moderno (Oscuro)</option>
+                            <option value="theme-pastel">Pastel (Suave)</option>
+                            <option value="theme-stone">Rocoso (Piedra)</option>
+                            <option value="theme-laser">Sci-Fi (Láser)</option>
+                            <option value="theme-neon">Cyberpunk (Neón Brillante)</option>
+                        </select>
+                    </div>
 
-                <label style="font-family: 'Segoe UI', sans-serif; font-size: 12px; font-weight: bold; margin-top: 10px; display: block;">Variante de Color:</label>
-                <select id="theme-variant" onchange="updateSettings()" style="width: 100%; padding: 6px; margin-top: 5px; border: 2px solid; border-color: #808080 #fff #fff #808080;">
-                </select>
+                    <div style="flex: 1;">
+                        <label style="font-family: 'Segoe UI', sans-serif; font-size: 12px; font-weight: bold; display: block; margin-bottom: 5px;">Variante de Color:</label>
+                        <select id="theme-variant" onchange="updateSettings()" style="width: 100%; font-size: 12px; padding: 5px; border: 2px solid; border-color: #808080 #fff #fff #808080; box-sizing: border-box;">
+                        </select>
+                    </div>    
+                </div>               
 
                 <label style="font-family: 'Segoe UI', sans-serif; font-size: 12px; display: flex; align-items: center; gap: 5px; cursor: pointer; margin: 0;">
                     <input type="checkbox" id="toggle-vertical" onchange="updateSettings()">
