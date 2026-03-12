@@ -6,7 +6,7 @@ body {
 }
 
 .window {
-    background-color: #c0c0c0;
+    background-color: var(--theme-window, #c0c0c0);
     width: fit-content;
     border-top: 3px solid #fff;
     border-left: 3px solid #fff;
@@ -18,9 +18,9 @@ body {
 }
 
 .title-bar {
-    background: linear-gradient(90deg, #000080, #1084d0);
+    background: var(--theme-primary, #000080);
     padding: 4px;
-    color: white;
+    color: var(--theme-text, white);
     font-weight: bold;
     font-size: 14px;
 }
@@ -69,7 +69,7 @@ body {
 .player-name {
     font-weight: bold;
     font-size: 14px;
-    color: #000;
+    color: var(--theme-text, #000);
     margin-bottom: 2px;
     text-transform: uppercase;
 }
@@ -77,7 +77,7 @@ body {
 /* Marcador estilo digital */
 .score-box {
     background: #000;
-    color: #0f0;
+    color: var(--theme-score, #0f0);
     /* Verde matrix */
     font-family: "VT323", monospace;
     font-size: 35px;
@@ -94,15 +94,15 @@ body {
 .score-animating {
     transform: scale(1.5);
     /* Crece un 50% */
-    color: #FFFF00 !important;
+    color: var(--theme-score, #FFFF00) !important;
     /* Se vuelve amarillo brillante */
-    text-shadow: 0 0 15px #FFFF00;
+    text-shadow: 0 0 15px var(--theme-score, #FFFF00);
     /* Efecto de resplandor */
 }
 
 .vs {
     font-weight: bold;
-    color: #808080;
+    color: var(--theme-secondary, #808080);
     font-style: italic;
     font-size: 20px;
 }
@@ -134,7 +134,7 @@ body {
 TEMA 2: MODERNO OSCURO (.theme-modern)
 ========================================= */
 .theme-modern .window {
-    background-color: rgba(30, 30, 30, 0.95);
+    background-color: var(--theme-window);
     border: none;
     border-radius: 16px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
@@ -142,26 +142,26 @@ TEMA 2: MODERNO OSCURO (.theme-modern)
 
 .theme-modern .title-bar {
     background: transparent;
-    color: #aaaaaa;
+    color: var(--theme-primary);
     border-bottom: 1px solid #444;
     font-family: "Segoe UI", sans-serif;
 }
 
 .theme-modern .player-name {
-    color: #ffffff;
+    color: var(--theme-text);
     font-family: "Segoe UI", sans-serif;
 }
 
 .theme-modern .photo-frame {
-    border: 3px solid #4a90e2;
+    border: 3px solid var(--theme-primary);
     border-radius: 50%;
     /* Fotos circulares */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 .theme-modern .score-box {
-    background: #2d2d2d;
-    color: #ffffff;
+    background: var(--theme-window);
+    color: var(--theme-score);
     border: none;
     border-radius: 8px;
     font-family: "Segoe UI", sans-serif;
@@ -169,7 +169,7 @@ TEMA 2: MODERNO OSCURO (.theme-modern)
 }
 
 .theme-modern .vs {
-    color: #ff4757;
+    color: var(--theme-secondary);
     font-family: "Segoe UI", sans-serif;
 }
 
@@ -188,40 +188,40 @@ TEMA 3: CYBERPUNK NEÓN (.theme-neon)
 
 .theme-neon .title-bar {
     background: #0ff;
-    color: #000;
+    color: var(--theme-text, #000);
     font-family: "VT323", monospace;
     font-size: 18px;
     text-transform: uppercase;
 }
 
 .theme-neon .player-name {
-    color: #f0f;
-    text-shadow: 0 0 5px #f0f;
+    color: var(--theme-secondary);
+    text-shadow: 0 0 5px var(--theme-secondary);
 }
 
 .theme-neon .photo-frame {
-    border: 2px solid #f0f;
+    border: 2px solid var(--theme-secondary);
     border-radius: 10%;
-    box-shadow: 0 0 10px #f0f;
+    box-shadow: 0 0 10px var(--theme-secondary);
 }
 
 .theme-neon .score-box {
     background: transparent;
-    color: #0ff;
-    border: 1px solid #0ff;
-    text-shadow: 0 0 8px #0ff;
+    color: var(--theme-score);
+    border: 1px solid var(--theme-score);
+    text-shadow: 0 0 8px var(--theme-score);
 }
 
 .theme-neon .vs {
-    color: #ff0;
-    text-shadow: 0 0 5px #ff0;
+    color: var(--theme-score);
+    text-shadow: 0 0 5px var(--theme-score);
 }
 
 /* =========================================
 TEMA 4: MODERNO CLARO (.theme-modern-light)
 ========================================= */
 .theme-modern-light .window {
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: var(--theme-window);
     border: 1px solid #e1e4e8;
     border-radius: 16px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
@@ -229,20 +229,20 @@ TEMA 4: MODERNO CLARO (.theme-modern-light)
 
 .theme-modern-light .title-bar {
     background: transparent;
-    color: #333;
-    border-bottom: 1px solid #e1e4e8;
+    color: var(--theme-text);
+    border-bottom: 1px solid var(--theme-secondary);
     font-family: 'Segoe UI', sans-serif;
     text-align: center;
 }
 
 .theme-modern-light .player-name {
-    color: #333;
+    color: var(--theme-text);
     font-family: 'Segoe UI', sans-serif;
     font-weight: 700;
 }
 
 .theme-modern-light .photo-frame {
-    border: 3px solid #0366d6;
+    border: 3px solid var(--theme-primary);
     border-radius: 50%;
     /* Fotos circulares */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
@@ -250,8 +250,8 @@ TEMA 4: MODERNO CLARO (.theme-modern-light)
 }
 
 .theme-modern-light .score-box {
-    background: #f3f4f6;
-    color: #0366d6;
+    background: var(--theme-bg);
+    color: var(--theme-score);
     border: none;
     border-radius: 8px;
     font-family: 'Segoe UI', sans-serif;
@@ -259,7 +259,7 @@ TEMA 4: MODERNO CLARO (.theme-modern-light)
 }
 
 .theme-modern-light .vs {
-    color: #9ca3af;
+    color: var(--theme-secondary);
     font-family: 'Segoe UI', sans-serif;
 }
 
@@ -267,7 +267,7 @@ TEMA 4: MODERNO CLARO (.theme-modern-light)
 TEMA 5: PASTEL (.theme-pastel)
 ========================================= */
 .theme-pastel .window {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: var(--theme-window);
     backdrop-filter: blur(5px);
     border: 3px solid #ffb6c1;
     border-radius: 24px;
@@ -275,8 +275,8 @@ TEMA 5: PASTEL (.theme-pastel)
 }
 
 .theme-pastel .title-bar {
-    background: #ffe4e1;
-    color: #d87093;
+    background: var(--theme-secondary);
+    color: var(--theme-primary);
     border-bottom: none;
     border-radius: 20px 20px 0 0;
     font-family: 'Quicksand', 'Segoe UI', sans-serif;
@@ -285,14 +285,14 @@ TEMA 5: PASTEL (.theme-pastel)
 }
 
 .theme-pastel .player-name {
-    color: #835c75;
+    color: var(--theme-text);
     font-family: 'Quicksand', 'Segoe UI', sans-serif;
     font-weight: bold;
     text-transform: capitalize;
 }
 
 .theme-pastel .photo-frame {
-    border: 4px solid #ffb6c1;
+    border: 4px solid var(--theme-secondary);
     border-radius: 25%;
     /* Forma de "Squircle" (cuadrado redondeado) */
     box-shadow: 0 4px 12px rgba(255, 182, 193, 0.5);
@@ -300,16 +300,16 @@ TEMA 5: PASTEL (.theme-pastel)
 }
 
 .theme-pastel .score-box {
-    background: #fff0f5;
-    color: #d87093;
-    border: 2px dashed #ffb6c1;
+    background: var(--theme-bg);
+    color: var(--theme-score);
+    border: 2px dashed var(--theme-secondary);
     border-radius: 12px;
     font-family: 'Quicksand', 'Segoe UI', sans-serif;
     font-weight: bold;
 }
 
 .theme-pastel .vs {
-    color: #ffb6c1;
+    color: var(--theme-secondary);
     font-family: 'Quicksand', 'Segoe UI', sans-serif;
     font-style: italic;
 }
@@ -318,7 +318,7 @@ TEMA 5: PASTEL (.theme-pastel)
 TEMA 6: PIEDRA / ROCOSO (.theme-stone)
 ========================================= */
 .theme-stone .window {
-    background-color: #6b6b6b;
+    background-color: var(--theme-window);
     border: 4px solid;
     border-color: #8c8c8c #2b2b2b #2b2b2b #8c8c8c;
     border-radius: 4px;
@@ -326,8 +326,8 @@ TEMA 6: PIEDRA / ROCOSO (.theme-stone)
 }
 
 .theme-stone .title-bar {
-    background: #2b2b2b;
-    color: #d4d4d4;
+    background: var(--theme-primary);
+    color: var(--theme-text);
     border: 2px solid #1a1a1a;
     margin: 4px;
     font-family: 'Georgia', serif;
@@ -337,7 +337,7 @@ TEMA 6: PIEDRA / ROCOSO (.theme-stone)
 }
 
 .theme-stone .player-name {
-    color: #fff;
+    color: var(--theme-text);
     font-family: 'Georgia', serif;
     font-weight: bold;
     text-shadow: 2px 2px 4px #000;
@@ -352,8 +352,8 @@ TEMA 6: PIEDRA / ROCOSO (.theme-stone)
 }
 
 .theme-stone .score-box {
-    background: #2b2b2b;
-    color: #fff;
+    background: var(--theme-primary);
+    color: var(--theme-score);
     border: 3px inset #1a1a1a;
     border-radius: 4px;
     font-family: 'Georgia', serif;
@@ -361,7 +361,7 @@ TEMA 6: PIEDRA / ROCOSO (.theme-stone)
 }
 
 .theme-stone .vs {
-    color: #a3a3a3;
+    color: var(--theme-secondary);
     font-family: 'Georgia', serif;
     font-weight: bold;
     text-shadow: 2px 2px 2px #000;
@@ -371,7 +371,7 @@ TEMA 6: PIEDRA / ROCOSO (.theme-stone)
 TEMA 7: LÁSER ROJO (.theme-laser)
 ========================================= */
 .theme-laser .window {
-    background-color: rgba(10, 0, 0, 0.9);
+    background-color: var(--theme-window);
     backdrop-filter: blur(4px);
     border: 2px solid #ff0000;
     border-radius: 0;
@@ -380,7 +380,7 @@ TEMA 7: LÁSER ROJO (.theme-laser)
 
 .theme-laser .title-bar {
     background: #ff0000;
-    color: #000;
+    color: var(--theme-text, #000);
     font-family: 'Arial', sans-serif;
     text-align: center;
     font-weight: 900;
@@ -389,19 +389,19 @@ TEMA 7: LÁSER ROJO (.theme-laser)
 }
 
 .theme-laser .player-name {
-    color: #ff0000;
+    color: var(--theme-text);
     font-family: 'Arial', sans-serif;
     font-weight: 900;
     text-transform: uppercase;
-    text-shadow: 0 0 8px #ff0000;
+    text-shadow: 0 0 8px var(--theme-text);
     transform: skew(-8deg);
     /* Letras inclinadas agresivas */
 }
 
 .theme-laser .photo-frame {
-    border: 2px solid #ff0000;
+    border: 2px solid var(--theme-primary);
     border-radius: 0;
-    box-shadow: 0 0 12px #ff0000;
+    box-shadow: 0 0 12px var(--theme-primary);
     background: #000;
     transform: skew(-8deg);
     /* Fotos con marco inclinado */
@@ -414,19 +414,19 @@ TEMA 7: LÁSER ROJO (.theme-laser)
 /* Enderezamos la foto por dentro para que no se deforme la cara */
 .theme-laser .score-box {
     background: transparent;
-    color: #ff0000;
-    border: 1px solid #ff0000;
+    color: var(--theme-score);
+    border: 1px solid var(--theme-score);
     border-radius: 0;
-    text-shadow: 0 0 12px #ff0000;
-    box-shadow: inset 0 0 8px #ff0000;
+    text-shadow: 0 0 12px var(--theme-score);
+    box-shadow: inset 0 0 8px var(--theme-score);
     transform: skew(-8deg);
 }
 
 .theme-laser .vs {
-    color: #fff;
+    color: var(--theme-secondary);
     font-family: 'Arial', sans-serif;
     font-weight: 900;
-    text-shadow: 0 0 10px #ff0000;
+    text-shadow: 0 0 10px var(--theme-secondary);
     transform: skew(-8deg);
 }
 

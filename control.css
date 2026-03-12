@@ -1,13 +1,13 @@
 body {
   font-family: "Segoe UI", sans-serif;
-  background: #008080;
+  background: var(--theme-bg, #008080);
   padding: 20px;
 }
 
 .window {
-  background: #c0c0c0;
+  background: var(--theme-window, #c0c0c0);
   border: 2px solid;
-  border-color: #fff #808080 #808080 #fff;
+  border-color: #fff var(--theme-secondary, #808080) var(--theme-secondary, #808080) #fff;
   padding: 10px;
   max-width: 400px;
   margin: 0 auto;
@@ -15,8 +15,8 @@ body {
 }
 
 .title-bar {
-  background: navy;
-  color: white;
+  background: var(--theme-primary, navy);
+  color: var(--theme-text, white);
   padding: 3px 6px;
   margin-bottom: 15px;
   font-weight: bold;
@@ -34,10 +34,10 @@ body {
   position: absolute;
   top: -10px;
   left: 10px;
-  background: #c0c0c0;
+  background: var(--theme-window, #c0c0c0);
   padding: 0 5px;
   font-weight: bold;
-  color: navy;
+  color: var(--theme-primary, navy);
 }
 
 label {
@@ -78,8 +78,8 @@ button:active {
 .btn-update {
   width: 100%;
   margin-top: 5px;
-  background: #000080;
-  color: white;
+  background: var(--theme-primary, #000080);
+  color: var(--theme-text, white);
   border-color: #fff #000 #000 #fff;
 }
 
@@ -126,13 +126,13 @@ input[type="checkbox"]:focus {
 TEMA 2: MODERNO OSCURO (Panel de Control)
 ========================================= */
 .theme-modern {
-  background: #121212;
-  color: #e0e0e0;
+  background: var(--theme-bg);
+  color: var(--theme-text);
   font-family: "Segoe UI", sans-serif;
 }
 
 .theme-modern .window {
-  background: #1e1e1e;
+  background: var(--theme-window);
   border: none;
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
@@ -140,7 +140,7 @@ TEMA 2: MODERNO OSCURO (Panel de Control)
 
 .theme-modern .title-bar {
   background: transparent;
-  color: #fff;
+  color: var(--theme-text);
   border-bottom: 1px solid #333;
   font-size: 16px;
   text-align: center;
@@ -156,8 +156,8 @@ TEMA 2: MODERNO OSCURO (Panel de Control)
 }
 
 .theme-modern .section-title {
-  background: #1e1e1e;
-  color: #4a90e2;
+  background: var(--theme-window);
+  color: var(--theme-primary);
   top: -12px;
   border-radius: 4px;
   padding: 2px 8px;
@@ -187,8 +187,8 @@ TEMA 2: MODERNO OSCURO (Panel de Control)
 }
 
 .theme-modern .btn-update {
-  background: #4a90e2;
-  color: #fff;
+  background: var(--theme-primary);
+  color: var(--theme-window);
   border: none;
 }
 
@@ -219,20 +219,20 @@ TEMA 2: MODERNO OSCURO (Panel de Control)
 TEMA 3: CYBERPUNK NEÓN (Panel de Control)
 ========================================= */
 .theme-neon {
-  background: #050510;
-  color: #0ff;
+  background: var(--theme-bg);
+  color: var(--theme-text);
   font-family: "VT323", monospace, sans-serif;
 }
 
 .theme-neon .window {
-  background: rgba(10, 10, 20, 0.9);
-  border: 1px solid #0ff;
+  background: var(--theme-window);
+  border: 1px solid var(--theme-primary);
   box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
   border-radius: 0;
 }
 
 .theme-neon .title-bar {
-  background: #0ff;
+  background: var(--theme-primary);
   color: #000;
   text-transform: uppercase;
   font-weight: bold;
@@ -246,11 +246,11 @@ TEMA 3: CYBERPUNK NEÓN (Panel de Control)
 }
 
 .theme-neon .section-title {
-  background: #050510;
-  color: #f0f;
-  text-shadow: 0 0 5px #f0f;
+  background: var(--theme-bg);
+  color: var(--theme-secondary);
+  text-shadow: 0 0 5px var(--theme-secondary);
   top: -10px;
-  border: 1px solid #f0f;
+  border: 1px solid var(--theme-secondary);
 }
 
 .theme-neon button {
@@ -281,8 +281,8 @@ TEMA 3: CYBERPUNK NEÓN (Panel de Control)
 
 .theme-neon .btn-update {
   background: transparent;
-  color: #f0f;
-  border-color: #f0f;
+  color: var(--theme-secondary);
+  border-color: var(--theme-secondary);
 }
 
 .theme-neon .btn-update:active {
@@ -309,9 +309,9 @@ TEMA 3: CYBERPUNK NEÓN (Panel de Control)
 }
 
 .theme-neon div[style*="background: #000"] {
-  border-color: #f0f !important;
-  color: #f0f !important;
-  text-shadow: 0 0 8px #f0f;
+  border-color: var(--theme-score) !important;
+  color: var(--theme-score) !important;
+  text-shadow: 0 0 8px var(--theme-score);
 }
 
 /* Recuadro del marcador */
@@ -325,13 +325,13 @@ TEMA 3: CYBERPUNK NEÓN (Panel de Control)
 TEMA 4: MODERNO CLARO (Panel de Control)
 ========================================= */
 .theme-modern-light {
-  background: #f0f2f5;
-  color: #333;
+  background: var(--theme-bg);
+  color: var(--theme-text);
   font-family: "Segoe UI", sans-serif;
 }
 
 .theme-modern-light .window {
-  background: #ffffff;
+  background: var(--theme-window);
   border: none;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
@@ -339,7 +339,7 @@ TEMA 4: MODERNO CLARO (Panel de Control)
 
 .theme-modern-light .title-bar {
   background: transparent;
-  color: #1a1a1a;
+  color: var(--theme-text);
   border-bottom: 2px solid #f0f2f5;
   font-size: 16px;
   text-align: center;
@@ -355,8 +355,8 @@ TEMA 4: MODERNO CLARO (Panel de Control)
 }
 
 .theme-modern-light .section-title {
-  background: #ffffff;
-  color: #0366d6;
+  background: var(--theme-window);
+  color: var(--theme-primary);
   top: -12px;
   border-radius: 4px;
   padding: 2px 8px;
@@ -385,8 +385,8 @@ TEMA 4: MODERNO CLARO (Panel de Control)
 }
 
 .theme-modern-light .btn-update {
-  background: #0366d6;
-  color: #fff;
+  background: var(--theme-primary);
+  color: var(--theme-window);
   border: none;
 }
 
@@ -407,8 +407,8 @@ TEMA 4: MODERNO CLARO (Panel de Control)
 }
 
 .theme-modern-light div[style*="background: #000"] {
-  background: #f3f4f6 !important;
-  color: #0366d6 !important;
+  background: var(--theme-bg) !important;
+  color: var(--theme-score) !important;
   border: none !important;
   border-radius: 6px;
   font-weight: bold;
@@ -418,21 +418,21 @@ TEMA 4: MODERNO CLARO (Panel de Control)
 TEMA 5: PASTEL (Panel de Control)
 ========================================= */
 .theme-pastel {
-  background: #fff0f5;
-  color: #835c75;
+  background: var(--theme-bg);
+  color: var(--theme-text);
   font-family: "Quicksand", "Segoe UI", sans-serif;
 }
 
 .theme-pastel .window {
-  background: rgba(255, 255, 255, 0.95);
-  border: 2px solid #ffb6c1;
+  background: var(--theme-window);
+  border: 2px solid var(--theme-secondary);
   border-radius: 20px;
   box-shadow: 0 8px 30px rgba(255, 182, 193, 0.3);
 }
 
 .theme-pastel .title-bar {
   background: transparent;
-  color: #d87093;
+  color: var(--theme-primary);
   text-align: center;
   font-size: 18px;
   font-weight: bold;
@@ -448,12 +448,12 @@ TEMA 5: PASTEL (Panel de Control)
 }
 
 .theme-pastel .section-title {
-  background: #fff;
-  color: #d87093;
+  background: var(--theme-bg);
+  color: var(--theme-primary);
   top: -12px;
   border-radius: 10px;
   padding: 2px 10px;
-  border: 2px solid #ffb6c1;
+  border: 2px solid var(--theme-secondary);
   font-weight: bold;
 }
 
@@ -485,8 +485,8 @@ TEMA 5: PASTEL (Panel de Control)
 }
 
 .theme-pastel .btn-update {
-  background: #ffb6c1;
-  color: #fff;
+  background: var(--theme-secondary);
+  color: var(--theme-window);
   border: none;
 }
 
@@ -510,9 +510,9 @@ TEMA 5: PASTEL (Panel de Control)
 }
 
 .theme-pastel div[style*="background: #000"] {
-  background: #fff !important;
-  color: #d87093 !important;
-  border: 2px solid #ffb6c1 !important;
+  background: var(--theme-window) !important;
+  color: var(--theme-score) !important;
+  border: 2px solid var(--theme-secondary) !important;
   border-radius: 10px;
   font-weight: bold;
 }
@@ -521,20 +521,20 @@ TEMA 5: PASTEL (Panel de Control)
 TEMA 6: PIEDRA / ROCOSO (Panel de Control)
 ========================================= */
 .theme-stone {
-  background: #3a3a3a;
-  color: #e0e0e0;
+  background: var(--theme-bg);
+  color: var(--theme-text);
   font-family: "Georgia", serif;
 }
 .theme-stone .window {
-  background: #6b6b6b;
+  background: var(--theme-window);
   border: 4px solid;
   border-color: #8c8c8c #2b2b2b #2b2b2b #8c8c8c;
   border-radius: 4px;
   box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.8);
 }
 .theme-stone .title-bar {
-  background: #2b2b2b;
-  color: #d4d4d4;
+  background: var(--theme-primary);
+  color: var(--theme-text);
   text-align: center;
   border: 2px solid #1a1a1a;
   font-weight: bold;
@@ -550,8 +550,8 @@ TEMA 6: PIEDRA / ROCOSO (Panel de Control)
   border-radius: 2px;
 }
 .theme-stone .section-title {
-  background: #2b2b2b;
-  color: #f0f0f0;
+  background: var(--theme-primary);
+  color: var(--theme-text);
   border: 2px solid #1a1a1a;
   top: -14px;
   padding: 2px 10px;
@@ -577,7 +577,7 @@ TEMA 6: PIEDRA / ROCOSO (Panel de Control)
   font-family: sans-serif;
 }
 .theme-stone .btn-update {
-  background: #3a3a3a;
+  background: var(--theme-secondary);
   border-color: #6b6b6b #1a1a1a #1a1a1a #6b6b6b;
 }
 .theme-stone input[type="checkbox"] {
@@ -595,8 +595,8 @@ TEMA 6: PIEDRA / ROCOSO (Panel de Control)
   border-color: #2b2b2b #8c8c8c #8c8c8c #2b2b2b !important;
 }
 .theme-stone div[style*="background: #000"] {
-  background: #2b2b2b !important;
-  color: #fff !important;
+  background: var(--theme-primary) !important;
+  color: var(--theme-score) !important;
   border: 3px inset #1a1a1a !important;
   font-family: "Georgia", serif;
 }
@@ -605,18 +605,18 @@ TEMA 6: PIEDRA / ROCOSO (Panel de Control)
 TEMA 7: LÁSER ROJO (Panel de Control)
 ========================================= */
 .theme-laser {
-  background: #050000;
-  color: #ff0000;
+  background: var(--theme-bg);
+  color: var(--theme-text);
   font-family: "Arial", sans-serif;
 }
 .theme-laser .window {
-  background: #0a0000;
-  border: 2px solid #ff0000;
+  background: var(--theme-window);
+  border: 2px solid var(--theme-primary);
   border-radius: 0;
   box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
 }
 .theme-laser .title-bar {
-  background: #ff0000;
+  background: var(--theme-primary);
   color: #000;
   text-align: center;
   font-weight: 900;
@@ -630,8 +630,8 @@ TEMA 7: LÁSER ROJO (Panel de Control)
   padding: 15px;
 }
 .theme-laser .section-title {
-  background: #050000;
-  color: #ff0000;
+  background: var(--theme-bg);
+  color: var(--theme-primary);
   top: -12px;
   border: 1px solid #ff0000;
   text-shadow: 0 0 5px #ff0000;
@@ -662,8 +662,8 @@ TEMA 7: LÁSER ROJO (Panel de Control)
   box-shadow: 0 0 10px #ff0000;
 }
 .theme-laser .btn-update {
-  background: #1a0000;
-  border: 1px solid #ff0000;
+  background: var(--theme-secondary);
+  border: 1px solid var(--theme-primary);
 }
 .theme-laser input[type="checkbox"] {
   border: 1px solid #ff0000;
@@ -681,7 +681,7 @@ TEMA 7: LÁSER ROJO (Panel de Control)
 }
 .theme-laser div[style*="background: #000"] {
   background: transparent !important;
-  color: #ff0000 !important;
-  border: 1px solid #ff0000 !important;
-  text-shadow: 0 0 10px #ff0000;
+  color: var(--theme-score) !important;
+  border: 1px solid var(--theme-score) !important;
+  text-shadow: 0 0 10px var(--theme-score);
 }

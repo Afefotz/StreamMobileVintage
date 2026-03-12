@@ -11,7 +11,17 @@ const firebaseConfig = {
 };
 
 if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-//const db = firebase.database().ref('match_data'); // Cambié el nodo a 'match_data' para limpiar lo anterior NO MULTIUSUARIO
+
+// Map de colores por defecto para cada tema
+const defaultColors = {
+  "theme-win95": { bg: "#008080", window: "#c0c0c0", primary: "#000080", secondary: "#808080", text: "#000000", score: "#00ff00" },
+  "theme-modern-light": { bg: "#f0f2f5", window: "#ffffff", primary: "#0366d6", secondary: "#e1e4e8", text: "#333333", score: "#0366d6" },
+  "theme-modern": { bg: "#121212", window: "#1e1e1e", primary: "#4a90e2", secondary: "#333333", text: "#e0e0e0", score: "#ffffff" },
+  "theme-pastel": { bg: "#fff0f5", window: "#ffffff", primary: "#d87093", secondary: "#ffb6c1", text: "#835c75", score: "#d87093" },
+  "theme-stone": { bg: "#3a3a3a", window: "#6b6b6b", primary: "#2b2b2b", secondary: "#8c8c8c", text: "#e0e0e0", score: "#ffffff" },
+  "theme-laser": { bg: "#050000", window: "#0a0000", primary: "#ff0000", secondary: "#1a0000", text: "#ff0000", score: "#ff0000" },
+  "theme-neon": { bg: "#050510", window: "#0a0a14", primary: "#00ffff", secondary: "#ff00ff", text: "#00ffff", score: "#00ffff" }
+};
 
 // 1. Obtener el parámetro 'room' de la URL (ej: control.html?room=mistream)
 const urlParams = new URLSearchParams(window.location.search);
@@ -133,6 +143,34 @@ db.on("value", (snapshot) => {
   // Cambia el look del panel
   document.body.className = activeTheme;
 
+  // Sincronizar colores
+  if (data.settings && data.settings.colors) {
+      const colors = data.settings.colors;
+      const colorInputs = ['bg', 'window', 'primary', 'secondary', 'text', 'score'];
+      
+      colorInputs.forEach(key => {
+          const input = document.getElementById(`color-${key}`);
+          // Update visual picker if not currently in focus
+          if (document.activeElement !== input && colors[key]) {
+              input.value = colors[key];
+          }
+          // Set JS CSS variables
+          document.documentElement.style.setProperty(`--theme-${key}`, colors[key]);
+      });
+  } else if (defaultColors[activeTheme]) {
+      // Si no hay colores guardados, usar los defaults del tema activo
+      const def = defaultColors[activeTheme];
+      const colorInputs = ['bg', 'window', 'primary', 'secondary', 'text', 'score'];
+      
+      colorInputs.forEach(key => {
+          const input = document.getElementById(`color-${key}`);
+          if (document.activeElement !== input) {
+              input.value = def[key];
+          }
+          document.documentElement.style.setProperty(`--theme-${key}`, def[key]);
+      });
+  }
+
   // Cambiar el título superior del panel de control
   const panelTitle = document.getElementById('panel-title');
   if (activeTheme === 'theme-win95') panelTitle.innerText = 'Versus_Admin_v1.exe';
@@ -194,6 +232,16 @@ function cambiarTemaAutomatico() {
         else if (theme === 'theme-laser') titleInput.value = 'LASER // DEATHMATCH';
     }
 
+  // 4. Asignamos los colores por defecto del nuevo tema a los inputs
+  if (defaultColors[theme]) {
+      document.getElementById('color-bg').value = defaultColors[theme].bg;
+      document.getElementById('color-window').value = defaultColors[theme].window;
+      document.getElementById('color-primary').value = defaultColors[theme].primary;
+      document.getElementById('color-secondary').value = defaultColors[theme].secondary;
+      document.getElementById('color-text').value = defaultColors[theme].text;
+      document.getElementById('color-score').value = defaultColors[theme].score;
+  }
+
   // Guardamos los cambios inmediatamente
   updateSettings();
 }
@@ -201,17 +249,27 @@ function cambiarTemaAutomatico() {
 // Función para guardar la configuración global
 function updateSettings() {
   const show = document.getElementById("toggle-photos").checked;
-  const swap = document.getElementById("toggle-swap").checked; // Capturamos el nuevo checkbox
-  const theme = document.getElementById("theme-selector").value; // Capturamos el tema seleccionado
-  const title = document.getElementById("custom-title").value; // Capturamos el título
-  const vertical = document.getElementById('toggle-vertical').checked; // Capturamos el nuevo checkbox
+  const swap = document.getElementById("toggle-swap").checked;
+  const theme = document.getElementById("theme-selector").value;
+  const title = document.getElementById("custom-title").value;
+  const vertical = document.getElementById('toggle-vertical').checked;
+
+  const customColors = {
+    bg: document.getElementById('color-bg').value,
+    window: document.getElementById('color-window').value,
+    primary: document.getElementById('color-primary').value,
+    secondary: document.getElementById('color-secondary').value,
+    text: document.getElementById('color-text').value,
+    score: document.getElementById('color-score').value
+  };
 
   db.child("settings").update({
     showPhotos: show,
-    swapPlayers: swap, // Lo guardamos en Firebase
-    theme: theme, // Lo guardamos en Firebase
-    customTitle: title, // Lo enviamos a Firebase
-    verticalMode: vertical, // Lo enviamos a Firebase
+    swapPlayers: swap,
+    theme: theme,
+    customTitle: title,
+    verticalMode: vertical,
+    colors: customColors
   });
 }
 
