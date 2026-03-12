@@ -73,8 +73,8 @@ const paletasDeColor = {
   ],
   "theme-pastel": [
     { nombre: "Rosa Fresa", hex: "#ffb2cc" },
-    { nombre: "Amarillo Vainilla", hex: "#eff0cb" },
-    { nombre: "Naranja Durazno", hex: "#ffd6c1" },
+    { nombre: "Amarillo Vainilla", hex: "#f0f2ae" },
+    { nombre: "Naranja Durazno", hex: "#fccfaf" },
     { nombre: "Verde Menta", hex: "#b5ead7" },
   ],
   "theme-stone": [
