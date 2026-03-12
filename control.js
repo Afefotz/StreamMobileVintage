@@ -160,32 +160,6 @@ db.on("value", (snapshot) => {
                       ? data.settings.verticalMode 
                       : false;
   document.getElementById('toggle-vertical').checked = verticalMode;
-
-  // Sincronizar y Aplicar el Color de Acento
-  const savedColor = data.settings && data.settings.accentColor ? data.settings.accentColor : '#ff0000'; // Rojo por defecto
-              
-  // Actualizar el selector visualmente (solo si el usuario no lo está usando)
-  const colorInput = document.getElementById('theme-color');
-  if (document.activeElement !== colorInput) {
-      colorInput.value = savedColor;
-  }
-
-  // MATEMÁTICAS: Calcular contraste (Luminancia)
-  function getContrastColor(hex) {
-    hex = hex.replace('#', '');
-    const r = parseInt(hex.substring(0, 2), 16);
-    const g = parseInt(hex.substring(2, 4), 16);
-    const b = parseInt(hex.substring(4, 6), 16);
-    const yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
-    return (yiq >= 128) ? '#000000' : '#ffffff'; // Si es muy claro da negro, si es oscuro da blanco
-  }
-
-  const textColor = getContrastColor(savedColor);
-
-  // INYECTAR VARIABLES CSS A TODA LA PÁGINA
-  document.documentElement.style.setProperty('--main-color', savedColor);
-  document.documentElement.style.setProperty('--text-on-accent', textColor);
-
 });
 
 // Función que detecta el cambio de tema y asigna un título predeterminado
@@ -231,7 +205,6 @@ function updateSettings() {
   const theme = document.getElementById("theme-selector").value; // Capturamos el tema seleccionado
   const title = document.getElementById("custom-title").value; // Capturamos el título
   const vertical = document.getElementById('toggle-vertical').checked; // Capturamos el nuevo checkbox
-  const accentColor = document.getElementById('theme-color').value; // Capturamos el nuevo color del tema
 
   db.child("settings").update({
     showPhotos: show,
@@ -239,7 +212,6 @@ function updateSettings() {
     theme: theme, // Lo guardamos en Firebase
     customTitle: title, // Lo enviamos a Firebase
     verticalMode: vertical, // Lo enviamos a Firebase
-    accentColor: accentColor
   });
 }
 
