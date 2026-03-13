@@ -374,10 +374,12 @@ TEMA 6: ROCOSO / TEMPLO (Versión 1.1)
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
-/* =============== VARIANTES DE TEXTURA PARA PIEDRA (Overlay) ================ */
+/* =========================================
+   VARIANTES DE TEXTURA PARA PIEDRA
+   ========================================= */
 
 /* 1. Variante Gris Volcánico (Cincelado e irregular) */
-body.textura-volcanica .theme-stone .window {
+body.theme-stone.textura-volcanica .window {
   background-image:
     linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 40%, rgba(0, 0, 0, 0.5) 100%),
     url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.12"/></svg>');
@@ -385,7 +387,7 @@ body.textura-volcanica .theme-stone .window {
 }
 
 /* 2. Variante Rojo Ladrillo (Patrón de bloques) */
-body.textura-ladrillo .theme-stone .window {
+body.theme-stone.textura-ladrillo .window {
   background-image:
     repeating-linear-gradient(rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 2px, transparent 2px, transparent 18px),
     repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 2px, transparent 2px, transparent 36px),
@@ -394,7 +396,7 @@ body.textura-ladrillo .theme-stone .window {
 }
 
 /* 3. Variante Verde Musgo */
-body.textura-musgo .theme-stone .window {
+body.theme-stone.textura-musgo .window {
   background-color: #383c34;
   background-image:
     radial-gradient(circle at 10% 20%, rgba(94, 163, 21, 0.4) 0%, transparent 35%),
@@ -406,15 +408,15 @@ body.textura-musgo .theme-stone .window {
 }
 
 /* Color de texto verde brillante para que resalte sobre la roca oscura con musgo */
-body.textura-musgo .theme-stone .player-name,
-body.textura-musgo .theme-stone .vs,
-body.textura-musgo .theme-stone .score-box {
+body.theme-stone.textura-musgo .player-name,
+body.theme-stone.textura-musgo .vs,
+body.theme-stone.textura-musgo .score-box {
   color: #c9f29b;
   text-shadow: -1px -1px 2px rgba(0, 0, 0, 0.9), 1px 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 /* Forzar que el score box también tenga el mismo tono en la variante de musgo */
-body.textura-musgo .theme-stone .score-box {
+body.theme-stone.textura-musgo .score-box {
   border-color: rgba(0, 0, 0, 0.7);
   box-shadow: inset 3px 3px 8px rgba(0, 0, 0, 0.8), 1px 1px 0 rgba(255, 255, 255, 0.1);
 }
