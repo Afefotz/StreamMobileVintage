@@ -55,6 +55,7 @@ else if (selectedTheme === 'theme-pastel') indexTitle.innerText = '✧ Match Cre
 else if (selectedTheme === 'theme-stone') indexTitle.innerText = 'Forge New Arena';
 else if (selectedTheme === 'theme-laser') indexTitle.innerText = 'INIT_LASER_GRID';
 else if (selectedTheme === 'theme-paper') indexTitle.innerText = 'Borrador_Oficial.txt';
+else if (selectedTheme === 'theme-metal') indexTitle.innerText = 'HIERRO FORJADO';
 }
 
 // Ejecutar la vista previa apenas cargue la página

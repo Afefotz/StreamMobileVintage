@@ -94,6 +94,11 @@ const paletasDeColor = {
     { nombre: "Pergamino Antiguo", hex: "#f4e8c1" },
     { nombre: "Nota Adhesiva", hex: "#fef178" },
     { nombre: "Plano Arquitectónico", hex: "#1e548f" }
+  ],
+  "theme-metal": [
+    { nombre: "Acero Plateado", hex: "#e0e5ec" },
+    { nombre: "Oro Imperial", hex: "#ffd700" },
+    { nombre: "Bronce Antiguo", hex: "#cd7f32" }
   ]
 };
 
@@ -198,6 +203,8 @@ db.on("value", (snapshot) => {
     panelTitle.innerText = "LASER_COMMAND_CTR";
   else if (activeTheme === "theme-paper")
     panelTitle.innerText = "Borrador_Oficial.txt";
+  else if (activeTheme === "theme-metal")
+    panelTitle.innerText = "HIERRO FORJADO";
 
 
   // Sincronizar Título Personalizado
@@ -282,6 +289,15 @@ db.on("value", (snapshot) => {
         document.body.classList.add("textura-plano");
     }
   }
+  else if (themeActual === "theme-metal") {
+    if (savedColor === "#e0e5ec") {
+        document.body.classList.add("textura-plata");
+    } else if (savedColor === "#ffd700") {
+        document.body.classList.add("textura-oro");
+    } else if (savedColor === "#cd7f32") {
+        document.body.classList.add("textura-bronce");
+    }
+  }
 
   // 4. Seleccionar la opción en el menú (sin interrumpir)
   const variantSelect = document.getElementById("theme-variant");
@@ -320,6 +336,7 @@ function cambiarTemaAutomatico() {
     "EPIC DUEL",
     "LASER // DEATHMATCH",
     "Borrador_Oficial.txt",
+    "HIERRO FORJADO",
     "", // También consideramos "vacío" como predeterminado para que lo llene
   ];
 

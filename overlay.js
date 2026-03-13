@@ -161,6 +161,15 @@ db.on("value", (snapshot) => {
         document.body.classList.add("textura-plano");
     }
   }
+  else if (themeActual === "theme-metal") {
+    if (savedColor === "#e0e5ec") {
+        document.body.classList.add("textura-plata");
+    } else if (savedColor === "#ffd700") {
+        document.body.classList.add("textura-oro");
+    } else if (savedColor === "#cd7f32") {
+        document.body.classList.add("textura-bronce");
+    }
+  }
 
 });
 
