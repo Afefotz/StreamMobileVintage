@@ -12,6 +12,8 @@ body {
   max-width: 400px;
   margin: 0 auto;
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+  opacity: var(--widget-opacity, 1);
+  transition: opacity 0.2s ease; /* Transición suave al deslizar */
 }
 
 .title-bar {
@@ -64,7 +66,7 @@ input[type="text"] {
   background: #000;
   color: #0f0;
   font-family: "VT323", monospace;
-  font-size: 35px;
+  font-size: 40px;
   padding: 0 10px;
   min-width: 40px;
   text-align: center;

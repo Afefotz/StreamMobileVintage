@@ -15,6 +15,8 @@ body {
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
+  opacity: var(--widget-opacity, 1);
+  transition: opacity 0.2s ease; /* Transición suave al deslizar */
 }
 
 .title-bar {
@@ -719,8 +721,7 @@ body.theme-metal.textura-bronce .score-box {
     border-color: #5c2e0b;
 }
 
-/* Corrección de fondo para el panel de control (para que no se vea blanco transparente) */
-body.theme-metal { background-color: #222; color: #fff; } /* Gris muy oscuro de fondo en el panel */
+body.theme-metal { background-color: transparent !important; }
 
 /* =========================================
 MODO VERTICAL (.modo-vertical)

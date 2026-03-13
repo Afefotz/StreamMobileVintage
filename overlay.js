@@ -171,6 +171,9 @@ db.on("value", (snapshot) => {
     }
   }
 
+  const savedOpacity = data.settings && data.settings.opacity !== undefined ? data.settings.opacity : 100;
+  document.documentElement.style.setProperty("--widget-opacity", savedOpacity / 100);
+
 });
 
 function updatePlayer(id, data) {

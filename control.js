@@ -318,6 +318,19 @@ db.on("value", (snapshot) => {
   const textColor = getContrastColor(savedColor);
   document.documentElement.style.setProperty("--main-color", savedColor);
   document.documentElement.style.setProperty("--text-on-accent", textColor);
+
+    // --- LECTURA DE OPACIDAD ---
+  const savedOpacity = data.settings && data.settings.opacity !== undefined ? data.settings.opacity : 100;
+  
+  const opacityInput = document.getElementById("widget-opacity");
+  if (document.activeElement !== opacityInput) {
+      opacityInput.value = savedOpacity;
+      document.getElementById("opacity-val").innerText = savedOpacity + "%";
+  }
+  
+  // Inyectar variable CSS de opacidad (convertida a decimal: 100 = 1.0)
+  document.documentElement.style.setProperty("--widget-opacity", savedOpacity / 100);
+  
 });
 
 // Función que detecta el cambio de tema y asigna un título predeterminado
@@ -397,6 +410,7 @@ function updateSettings() {
   const vertical = document.getElementById("toggle-vertical").checked; // Capturamos el nuevo checkbox
   //const accentColor = document.getElementById('theme-color').value; // Capturamos el nuevo color del tema
   const accentColor = document.getElementById("theme-variant").value; // Capturamos la variante de color seleccionada
+  const opacity = document.getElementById("widget-opacity").value; // Capturamos el valor de opacidad
 
   db.child("settings").update({
     showPhotos: show,
@@ -405,6 +419,7 @@ function updateSettings() {
     customTitle: title, // Lo enviamos a Firebase
     verticalMode: vertical, // Lo enviamos a Firebase
     accentColor: accentColor,
+    opacity: parseInt(opacity)
   });
 }
 
