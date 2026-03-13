@@ -38,6 +38,7 @@ if (initialTheme) {
   else if (initialTheme === "theme-pastel") defaultTitle = "♡ Sweet Match ♡";
   else if (initialTheme === "theme-stone") defaultTitle = "EPIC DUEL";
   else if (initialTheme === "theme-laser") defaultTitle = "LASER // DEATHMATCH";
+  else if (initialTheme === "theme-paper") defaultTitle = "Borrador_Oficial.txt";
 
   // Guardamos en Firebase instantáneamente
   db.child("settings").update({
@@ -195,6 +196,9 @@ db.on("value", (snapshot) => {
     panelTitle.innerText = "Colosseum Admin";
   else if (activeTheme === "theme-laser")
     panelTitle.innerText = "LASER_COMMAND_CTR";
+  else if (activeTheme === "theme-paper")
+    panelTitle.innerText = "Borrador_Oficial.txt";
+
 
   // Sincronizar Título Personalizado
   const customTitle =
@@ -315,6 +319,7 @@ function cambiarTemaAutomatico() {
     "♡ Sweet Match ♡",
     "EPIC DUEL",
     "LASER // DEATHMATCH",
+    "Borrador_Oficial.txt",
     "", // También consideramos "vacío" como predeterminado para que lo llene
   ];
 
