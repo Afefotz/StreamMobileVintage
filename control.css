@@ -122,6 +122,15 @@ input[type="checkbox"]:focus {
   outline-offset: 2px;
 }
 
+/* Estilo base para los contenedores de configuración (Win95 por defecto) */
+.panel-card {
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #dfdfdf #808080 #808080 #dfdfdf;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
 /* =========================================
 TEMA 2: MODERNO OSCURO (Panel de Control)
 ========================================= */
@@ -211,6 +220,12 @@ TEMA 2: MODERNO OSCURO (Panel de Control)
 .theme-modern div[style*="background: #000"] {
   border: none !important;
   border-radius: 6px;
+}
+
+.theme-modern .panel-card {
+  background: #252525;
+  border: 1px solid #333;
+  border-radius: 8px;
 }
 
 /* =========================================
@@ -336,6 +351,12 @@ TEMA 4: CYBERPUNK NEÓN (Panel de Control)
   font-size: 18px;
 }
 
+.theme-neon .panel-card {
+  background: transparent;
+  border: 1px solid var(--main-color);
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
 /* =========================================
 TEMA 3: MODERNO CLARO (Panel de Control)
 ========================================= */
@@ -427,6 +448,12 @@ TEMA 3: MODERNO CLARO (Panel de Control)
   border: none !important;
   border-radius: 6px;
   font-weight: bold;
+}
+
+.theme-modern-light .panel-card {
+  background: #fafbfc;
+  border: 1px solid #e1e4e8;
+  border-radius: 8px;
 }
 
 /* =========================================
@@ -530,6 +557,12 @@ TEMA 5: PASTEL (Panel de Control)
   border: 2px solid var(--main-color) !important;
   border-radius: 10px;
   font-weight: bold;
+}
+
+.theme-pastel .panel-card {
+  background: #fff9fa;
+  border: 2px solid #ffe4e1;
+  border-radius: 15px;
 }
 
 /* =========================================
@@ -644,6 +677,13 @@ TEMA 6: PIEDRA / ROCOSO (Panel de Control Natural)
   box-shadow: inset 3px 3px 8px rgba(0, 0, 0, 0.7), 1px 1px 0 rgba(255, 255, 255, 0.1) !important;
   font-family: "Georgia", serif;
   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.6), 1px 1px 1px rgba(255, 255, 255, 0.2) !important;
+}
+
+.theme-stone .panel-card {
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2), 1px 1px 0 rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
 }
 
 /* ================ VARIANTES DE TEXTURA PARA PIEDRA ================ */
@@ -789,115 +829,139 @@ TEMA 7: LÁSER ROJO (Panel de Control)
   text-shadow: 0 0 10px var(--main-color);
 }
 
+.theme-laser .panel-card {
+  background: transparent;
+  border: 1px solid var(--main-color);
+}
+
 /* =========================================
 TEMA 8: DOCUMENTO / PAPEL
 ========================================= */
-.theme-paper { 
-    background: #e0e0e0; 
-    color: var(--text-on-accent); 
-    font-family: 'Courier New', Courier, monospace; 
+.theme-paper {
+  background: #e0e0e0;
+  color: var(--text-on-accent);
+  font-family: 'Courier New', Courier, monospace;
 }
 
 /* Apariencia de hoja de papel apilada */
-.theme-paper .window { 
-    background-color: var(--main-color); 
-    border: 1px solid rgba(0,0,0,0.2); 
-    border-radius: 2px; 
-    box-shadow: 3px 3px 10px rgba(0,0,0,0.1), 5px 5px 0px rgba(0,0,0,0.03); 
+.theme-paper .window {
+  background-color: var(--main-color);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1), 5px 5px 0px rgba(0, 0, 0, 0.03);
 }
 
-.theme-paper .title-bar { 
-    background: transparent; 
-    color: var(--text-on-accent); 
-    text-align: center; 
-    font-weight: bold; 
-    border-bottom: 2px dashed rgba(0,0,0,0.3); 
-    text-transform: uppercase; 
-    font-size: 1.2rem;
-    padding-bottom: 10px;
+.theme-paper .title-bar {
+  background: transparent;
+  color: var(--text-on-accent);
+  text-align: center;
+  font-weight: bold;
+  border-bottom: 2px dashed rgba(0, 0, 0, 0.3);
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  padding-bottom: 10px;
 }
 
 /* Estilo tipo boceto / tinta */
-.theme-paper .player-name, .theme-paper .vs { 
-    font-weight: bold; 
-}
-.theme-paper .photo-frame { 
-    border: 2px solid var(--text-on-accent); 
-    border-radius: 2px; 
-    padding: 4px; /* Simula un marco de foto polaroid pegada */
-    background: #fff;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-}
-.theme-paper .score-box { 
-    background: transparent; 
-    color: var(--text-on-accent); 
-    border: 2px solid var(--text-on-accent); 
-    border-radius: 50%; /* Marcador circular tipo sello */
-    font-weight: bold; 
-    box-shadow: none;
+.theme-paper .player-name,
+.theme-paper .vs {
+  font-weight: bold;
 }
 
-.theme-paper .player-section { 
-    background: rgba(255,255,255,0.4); 
-    border: 1px solid rgba(0,0,0,0.15); 
+.theme-paper .photo-frame {
+  border: 2px solid var(--text-on-accent);
+  border-radius: 2px;
+  padding: 4px;
+  /* Simula un marco de foto polaroid pegada */
+  background: #fff;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
-.theme-paper .section-title { 
-    background: var(--main-color); 
-    border: 1px dashed rgba(0,0,0,0.3); 
-    color: var(--text-on-accent); 
+
+.theme-paper .score-box {
+  background: transparent;
+  color: var(--text-on-accent);
+  border: 2px solid var(--text-on-accent);
+  border-radius: 50%;
+  /* Marcador circular tipo sello */
+  font-weight: bold;
+  box-shadow: none;
 }
-.theme-paper button { 
-    background: transparent; 
-    color: var(--text-on-accent); 
-    border: 2px solid var(--text-on-accent); 
-    font-family: 'Courier New', Courier, monospace; 
-    font-weight: bold; 
-    transition: 0.1s;
+
+.theme-paper .player-section {
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(0, 0, 0, 0.15);
 }
-.theme-paper button:active { 
-    background: var(--text-on-accent); 
-    color: var(--main-color); 
+
+.theme-paper .section-title {
+  background: var(--main-color);
+  border: 1px dashed rgba(0, 0, 0, 0.3);
+  color: var(--text-on-accent);
 }
-.theme-paper input[type="text"], .theme-paper select { 
-    background: transparent; 
-    color: var(--text-on-accent); 
-    border: none; 
-    border-bottom: 2px dashed rgba(0,0,0,0.3); /* Líneas para escribir sobre ellas */
-    font-family: 'Courier New', Courier, monospace; 
-    outline: none;
+
+.theme-paper button {
+  background: transparent;
+  color: var(--text-on-accent);
+  border: 2px solid var(--text-on-accent);
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  transition: 0.1s;
 }
-.theme-paper input[type="checkbox"] { 
-    background: transparent; 
-    border: 2px solid var(--text-on-accent); 
+
+.theme-paper button:active {
+  background: var(--text-on-accent);
+  color: var(--main-color);
 }
-.theme-paper input[type="checkbox"]:checked::before { 
-    color: var(--text-on-accent); 
-    content: "V"; 
+
+.theme-paper input[type="text"],
+.theme-paper select {
+  background: transparent;
+  color: var(--text-on-accent);
+  border: none;
+  border-bottom: 2px dashed rgba(0, 0, 0, 0.3);
+  /* Líneas para escribir sobre ellas */
+  font-family: 'Courier New', Courier, monospace;
+  outline: none;
+}
+
+.theme-paper input[type="checkbox"] {
+  background: transparent;
+  border: 2px solid var(--text-on-accent);
+}
+
+.theme-paper input[type="checkbox"]:checked::before {
+  color: var(--text-on-accent);
+  content: "V";
+}
+
+.theme-paper .panel-card {
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 2px;
 }
 
 /* ============== VARIANTES DE TEXTURA PARA PAPEL ======================= */
 
 /* 1. Cuaderno (Cuadrícula azul muy clara) */
 body.theme-paper.textura-cuaderno .window {
-    background-image: 
-        linear-gradient(rgba(0,0,255,0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,0,255,0.05) 1px, transparent 1px);
-    background-size: 20px 20px;
+  background-image:
+    linear-gradient(rgba(0, 0, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 255, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
 }
 
 /* 2. Pergamino (Textura antigua con ruido SVG) */
 body.theme-paper.textura-pergamino .window {
-    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.08"/></svg>');
-    border: 1px solid rgba(139,69,19,0.3);
+  background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.08"/></svg>');
+  border: 1px solid rgba(139, 69, 19, 0.3);
 }
 
 /* 3. Plano Arquitectónico (Blueprint - Cuadrícula Blanca + Borde Grueso) */
 body.theme-paper.textura-plano .window {
-    background-image: 
-        linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px),
-        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-    background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
-    border: 3px solid rgba(255,255,255,0.8);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+  border: 3px solid rgba(255, 255, 255, 0.8);
 }
