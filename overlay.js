@@ -133,14 +133,22 @@ db.on("value", (snapshot) => {
     vsColor = textColor;
   }
 
+  // 2.1 SINCRONIZAR COLOR Y VARIABLES CSS
+  // Firebase guardará la clave (ejemplo: 'rojo ladrillo')
+  const savedPaletaKey =
+    data.settings && data.settings.accentColor
+      ? data.settings.accentColor.toLowerCase()
+      : "modern-dark-original";
+
   // 3. Inyectar TODAS las variables al CSS del documento
   document.documentElement.style.setProperty("--main-color", savedColor);
   document.documentElement.style.setProperty("--text-on-accent", textColor);
-  document.documentElement.style.setProperty(
-    "--player-name-color",
-    playerNameColor,
-  );
+  document.documentElement.style.setProperty("--player-name-color", playerNameColor);
   document.documentElement.style.setProperty("--vs-color", vsColor);
+
+  // NUEVO: Inyectar la clave de la paleta como una clase en el root
+  // Esto activará los diseños específicos en CSS (ejemplo: .stone-brick, .stone-musgo)
+  document.documentElement.className = savedPaletaKey;
 });
 
 function updatePlayer(id, data) {
