@@ -650,11 +650,36 @@ TEMA 9: METÁLICO (Plata, Oro, Bronce)
     box-shadow: inset 2px 2px 5px rgba(0,0,0,0.8), 1px 1px 2px rgba(255,255,255,0.5); 
 }
 
+/* Efecto del recuadro del marcador (Hundido en el metal) */
 .theme-metal .score-box { 
-    background: rgba(0,0,0,0.1); 
-    border: 2px solid; 
-    border-radius: 4px; 
-    box-shadow: inset 2px 2px 6px rgba(0,0,0,0.6), 1px 1px 1px rgba(255,255,255,0.4); 
+    /* Fondo más oscuro simulando la profundidad */
+    background: rgba(0, 0, 0, 0.25) !important; 
+    
+    /* Bordes que simulan un corte biselado (oscuro arriba/izquierda, luz abajo/derecha) */
+    border-top: 2px solid rgba(0,0,0,0.8) !important;
+    border-left: 2px solid rgba(0,0,0,0.8) !important;
+    border-bottom: 2px solid rgba(255,255,255,0.5) !important;
+    border-right: 2px solid rgba(255,255,255,0.5) !important;
+    
+    /* Sombra interna agresiva para dar profundidad 3D */
+    box-shadow: inset 4px 4px 10px rgba(0,0,0,0.8), 1px 1px 0px rgba(255,255,255,0.3) !important; 
+    border-radius: 6px; 
+}
+
+/* Efecto de NÚMEROS TALLADOS (Color oscuro con reflejo en el borde inferior) */
+body.theme-metal.textura-plata .score-box {
+    color: #1a252f !important; /* Gris casi negro por la sombra interna */
+    text-shadow: 1px 1px 1px rgba(255,255,255,0.8), -1px -1px 1px rgba(0,0,0,0.9) !important;
+}
+
+body.theme-metal.textura-oro .score-box {
+    color: #332400 !important; /* Café muy oscuro, sin brillo */
+    text-shadow: 1px 1px 1px rgba(255,255,255,0.5), -1px -1px 2px rgba(0,0,0,0.9) !important;
+}
+
+body.theme-metal.textura-bronce .score-box {
+    color: #1a0c03 !important; /* Marrón casi negro */
+    text-shadow: 1px 1px 1px rgba(255,160,100,0.5), -1px -1px 2px rgba(0,0,0,0.9) !important;
 }
 
 /* ============== VARIANTES DE TEXTURA PARA METAL ==================== */
