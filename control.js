@@ -88,6 +88,12 @@ const paletasDeColor = {
     { nombre: "Amarillo Precaución", hex: "#ffff00" },
     { nombre: "Morado Galáctico", hex: "#bf00ff" },
   ],
+  "theme-paper": [
+    { nombre: "Hoja de Cuaderno", hex: "#fdfdfd" },
+    { nombre: "Pergamino Antiguo", hex: "#f4e8c1" },
+    { nombre: "Nota Adhesiva", hex: "#fef178" },
+    { nombre: "Plano Arquitectónico", hex: "#1e548f" }
+  ]
 };
 
 // Sincronizar el panel con los datos existentes (Nombres, Fotos y Puntos - mostrar fotos o no y Modo Vertical)
@@ -263,6 +269,15 @@ db.on("value", (snapshot) => {
       document.body.classList.add("textura-volcanica");
     }
   }
+  else if (themeActual === "theme-paper") {
+    if (savedColor === "#fdfdfd") {
+        document.body.classList.add("textura-cuaderno");
+    } else if (savedColor === "#f4e8c1") {
+        document.body.classList.add("textura-pergamino");
+    } else if (savedColor === "#1e548f") {
+        document.body.classList.add("textura-plano");
+    }
+  }
 
   // 4. Seleccionar la opción en el menú (sin interrumpir)
   const variantSelect = document.getElementById("theme-variant");
@@ -316,6 +331,7 @@ function cambiarTemaAutomatico() {
     else if (theme === "theme-pastel") titleInput.value = "♡ Sweet Match ♡";
     else if (theme === "theme-stone") titleInput.value = "EPIC DUEL";
     else if (theme === "theme-laser") titleInput.value = "LASER // DEATHMATCH";
+    else if (theme === "theme-paper") titleInput.value = "Borrador_Oficial.txt";
   }
 
   // Guardamos los cambios inmediatamente

@@ -54,6 +54,7 @@ else if (selectedTheme === 'theme-neon') indexTitle.innerText = 'SYS_INIT // ROO
 else if (selectedTheme === 'theme-pastel') indexTitle.innerText = '✧ Match Creator ✧';
 else if (selectedTheme === 'theme-stone') indexTitle.innerText = 'Forge New Arena';
 else if (selectedTheme === 'theme-laser') indexTitle.innerText = 'INIT_LASER_GRID';
+else if (selectedTheme === 'theme-paper') indexTitle.innerText = 'Borrador_Oficial.txt';
 }
 
 // Ejecutar la vista previa apenas cargue la página

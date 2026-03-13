@@ -152,6 +152,15 @@ db.on("value", (snapshot) => {
         document.body.classList.add("textura-volcanica");
     }
   }
+  else if (themeActual === "theme-paper") {
+    if (savedColor === "#fdfdfd") {
+        document.body.classList.add("textura-cuaderno");
+    } else if (savedColor === "#f4e8c1") {
+        document.body.classList.add("textura-pergamino");
+    } else if (savedColor === "#1e548f") {
+        document.body.classList.add("textura-plano");
+    }
+  }
 
 });
 
