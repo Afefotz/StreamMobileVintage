@@ -252,6 +252,17 @@ db.on("value", (snapshot) => {
     playerNameColor,
   );
   document.documentElement.style.setProperty("--vs-color", vsColor);
+  document.body.className = themeActual; // Aseguramos mantener la clase base (ej. theme-stone)
+
+  if (themeActual === "theme-stone") {
+    if (savedColor === "#cc5544") {
+      document.body.classList.add("textura-ladrillo");
+    } else if (savedColor === "#2b2b2b") {
+      document.body.classList.add("textura-musgo");
+    } else {
+      document.body.classList.add("textura-volcanica");
+    }
+  }
 
   // 4. Seleccionar la opción en el menú (sin interrumpir)
   const variantSelect = document.getElementById("theme-variant");
@@ -272,7 +283,6 @@ db.on("value", (snapshot) => {
   const textColor = getContrastColor(savedColor);
   document.documentElement.style.setProperty("--main-color", savedColor);
   document.documentElement.style.setProperty("--text-on-accent", textColor);
-  
 });
 
 // Función que detecta el cambio de tema y asigna un título predeterminado

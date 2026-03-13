@@ -133,22 +133,26 @@ db.on("value", (snapshot) => {
     vsColor = textColor;
   }
 
-  // 2.1 SINCRONIZAR COLOR Y VARIABLES CSS
-  // Firebase guardará la clave (ejemplo: 'rojo ladrillo')
-  const savedPaletaKey =
-    data.settings && data.settings.accentColor
-      ? data.settings.accentColor.toLowerCase()
-      : "modern-dark-original";
-
-  // 3. Inyectar TODAS las variables al CSS del documento
+// 3. Inyectar TODAS las variables al CSS del documento
   document.documentElement.style.setProperty("--main-color", savedColor);
   document.documentElement.style.setProperty("--text-on-accent", textColor);
   document.documentElement.style.setProperty("--player-name-color", playerNameColor);
   document.documentElement.style.setProperty("--vs-color", vsColor);
 
-  // NUEVO: Inyectar la clave de la paleta como una clase en el root
-  // Esto activará los diseños específicos en CSS (ejemplo: .stone-brick, .stone-musgo)
-  document.documentElement.className = savedPaletaKey;
+  // Aseguramos mantener la clase base (ej. theme-stone)
+  document.body.className = themeActual; 
+
+  // Agregamos la clase de textura dependiendo del color hexadecimal elegido
+  if (themeActual === "theme-stone") {
+    if (savedColor === "#cc5544") {
+        document.body.classList.add("textura-ladrillo");
+    } else if (savedColor === "#2b2b2b") {
+        document.body.classList.add("textura-musgo");
+    } else {
+        document.body.classList.add("textura-volcanica");
+    }
+  }
+
 });
 
 function updatePlayer(id, data) {

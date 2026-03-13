@@ -374,49 +374,49 @@ TEMA 6: ROCOSO / TEMPLO (Versión 1.1)
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
-/* DISEÑOS ESPECÍFICOS PARA LAS VARIANTES */
+/* =============== VARIANTES DE TEXTURA PARA PIEDRA (Overlay) ================ */
 
-/* Variante: Rojo Ladrillo (Ladrillos Cincelados) */
-.rojo.ladrillo .theme-stone .window {
-  background-color: #cc5544;
+/* 1. Variante Gris Volcánico (Cincelado e irregular) */
+body.textura-volcanica .theme-stone .window {
   background-image:
-    repeating-linear-gradient(rgba(0, 0, 0, 0.15) 0, rgba(0, 0, 0, 0.15) 1px, transparent 1px, transparent 15px),
-    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.15) 0, rgba(0, 0, 0, 0.15) 1px, transparent 1px, transparent 30px);
-  border: 1px solid #994433;
-  box-shadow: inset 2px 2px 4px rgba(255, 255, 255, 0.1), inset -3px -3px 6px rgba(0, 0, 0, 0.3), 8px 12px 20px rgba(0, 0, 0, 0.5);
+    linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 40%, rgba(0, 0, 0, 0.5) 100%),
+    url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.12"/></svg>');
+  box-shadow: inset 2px 2px 4px rgba(255, 255, 255, 0.15), inset -4px -4px 8px rgba(0, 0, 0, 0.6), 8px 12px 20px rgba(0, 0, 0, 0.5);
 }
 
-/* Variante: Verde Musgo (Naturaleza irregular con Tinte) */
-.verde.musgo .theme-stone .window {
-  background-color: #2b2b2b;
-  /* Base oscura para la roca */
+/* 2. Variante Rojo Ladrillo (Patrón de bloques) */
+body.textura-ladrillo .theme-stone .window {
   background-image:
-    radial-gradient(ellipse at center, rgba(136, 171, 107, 0.4) 0%, rgba(136, 171, 107, 0) 60%),
-    radial-gradient(circle at 70% 20%, rgba(107, 142, 35, 0.3) 0%, rgba(107, 142, 35, 0) 50%),
-    radial-gradient(circle at 10% 80%, rgba(69, 107, 51, 0.25) 0%, rgba(69, 107, 51, 0) 40%),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 40%, rgba(0, 0, 0, 0.3) 100%),
-    repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(0, 0, 0, 0.02) 2px, rgba(0, 0, 0, 0.02) 4px);
-  border: 1px solid #1a1a1a;
-  box-shadow: inset 2px 2px 4px rgba(255, 255, 255, 0.15), inset -3px -3px 6px rgba(0, 0, 0, 0.4), 8px 12px 20px rgba(0, 0, 0, 0.6);
+    repeating-linear-gradient(rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 2px, transparent 2px, transparent 18px),
+    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 2px, transparent 2px, transparent 36px),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 50%, rgba(0, 0, 0, 0.4) 100%);
+  box-shadow: inset 2px 2px 4px rgba(255, 255, 255, 0.1), inset -3px -3px 6px rgba(0, 0, 0, 0.4);
 }
 
-/* Texto tallado en el musgo con contraste */
-.verde.musgo .theme-stone .player-name,
-.verde.musgo .theme-stone .vs {
-  color: #d1f4b0;
-  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.7), 1px 1px 0 rgba(255, 255, 255, 0.1);
+/* 3. Variante Verde Musgo */
+body.textura-musgo .theme-stone .window {
+  background-color: #383c34;
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(94, 163, 21, 0.4) 0%, transparent 35%),
+    radial-gradient(circle at 85% 75%, rgba(135, 199, 44, 0.3) 0%, transparent 45%),
+    radial-gradient(circle at 50% 90%, rgba(77, 128, 23, 0.35) 0%, transparent 30%),
+    linear-gradient(110deg, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0.6) 100%),
+    url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.18"/></svg>');
+  box-shadow: inset 2px 2px 5px rgba(255, 255, 255, 0.1), inset -4px -4px 10px rgba(0, 0, 0, 0.7), 6px 10px 15px rgba(0, 0, 0, 0.6);
 }
 
-/* Marcos huecos tallados en el musgo */
-.verde.musgo .theme-stone .photo-frame {
-  border: 2px solid rgba(0, 0, 0, 0.7);
-  box-shadow: inset 4px 4px 10px rgba(0, 0, 0, 0.9), 1px 1px 1px rgba(255, 255, 255, 0.1);
+/* Color de texto verde brillante para que resalte sobre la roca oscura con musgo */
+body.textura-musgo .theme-stone .player-name,
+body.textura-musgo .theme-stone .vs,
+body.textura-musgo .theme-stone .score-box {
+  color: #c9f29b;
+  text-shadow: -1px -1px 2px rgba(0, 0, 0, 0.9), 1px 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-.verde.musgo .theme-stone .score-box {
-  color: #d1f4b0;
-  border: 1px solid rgba(0, 0, 0, 0.7);
-  box-shadow: inset 3px 3px 8px rgba(0, 0, 0, 0.8), 1px 1px 0 rgba(255, 255, 255, 0.1) !important;
+/* Forzar que el score box también tenga el mismo tono en la variante de musgo */
+body.textura-musgo .theme-stone .score-box {
+  border-color: rgba(0, 0, 0, 0.7);
+  box-shadow: inset 3px 3px 8px rgba(0, 0, 0, 0.8), 1px 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 /* =========================================
