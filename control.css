@@ -533,100 +533,104 @@ TEMA 5: PASTEL (Panel de Control)
 }
 
 /* =========================================
-TEMA 6: PIEDRA / ROCOSO (Panel de Control)
+TEMA 6: PIEDRA / ROCOSO (Panel de Control Natural)
 ========================================= */
-.theme-stone {
-  background: #3a3a3a;
-  color: #e0e0e0;
-  font-family: "Georgia", serif;
+.theme-stone { background: #1a1a1a; color: var(--text-on-accent); font-family: "Georgia", serif; }
+
+.theme-stone .window { 
+    background-color: var(--main-color); 
+    background-image: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 40%, rgba(0,0,0,0.4) 100%);
+    border: 1px solid rgba(0,0,0,0.5); 
+    border-radius: 8px; 
+    box-shadow: inset 2px 2px 4px rgba(255,255,255,0.2), inset -3px -3px 6px rgba(0,0,0,0.5), 6px 8px 15px rgba(0,0,0,0.6); 
 }
 
-.theme-stone .window {
-  background: #6b6b6b;
-  border: 4px solid;
-  border-color: #8c8c8c #2b2b2b #2b2b2b #8c8c8c;
-  border-radius: 4px;
-  box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.8);
+.theme-stone .title-bar { 
+    background: rgba(0, 0, 0, 0.25); 
+    color: var(--text-on-accent); 
+    text-align: center; 
+    font-weight: bold; 
+    border-bottom: 2px solid rgba(0,0,0,0.5); 
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 20px; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
 }
 
-.theme-stone .title-bar {
-  background: var(--main-color);
-  color: var(--text-on-accent);
-  text-align: center;
-  border: 2px solid #1a1a1a;
-  font-weight: bold;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+.theme-stone .player-section { 
+    background: rgba(0,0,0,0.1); 
+    border: 1px solid rgba(0,0,0,0.4); 
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.2), 1px 1px 0 rgba(255,255,255,0.1); 
+    padding: 15px; 
+    border-radius: 6px; 
 }
 
-.theme-stone .player-section {
-  background: #5c5c5c;
-  border: 4px solid;
-  border-color: #2b2b2b #8c8c8c #8c8c8c #2b2b2b;
-  padding: 15px;
-  border-radius: 2px;
+.theme-stone .section-title { 
+    background: var(--main-color); 
+    color: var(--text-on-accent); 
+    border: 1px solid rgba(0,0,0,0.5); 
+    box-shadow: inset 1px 1px 2px rgba(255,255,255,0.2), 2px 2px 4px rgba(0,0,0,0.4); 
+    top: -14px; 
+    padding: 2px 10px; 
+    font-weight: bold; 
+    border-radius: 4px; 
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
 }
 
-.theme-stone .section-title {
-  background: #2b2b2b;
-  color: var(--main-color);
-  border: 2px solid #1a1a1a;
-  top: -14px;
-  padding: 2px 10px;
-  font-weight: bold;
+/* Botones como bloques de piedra */
+.theme-stone button { 
+    background-color: var(--main-color); 
+    background-image: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(0,0,0,0.2)); 
+    color: var(--text-on-accent); 
+    border: 1px solid rgba(0,0,0,0.6); 
+    box-shadow: inset 1px 1px 3px rgba(255,255,255,0.3), 2px 2px 5px rgba(0,0,0,0.5); 
+    font-weight: bold; 
+    font-family: "Georgia", serif; 
+    border-radius: 4px; 
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+    transition: 0.1s;
 }
 
-.theme-stone button {
-  background: #7a7a7a;
-  color: #fff;
-  border: 3px solid;
-  border-color: #a3a3a3 #3a3a3a #3a3a3a #a3a3a3;
-  font-weight: bold;
-  font-family: "Georgia", serif;
+.theme-stone button:active { 
+    box-shadow: inset 2px 2px 6px rgba(0,0,0,0.6); 
+    background-image: linear-gradient(135deg, rgba(0,0,0,0.2), rgba(255,255,255,0.05)); 
+    transform: translateY(1px);
 }
 
-.theme-stone button:active {
-  border-color: #3a3a3a #a3a3a3 #a3a3a3 #3a3a3a;
+/* Inputs como agujeros esculpidos */
+.theme-stone input[type="text"], .theme-stone select { 
+    background: rgba(0,0,0,0.25); 
+    color: var(--text-on-accent); 
+    border: 1px solid rgba(0,0,0,0.6); 
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.6), 1px 1px 0 rgba(255,255,255,0.1); 
+    padding: 6px; 
+    font-family: sans-serif; 
+    border-radius: 4px; 
 }
 
-.theme-stone input[type="text"],
-.theme-stone select {
-  background: #4a4a4a;
-  color: #fff;
-  border: 2px inset #2b2b2b;
-  padding: 6px;
-  font-family: sans-serif;
+.theme-stone .btn-update { background-color: rgba(0,0,0,0.3); border-color: rgba(0,0,0,0.8); }
+
+.theme-stone input[type="checkbox"] { 
+    background: rgba(0,0,0,0.3); 
+    border: 1px solid rgba(0,0,0,0.6); 
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.6), 1px 1px 0 rgba(255,255,255,0.1); 
+}
+.theme-stone input[type="checkbox"]:checked::before { color: var(--text-on-accent); content: "X"; font-family: sans-serif; }
+
+.theme-stone div[style*="background: #c0c0c0"] { 
+    background: rgba(0,0,0,0.1) !important; 
+    border: 1px solid rgba(0,0,0,0.3) !important; 
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.2), 1px 1px 0 rgba(255,255,255,0.1) !important; 
 }
 
-.theme-stone .btn-update {
-  background: var(--main-color);
-  color: var(--text-on-accent);
-  border-color: #1a1a1a;
-}
-
-.theme-stone input[type="checkbox"] {
-  border: 2px inset #2b2b2b;
-  background: #4a4a4a;
-}
-
-.theme-stone input[type="checkbox"]:checked::before {
-  color: #fff;
-  content: "X";
-  font-family: sans-serif;
-}
-
-.theme-stone div[style*="background: #c0c0c0"] {
-  background: #5c5c5c !important;
-  border: 4px solid !important;
-  border-color: #2b2b2b #8c8c8c #8c8c8c #2b2b2b !important;
-}
-
-.theme-stone div[style*="background: #000"] {
-  background: #2b2b2b !important;
-  color: var(--main-color) !important;
-  border: 3px inset #1a1a1a !important;
-  font-family: "Georgia", serif;
+.theme-stone div[style*="background: #000"] { 
+    background: rgba(0,0,0,0.25) !important; 
+    color: var(--text-on-accent) !important; 
+    border: 1px solid rgba(0,0,0,0.6) !important; 
+    box-shadow: inset 3px 3px 8px rgba(0,0,0,0.7), 1px 1px 0 rgba(255,255,255,0.1) !important; 
+    font-family: "Georgia", serif; 
+    text-shadow: -1px -1px 1px rgba(0,0,0,0.6), 1px 1px 1px rgba(255,255,255,0.2) !important; 
 }
 
 /* =========================================
