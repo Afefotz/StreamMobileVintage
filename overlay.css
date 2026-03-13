@@ -486,7 +486,7 @@ body.theme-stone.textura-musgo .score-box {
 TEMA 8: DOCUMENTO / PAPEL
 ========================================= */
 .theme-paper {
-  background: #e0e0e0;
+  background: transparent;
   color: var(--text-on-accent);
   font-family: 'Courier New', Courier, monospace;
 }
