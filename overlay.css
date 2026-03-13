@@ -574,7 +574,11 @@ body.theme-paper.textura-pergamino button {
 }
 
 /* Las fuentes cursivas suelen verse más pequeñas, así que las agrandamos un poco */
-body.theme-paper.textura-pergamino .player-name,
+body.theme-paper.textura-pergamino .player-name
+{
+    font-size: 2rem !important;
+    text-transform: capitalize; /* En cursiva no se ven bien todas mayúsculas */
+}
 body.theme-paper.textura-pergamino .vs {
     font-size: 2.5rem !important;
 }
@@ -586,7 +590,7 @@ body.theme-paper.textura-pergamino .title-bar {
 }
 
 body.theme-paper.textura-pergamino .score-box {
-    font-size: 3rem !important;
+    font-size: 3.5rem !important;
 }
 
 /* Agrandar un poco los inputs en el panel de control para que se lean bien */
