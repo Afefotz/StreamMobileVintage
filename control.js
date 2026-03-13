@@ -78,9 +78,9 @@ const paletasDeColor = {
     { nombre: "Verde Menta", hex: "#b5ead7" },
   ],
   "theme-stone": [
-    { nombre: "Gris Volcánico", hex: "#b0b0b0" },
+    { nombre: "Gris Volcánico (Original)", hex: "#666666" },
     { nombre: "Rojo Ladrillo", hex: "#cc5544" },
-    { nombre: "Verde Musgo", hex: "#6b8e23" },
+    { nombre: "Verde Musgo", hex: "#2b2b2b" }, // Base oscura para el musgo
   ],
   "theme-laser": [
     { nombre: "Rojo Peligro", hex: "#ff0000" },
@@ -224,31 +224,34 @@ db.on("value", (snapshot) => {
       : paletasDeColor[themeActual][0].hex.toLowerCase();
 
   // 3.1 Aplicar el color principal a una variable CSS global (como antes)
-document.documentElement.style.setProperty('--main-color', savedColor);
+  document.documentElement.style.setProperty("--main-color", savedColor);
 
-// 3.2 LÓGICA CONDICIONAL: Determinar colores relativos para el tema Neón
-let playerNameColor, vsColor;
+  // 3.2 LÓGICA CONDICIONAL: Determinar colores relativos para el tema Neón
+  let playerNameColor, vsColor;
 
-if (themeActual === 'theme-neon') {
+  if (themeActual === "theme-neon") {
     // Si el color principal es rosa magenta (independientemente de la variante exacta, chequeamos por rosa genérico)
-    if (savedColor === '#ff00ff' || savedColor === '#f0f') {
-        playerNameColor = '#00ffff'; // Azul Cian para nombres si el neón es rosa
-        vsColor = '#ffea00';        // Amarillo para VS
+    if (savedColor === "#ff00ff" || savedColor === "#f0f") {
+      playerNameColor = "#00ffff"; // Azul Cian para nombres si el neón es rosa
+      vsColor = "#ffea00"; // Amarillo para VS
     } else {
-        // Para cualquier otro color de neón (cian por defecto, verde, etc.)
-        playerNameColor = '#f0f';    // Rosa Magenta para nombres
-        vsColor = '#ffea00';        // Amarillo para VS
+      // Para cualquier otro color de neón (cian por defecto, verde, etc.)
+      playerNameColor = "#f0f"; // Rosa Magenta para nombres
+      vsColor = "#ffea00"; // Amarillo para VS
     }
-} else {
+  } else {
     // Para otros temas (Moderno, Pastel, etc.), podemos definir lógicas similares o colores fijos si prefieres
     // De momento, mantengamos los valores predeterminados para no romper los otros temas
-    playerNameColor = 'var(--main-color)'; // O lo que uses por defecto
-    vsColor = 'var(--text-on-accent)';    // O lo que uses por defecto
-}
+    playerNameColor = "var(--main-color)"; // O lo que uses por defecto
+    vsColor = "var(--text-on-accent)"; // O lo que uses por defecto
+  }
 
-// 3.3 Aplicar los colores relativos inteligentes a nuevas variables CSS
-document.documentElement.style.setProperty('--player-name-color', playerNameColor);
-document.documentElement.style.setProperty('--vs-color', vsColor);
+  // 3.3 Aplicar los colores relativos inteligentes a nuevas variables CSS
+  document.documentElement.style.setProperty(
+    "--player-name-color",
+    playerNameColor,
+  );
+  document.documentElement.style.setProperty("--vs-color", vsColor);
 
   // 4. Seleccionar la opción en el menú (sin interrumpir)
   const variantSelect = document.getElementById("theme-variant");
@@ -269,7 +272,7 @@ document.documentElement.style.setProperty('--vs-color', vsColor);
   const textColor = getContrastColor(savedColor);
   document.documentElement.style.setProperty("--main-color", savedColor);
   document.documentElement.style.setProperty("--text-on-accent", textColor);
-
+  
 });
 
 // Función que detecta el cambio de tema y asigna un título predeterminado
