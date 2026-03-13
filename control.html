@@ -45,14 +45,6 @@
                     </div>    
                 </div>
                 
-                <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap;">
-                    <label style="font-weight: bold; display: flex; justify-content: space-between; margin-bottom: 5px;">
-                    <span>Opacidad:</span>
-                    <span id="opacity-val">100%</span>
-                </label>
-                <input type="range" id="widget-opacity" min="20" max="100" value="100" oninput="document.getElementById('opacity-val').innerText = this.value + '%'; updateSettings()" style="width: 100%; cursor: pointer;">
-                </div>
-                
                 <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; width: 100%;">
                     <label style="display: flex; align-items: center; gap: 5px; cursor: pointer; margin: 0;">
                         <input type="checkbox" id="toggle-vertical" onchange="updateSettings()">
@@ -75,6 +67,12 @@
             <div style="margin-top: 15px; border-top: 1px dashed var(--main-color, #808080); padding-top: 15px;">               
                 <label style="font-weight: bold; display: block; margin-bottom: 5px;">Título del Overlay:</label>
                 <input type="text" id="custom-title" onchange="updateSettings()" style="width: 100%; padding: 5px; box-sizing: border-box;">
+
+                <label style="font-weight: bold; display: flex; justify-content: space-between; margin-bottom: 5px;">
+                    <span>Opacidad:</span>
+                    <span id="opacity-val">100%</span>
+                </label>
+                <input type="range" id="widget-opacity" min="20" max="100" value="100" oninput="document.getElementById('opacity-val').innerText = this.value + '%'; updateSettings()" style="width: 100%; cursor: pointer;">
             </div>            
 
         </div>      
