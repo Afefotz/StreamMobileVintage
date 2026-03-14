@@ -2,18 +2,30 @@
 
 Un widget de marcador interactivo, personalizable y en tiempo real diseñado para transmisiones en vivo (OBS Studio, PRISM Live, XSplit). Permite a los streamers llevar el control de los puntajes, nombres y fotografías de los jugadores desde un panel de administración web, reflejando los cambios instantáneamente en la transmisión.
 
-![Estado del Proyecto](https://img.shields.io/badge/Estado-Versión%201.0%20(Estable)-success)
+![Estado del Proyecto](https://img.shields.io/badge/Estado-Versión%201.1.2(Estable)-success)
 ![Tecnologías](https://img.shields.io/badge/Stack-HTML5%20%7C%20CSS3%20%7C%20Vanilla%20JS-blue)
 ![Backend](https://img.shields.io/badge/BaaS-Firebase%20Realtime%20Database-orange)
 
 ## ✨ Características Principales
 
 * **⚡ Sincronización en Tiempo Real:** Actualizaciones instantáneas sin necesidad de recargar la página gracias a Firebase.
-* **🎨 Múltiples Temas Visuales (7 diseños):** Cambia el aspecto del overlay y del panel de control con un solo clic (Retro Win95, Moderno Oscuro/Claro, Cyberpunk Neón, Pastel, Rocoso y Láser).
+* **🎨 Múltiples Temas Visuales (9 diseños):** Cambia el aspecto del overlay y del panel de control con un solo clic (Retro Win95, Moderno Oscuro/Claro, Cyberpunk Neón, Pastel, Rocoso, Láser, Papel y Metálico).
 * **📸 Procesamiento de Imágenes Local:** Sube fotos desde tu dispositivo. El sistema las comprime en un `<canvas>` y las convierte a Base64 para un renderizado ultra rápido sin depender de servicios de almacenamiento externos.
 * **🎬 Animaciones Reactivas:** Efectos visuales automáticos (zoom y resplandor) al detectar incrementos en el puntaje.
 * **📱 Diseño Adaptable:** Soporte nativo para modo horizontal (estándar) y modo vertical (ideal para streams en TikTok, Shorts o juegos retro).
 * **🔒 Salas Seguras:** Sistema de generación de URLs únicas con sufijos aleatorios y reglas de seguridad de Firebase para aislar los datos de cada transmisión.
+
+---
+
+## ✨ Novedades en la última versión
+
+Hemos llevado la personalización visual al siguiente nivel aplicando ingeniería de CSS avanzada:
+
+* **🎚️ Control de Opacidad Global:** Nuevo deslizador en el panel de control para ajustar la transparencia del overlay en tiempo real (de 50% a 100%). ¡El diseño del deslizador muta según el tema elegido!
+* **🧠 Colores Relativos Inteligentes:** El sistema ahora calcula automáticamente colores de contraste. Por ejemplo, en el tema Cyberpunk, si eliges el neón rosa, los nombres cambian a cian para mantener una estética perfecta.
+* **🖼️ Texturas Complejas en CSS Puro:** Adiós a las imágenes de fondo. Los nuevos temas utilizan múltiples capas de gradientes lineales, radiales y filtros SVG nativos para simular materiales físicos (piedra, musgo, metal grabado).
+
+---
 
 ## 🖼️ Vistas Previas
 
