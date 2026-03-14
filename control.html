@@ -42,7 +42,15 @@
                         <label style="font-weight: bold; display: block; margin-bottom: 5px;">Variante de Color:</label>
                         <select id="theme-variant" onchange="updateSettings()" style="width: 100%; padding: 5px; box-sizing: border-box;">
                         </select>
-                    </div>    
+                    </div>
+                    
+                    <div style="margin-bottom: 15px; background: rgba(0,0,0,0.05); padding: 10px; border-radius: 4px; border: 1px dashed var(--main-color, #808080);">
+                        <label style="font-weight: bold; display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <span>Opacidad:</span>
+                            <span id="opacity-val">100%</span>
+                        </label>
+                        <input type="range" id="widget-opacity" min="50" max="100" value="100" oninput="document.getElementById('opacity-val').innerText = this.value + '%'; updateSettings()" style="width: 100%; cursor: pointer;">
+                    </div>
                 </div>
                 
                 <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; width: 100%;">
@@ -67,12 +75,6 @@
             <div style="margin-top: 15px; border-top: 1px dashed var(--main-color, #808080); padding-top: 15px;">               
                 <label style="font-weight: bold; display: block; margin-bottom: 5px;">Título del Overlay:</label>
                 <input type="text" id="custom-title" onchange="updateSettings()" style="width: 100%; padding: 5px; box-sizing: border-box;">
-
-                <label style="font-weight: bold; display: flex; justify-content: space-between; margin-bottom: 5px;">
-                    <span>Opacidad:</span>
-                    <span id="opacity-val">100%</span>
-                </label>
-                <input type="range" id="widget-opacity" min="20" max="100" value="100" oninput="document.getElementById('opacity-val').innerText = this.value + '%'; updateSettings()" style="width: 100%; cursor: pointer;">
             </div>            
 
         </div>      

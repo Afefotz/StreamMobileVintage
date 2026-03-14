@@ -145,6 +145,26 @@ input[type="checkbox"]:focus {
   margin-bottom: 15px;
 }
 
+/* 1. Quitar el diseño por defecto del navegador para el slidebar*/
+input[type="range"] {
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+}
+input[type="range"]:focus {
+    outline: none;
+}
+
+/* TEMA 1. WIN95 (Estilo clásico cuadrado 3D) */
+.theme-win95 input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%; height: 4px; background: #000; border-bottom: 1px solid #fff; border-right: 1px solid #fff;
+}
+.theme-win95 input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; height: 18px; width: 11px; background: #c0c0c0;
+    border-top: 2px solid #fff; border-left: 2px solid #fff; border-bottom: 2px solid #000; border-right: 2px solid #000;
+    margin-top: -8px; cursor: pointer;
+}
+
 /* =========================================
 TEMA 2: MODERNO OSCURO (Panel de Control)
 ========================================= */
@@ -341,6 +361,16 @@ TEMA 3: MODERNO CLARO (Panel de Control)
   border-radius: 8px;
 }
 
+.theme-modern input[type="range"]::-webkit-slider-runnable-track,
+.theme-modern-light input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%; height: 6px; background: rgba(128,128,128,0.3); border-radius: 3px;
+}
+.theme-modern input[type="range"]::-webkit-slider-thumb,
+.theme-modern-light input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; height: 16px; width: 16px; background: var(--main-color);
+    border-radius: 50%; cursor: pointer; margin-top: -5px; box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
 /* =========================================
 TEMA 4: CYBERPUNK NEÓN (Panel de Control)
 ========================================= */
@@ -470,6 +500,16 @@ TEMA 4: CYBERPUNK NEÓN (Panel de Control)
   box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5);
 }
 
+.theme-neon input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%; height: 6px; background: rgba(0,0,0,0.8); border: 1px solid var(--main-color); box-shadow: 0 0 5px var(--main-color);
+}
+.theme-neon input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; height: 16px; width: 16px; background: #000;
+    border: 2px solid var(--main-color); border-radius: 50%;
+    box-shadow: 0 0 10px var(--main-color), inset 0 0 5px var(--main-color);
+    margin-top: -6px; cursor: pointer;
+}
+
 /* =========================================
 TEMA 5: PASTEL (Panel de Control)
 ========================================= */
@@ -577,6 +617,14 @@ TEMA 5: PASTEL (Panel de Control)
   background: #fff9fa;
   border: 2px solid #ffe4e1;
   border-radius: 15px;
+}
+
+.theme-pastel input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%; height: 8px; background: #fff; border: 2px solid #ffe4e1; border-radius: 4px;
+}
+.theme-pastel input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; height: 18px; width: 18px; background: var(--main-color);
+    border: 2px solid #fff; border-radius: 50%; margin-top: -7px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 /* =========================================
@@ -698,6 +746,17 @@ TEMA 6: PIEDRA / ROCOSO (Panel de Control Natural)
   border: 1px solid rgba(0, 0, 0, 0.4);
   box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2), 1px 1px 0 rgba(255, 255, 255, 0.1);
   border-radius: 6px;
+}
+
+.theme-stone input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%; height: 8px; background: rgba(0,0,0,0.6); border-radius: 4px;
+    box-shadow: inset 1px 1px 3px rgba(0,0,0,0.8), 1px 1px 0 rgba(255,255,255,0.1);
+}
+.theme-stone input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; height: 18px; width: 14px; background: var(--main-color);
+    border: 1px solid rgba(0,0,0,0.8); border-radius: 2px;
+    box-shadow: inset 1px 1px 2px rgba(255,255,255,0.3), inset -1px -1px 2px rgba(0,0,0,0.5), 2px 2px 4px rgba(0,0,0,0.6);
+    margin-top: -6px; cursor: pointer;
 }
 
 /* ================ VARIANTES DE TEXTURA PARA PIEDRA ================ */
@@ -848,6 +907,14 @@ TEMA 7: LÁSER ROJO (Panel de Control)
   border: 1px solid var(--main-color);
 }
 
+.theme-laser input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%; height: 2px; background: rgba(255,255,255,0.2);
+}
+.theme-laser input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; height: 18px; width: 4px; background: var(--main-color);
+    box-shadow: 0 0 10px var(--main-color), 0 0 20px var(--main-color); margin-top: -8px; cursor: pointer;
+}
+
 /* =========================================
 TEMA 8: DOCUMENTO / PAPEL
 ========================================= */
@@ -971,6 +1038,15 @@ TEMA 8: DOCUMENTO / PAPEL
   font-weight: bold !important;
   box-shadow: none !important;
   text-shadow: none !important;
+}
+
+.theme-paper input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%; height: 2px; background: transparent; border-bottom: 2px dashed var(--text-on-accent);
+}
+.theme-paper input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; height: 14px; width: 14px; background: var(--text-on-accent);
+    border: 2px solid #fff; border-radius: 50%;
+    margin-top: -6px; cursor: pointer;
 }
 
 /* ============== VARIANTES DE TEXTURA PARA PAPEL ======================= */
@@ -1140,6 +1216,16 @@ body.theme-metal.textura-bronce .score-box {
     box-shadow: inset 2px 2px 5px rgba(0,0,0,0.4), 1px 1px 0 rgba(255,255,255,0.3); 
     color: inherit;
     font-weight: bold;
+}
+
+.theme-metal input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%; height: 10px; background: rgba(0,0,0,0.4); border-top: 2px solid #000; border-bottom: 1px solid rgba(255,255,255,0.2); border-radius: 5px;
+}
+.theme-metal input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; height: 22px; width: 12px; background: var(--main-color);
+    border: 1px solid #000; border-radius: 3px;
+    box-shadow: inset 1px 1px 3px rgba(255,255,255,0.8), inset -2px -2px 3px rgba(0,0,0,0.6), 2px 2px 5px rgba(0,0,0,0.8);
+    margin-top: -7px; cursor: pointer;
 }
 
 /* ================= VARIANTES DE TEXTURA PARA METAL ==================== */
