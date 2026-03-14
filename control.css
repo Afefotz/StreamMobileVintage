@@ -12,7 +12,7 @@ body {
   max-width: 400px;
   margin: 0 auto;
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
-  opacity: var(--widget-opacity, 1);
+  /* opacity: var(--widget-opacity, 1); */
   transition: opacity 0.2s ease; /* Transición suave al deslizar */
 }
 
