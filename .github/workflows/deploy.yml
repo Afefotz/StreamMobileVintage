@@ -1,0 +1,40 @@
+name: Deploy static content to Pages
+
+# 1. ¿Cuándo se activa el robot?
+on:
+  push:
+    branches: ["main"] # Solo al hacer push a la rama 'main'
+
+# 2. Permisos necesarios para publicar la página
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 3. Evitar que el robot se tropiece si mandamos muchos push seguidos
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+# 4. Los pasos del trabajo
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (Descargar el código)
+        uses: actions/checkout@v4
+      
+      - name: Setup Pages (Preparar GitHub Pages)
+        uses: actions/configure-pages@v5
+      
+      - name: Upload artifact (Empaquetar los archivos)
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.' # Toma todos los archivos de la carpeta principal
+      
+      - name: Deploy to GitHub Pages (¡Publicar!)
+        id: deployment
+        uses: actions/deploy-pages@v4
