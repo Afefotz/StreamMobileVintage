@@ -209,6 +209,78 @@ if (currentScore > lastScores[id]) {
     scoreElement.classList.remove("score-animating");
   }
 
-  scoreElement.innerText = currentScore;
+scoreElement.innerText = currentScore;
   lastScores[id] = currentScore;
+}
+
+const bc = new BroadcastChannel('obs_score_sync');
+let currentEditingPlayer = null;
+
+bc.onmessage = (e) => {
+    const { type, player, data } = e.data;
+    if (type === 'photo-upload-request') {
+        triggerPhotoUpload(player);
+    }
+};
+
+function enableEdit(element, player) {
+    element.contentEditable = "true";
+    element.focus();
+    currentEditingPlayer = player;
+}
+
+document.querySelectorAll('.player-name').forEach(el => {
+    el.addEventListener('blur', () => {
+        if (currentEditingPlayer && document.activeElement === el) {
+            saveOverlayName(currentEditingPlayer);
+        }
+    });
+    el.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            el.blur();
+        }
+    });
+});
+
+function saveOverlayName(player) {
+    const nameEl = document.getElementById("name-" + player);
+    const name = nameEl.textContent.trim() || "Player";
+    db.child(player).update({ name });
+    nameEl.contentEditable = "false";
+    currentEditingPlayer = null;
+}
+
+let pendingOverlayPhotoPlayer = null;
+
+function triggerPhotoUpload(player) {
+    pendingOverlayPhotoPlayer = player;
+    document.getElementById("overlay-photo-input").click();
+    bc.postMessage({ type: 'photo-upload-request', player });
+}
+
+function handleOverlayPhotoUpload(event) {
+    const file = event.target.files[0];
+    if (!file || !pendingOverlayPhotoPlayer) return;
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+            const canvas = document.createElement("canvas");
+            const size = 150;
+            canvas.width = size;
+            canvas.height = size;
+            const ctx = canvas.getContext("2d");
+            ctx.fillStyle = "#ffffff";
+            ctx.fillRect(0, 0, size, size);
+            ctx.drawImage(img, 0, 0, size, size);
+            const base64String = canvas.toDataURL("image/jpeg", 0.7);
+            db.child(pendingOverlayPhotoPlayer).update({ photo: base64String });
+        };
+        img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+    document.getElementById("overlay-photo-input").value = "";
+    pendingOverlayPhotoPlayer = null;
 }

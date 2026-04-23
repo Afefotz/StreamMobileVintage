@@ -1,0 +1,181 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'VT323', monospace;
+    font-size: 16px;
+    background: #1a1a1a;
+    color: #e0e0e0;
+    width: 300px;
+    height: 400px;
+    overflow: hidden;
+    user-select: none;
+}
+
+.dock-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background: #2d2d2d;
+    border-bottom: 1px solid #444;
+}
+
+.dock-title {
+    font-size: 14px;
+    color: #00ff00;
+}
+
+.room-badge {
+    font-size: 12px;
+    background: #333;
+    padding: 2px 8px;
+    border-radius: 3px;
+    color: #888;
+}
+
+.player-dock {
+    padding: 10px 12px;
+    border-bottom: 1px solid #333;
+}
+
+.player-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.photo-frame {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid #444;
+    transition: border-color 0.2s;
+}
+
+.photo-frame:hover {
+    border-color: #00ff00;
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.player-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.player-name {
+    font-size: 18px;
+    padding: 2px 4px;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    outline: none;
+    min-width: 60px;
+}
+
+.player-name:focus {
+    background: #333;
+    border-color: #00ff00;
+}
+
+.player-name[contenteditable="true"] {
+    background: #333;
+    border-color: #00ff00;
+    cursor: text;
+}
+
+.score-controls {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.score-btn {
+    width: 28px;
+    height: 24px;
+    font-family: 'VT323', monospace;
+    font-size: 16px;
+    font-weight: bold;
+    background: #333;
+    color: #e0e0e0;
+    border: 1px solid #555;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background 0.1s;
+}
+
+.score-btn:hover {
+    background: #444;
+}
+
+.score-btn:active {
+    background: #00ff00;
+    color: #000;
+}
+
+.score-display {
+    font-size: 20px;
+    min-width: 30px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.status-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 6px 12px;
+    background: #2d2d2d;
+    border-top: 1px solid #444;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.status-indicator {
+    font-size: 10px;
+}
+
+.status-indicator.connected {
+    color: #00ff00;
+}
+
+.status-indicator.disconnected {
+    color: #ff4444;
+}
+
+.hotkey-hint {
+    font-size: 10px;
+    color: #666;
+}
+
+.flash-success {
+    animation: flashGreen 0.2s ease-out;
+}
+
+.flash-error {
+    animation: flashRed 0.2s ease-out;
+}
+
+@keyframes flashGreen {
+    0% { background: #003300; }
+    100% { background: transparent; }
+}
+
+@keyframes flashRed {
+    0% { background: #330000; }
+    100% { background: transparent; }
+}
