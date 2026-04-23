@@ -202,17 +202,13 @@ function updatePlayer(id, data) {
   const scoreElement = document.getElementById(`score-${id}`);
 
   // Si el puntaje nuevo es MAYOR al anterior, disparamos la animación
-  if (currentScore > lastScores[id]) {
-    // Inyectamos la clase
+if (currentScore > lastScores[id]) {
     scoreElement.classList.add("score-animating");
-
-    // Le quitamos la clase 300 milisegundos después para que regrese a la normalidad
-    setTimeout(() => {
-      scoreElement.classList.remove("score-animating");
-    }, 300);
+    setTimeout(() => scoreElement.classList.remove("score-animating"), 500);
+  } else {
+    scoreElement.classList.remove("score-animating");
   }
 
-  // Actualizamos el texto en pantalla y la memoria
   scoreElement.innerText = currentScore;
   lastScores[id] = currentScore;
 }

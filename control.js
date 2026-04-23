@@ -44,6 +44,7 @@ if (initialTheme) {
   db.child("settings").update({
     theme: initialTheme,
     customTitle: defaultTitle,
+    variant: paletasDeColor[initialTheme][0].nombre,
   });
 
   // LIMPIEZA PRO: Borramos el parámetro '?theme=' de la URL sin recargar la página.
@@ -396,6 +397,7 @@ function cargarVariantesDeColor(temaFuerza = null) {
   colores.forEach((color) => {
     const option = document.createElement("option");
     option.value = color.hex.toLowerCase(); // Forzamos a minúsculas
+    option.setAttribute("data-nombre", color.nombre);
     option.innerText = color.nombre;
     variantSelect.appendChild(option);
   });
@@ -410,6 +412,8 @@ function updateSettings() {
   const vertical = document.getElementById("toggle-vertical").checked; // Capturamos el nuevo checkbox
   //const accentColor = document.getElementById('theme-color').value; // Capturamos el nuevo color del tema
   const accentColor = document.getElementById("theme-variant").value; // Capturamos la variante de color seleccionada
+  const variantSelect = document.getElementById("theme-variant");
+  const variantName = variantSelect.options[variantSelect.selectedIndex].getAttribute("data-nombre");
   const opacity = document.getElementById("widget-opacity").value; // Capturamos el valor de opacidad
 
   db.child("settings").update({
@@ -419,6 +423,7 @@ function updateSettings() {
     customTitle: title, // Lo enviamos a Firebase
     verticalMode: vertical, // Lo enviamos a Firebase
     accentColor: accentColor,
+    variant: variantName,
     opacity: parseInt(opacity)
   });
 }

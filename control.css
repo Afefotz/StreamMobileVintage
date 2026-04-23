@@ -769,13 +769,16 @@ body.theme-stone.textura-volcanica .window {
   box-shadow: inset 2px 2px 4px rgba(255, 255, 255, 0.15), inset -4px -4px 8px rgba(0, 0, 0, 0.6), 8px 12px 20px rgba(0, 0, 0, 0.5);
 }
 
-/* 2. Variante Rojo Ladrillo (Patrón de bloques) */
+/* 2. Variante Rojo Ladrillo (Patrón de bloques naturales) */
 body.theme-stone.textura-ladrillo .window {
-  background-image:
-    repeating-linear-gradient(rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 2px, transparent 2px, transparent 18px),
-    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 2px, transparent 2px, transparent 36px),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 50%, rgba(0, 0, 0, 0.4) 100%);
-  box-shadow: inset 2px 2px 4px rgba(255, 255, 255, 0.1), inset -3px -3px 6px rgba(0, 0, 0, 0.4);
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 15%, transparent 15%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 15%, transparent 15%),
+    repeating-linear-gradient(0deg, transparent, transparent 18px, rgba(0, 0, 0, 0.2) 18px, rgba(0, 0, 0, 0.2) 20px),
+    repeating-linear-gradient(90deg, transparent, transparent 36px, rgba(0, 0, 0, 0.2) 36px, rgba(0, 0, 0, 0.2) 38px),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%, rgba(0, 0, 0, 0.3) 100%);
+  background-size: 36px 20px;
+  box-shadow: inset 2px 2px 6px rgba(255, 255, 255, 0.2), inset -4px -4px 10px rgba(0, 0, 0, 0.5), 8px 12px 20px rgba(0, 0, 0, 0.6);
 }
 
 /* 3. Variante Verde Musgo */
