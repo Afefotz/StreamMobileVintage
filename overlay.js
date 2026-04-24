@@ -231,7 +231,7 @@ function enableEdit(element, player) {
 
 document.querySelectorAll('.player-name').forEach(el => {
     el.addEventListener('blur', () => {
-        if (currentEditingPlayer && document.activeElement === el) {
+        if (currentEditingPlayer) {
             saveOverlayName(currentEditingPlayer);
         }
     });
