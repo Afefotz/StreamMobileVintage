@@ -21,7 +21,7 @@
         <div class="content">
             
             <div class="player-card">
-                <div class="photo-frame" onclick="triggerPhotoUpload('p1')">
+                <div class="photo-frame" onclick="openPhotoPicker('p1')">
                     <img id="img-p1" src="https://via.placeholder.com/50?text=P1">
                 </div>
                 <div class="player-info">
@@ -33,7 +33,7 @@
             <div class="vs">VS</div>
 
             <div class="player-card" style="flex-direction: row-reverse; text-align: right;">
-                <div class="photo-frame" onclick="triggerPhotoUpload('p2')">
+                <div class="photo-frame" onclick="openPhotoPicker('p2')">
                     <img id="img-p2" src="https://via.placeholder.com/50?text=P2">
                 </div>
                 <div class="player-info">
@@ -46,6 +46,6 @@
     </div>
 
     <script refer src="overlay.js"></script>
-    <input type="file" id="overlay-photo-input" accept="image/*" style="display:none" onchange="handleOverlayPhotoUpload(event)">
+    <input type="file" id="overlay-photo-input" accept="image/*" style="display:none" onchange="handleOverlayPhotoUpload(event, this.getAttribute('data-player'))" data-player="">
 </body>
 </html>

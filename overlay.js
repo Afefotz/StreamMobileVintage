@@ -219,7 +219,7 @@ let currentEditingPlayer = null;
 bc.onmessage = (e) => {
     const { type, player, data } = e.data;
     if (type === 'photo-upload-request') {
-        triggerPhotoUpload(player);
+        openPhotoPicker(player);
     }
 };
 
@@ -251,17 +251,15 @@ function saveOverlayName(player) {
     currentEditingPlayer = null;
 }
 
-let pendingOverlayPhotoPlayer = null;
-
-function triggerPhotoUpload(player) {
-    pendingOverlayPhotoPlayer = player;
-    document.getElementById("overlay-photo-input").click();
-    bc.postMessage({ type: 'photo-upload-request', player });
+function openPhotoPicker(player) {
+    const input = document.getElementById("overlay-photo-input");
+    input.setAttribute("data-player", player);
+    input.click();
 }
 
-function handleOverlayPhotoUpload(event) {
+function handleOverlayPhotoUpload(event, player) {
     const file = event.target.files[0];
-    if (!file || !pendingOverlayPhotoPlayer) return;
+    if (!file || !player) return;
 
     const reader = new FileReader();
     reader.onload = function(e) {
@@ -276,11 +274,13 @@ function handleOverlayPhotoUpload(event) {
             ctx.fillRect(0, 0, size, size);
             ctx.drawImage(img, 0, 0, size, size);
             const base64String = canvas.toDataURL("image/jpeg", 0.7);
-            db.child(pendingOverlayPhotoPlayer).update({ photo: base64String });
+            db.child(player).update({ photo: base64String });
         };
         img.src = e.target.result;
     };
     reader.readAsDataURL(file);
-    document.getElementById("overlay-photo-input").value = "";
-    pendingOverlayPhotoPlayer = null;
+}
+
+function triggerPhotoUpload(player) {
+    bc.postMessage({ type: 'photo-upload-request', player });
 }
