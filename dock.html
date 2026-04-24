@@ -17,7 +17,7 @@
 
     <div class="player-dock" id="p1-dock">
         <div class="player-row">
-            <div class="photo-frame" id="photo-p1" onclick="triggerPhotoUpload('p1')">
+            <div class="photo-frame" id="photo-p1" onclick="openPhotoPicker('p1')">
                 <img id="img-p1" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Crect fill='%23888' width='40' height='40'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%23fff' font-size='14'%3EP1%3C/text%3E%3C/svg%3E">
             </div>
             <div class="player-info">
@@ -33,7 +33,7 @@
 
     <div class="player-dock" id="p2-dock">
         <div class="player-row">
-            <div class="photo-frame" id="photo-p2" onclick="triggerPhotoUpload('p2')">
+            <div class="photo-frame" id="photo-p2" onclick="openPhotoPicker('p2')">
                 <img id="img-p2" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Crect fill='%23888' width='40' height='40'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%23fff' font-size='14'%3EP2%3C/text%3E%3C/svg%3E">
             </div>
             <div class="player-info">
@@ -52,7 +52,7 @@
         <span class="hotkey-hint">Ctrl+1/2 = P1/P2 score</span>
     </div>
 
-    <input type="file" id="photo-input" accept="image/*" style="display:none">
+    <input type="file" id="photo-input" accept="image/*" style="display:none" onchange="handlePhotoUpload(event, this.getAttribute('data-player'))" data-player="">
 
     <script defer src="dock.js"></script>
 </body>

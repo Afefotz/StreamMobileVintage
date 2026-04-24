@@ -100,14 +100,16 @@ function saveName(player) {
 
 let pendingPhotoPlayer = null;
 
-function triggerPhotoUpload(player) {
-    pendingPhotoPlayer = player;
-    document.getElementById("photo-input").click();
+function openPhotoPicker(player) {
+    const input = document.getElementById("photo-input");
+    input.setAttribute("data-player", player);
+    input.click();
 }
 
 document.getElementById("photo-input").addEventListener("change", function(event) {
+    const player = event.target.getAttribute("data-player");
     const file = event.target.files[0];
-    if (!file || !pendingPhotoPlayer) return;
+    if (!file || !player) return;
 
     const reader = new FileReader();
     reader.onload = function(e) {
@@ -122,15 +124,14 @@ document.getElementById("photo-input").addEventListener("change", function(event
             ctx.fillRect(0, 0, size, size);
             ctx.drawImage(img, 0, 0, size, size);
             const base64String = canvas.toDataURL("image/jpeg", 0.7);
-            db.child(pendingPhotoPlayer).update({ photo: base64String });
-            document.getElementById("img-" + pendingPhotoPlayer).src = base64String;
-            flashElement(document.getElementById("photo-" + pendingPhotoPlayer), 'success');
+            db.child(player).update({ photo: base64String });
+            document.getElementById("img-" + player).src = base64String;
+            flashElement(document.getElementById("photo-" + player), 'success');
         };
         img.src = e.target.result;
     };
     reader.readAsDataURL(file);
     event.target.value = "";
-    pendingPhotoPlayer = null;
 });
 
 function flashElement(el, type) {
