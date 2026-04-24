@@ -26,7 +26,7 @@ function generarLinks() {
     const uniqueRoom = `${room}-${randomPin}`;
 
     // 3. Redirigimos al panel de control pasando parámetros únicos en la URL (sala y tema)
-    window.location.href = `control.html?room=${uniqueRoom}&theme=${selectedTheme}`;
+    window.location.href = `control.html?room=${uniqueRoom}`;
   } else {
     alert("Por favor ingresa un nombre válido (solo letras y números).");
   }
