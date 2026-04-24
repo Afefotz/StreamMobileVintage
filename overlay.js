@@ -93,7 +93,10 @@ db.on("value", (snapshot) => {
       ? data.settings.customTitle
       : "Online_Match.exe";
 
-  document.getElementById("overlay-title").innerText = customTitle;
+  const titleEl = document.getElementById("overlay-title");
+  if (document.activeElement !== titleEl) {
+    titleEl.textContent = customTitle;
+  }
 
   // --- LEER E INYECTAR COLOR DINÁMICO ---
   const themeActual =
@@ -215,6 +218,7 @@ scoreElement.innerText = currentScore;
 
 const bc = new BroadcastChannel('obs_score_sync');
 let currentEditingPlayer = null;
+let currentEditingTitle = false;
 
 bc.onmessage = (e) => {
     const { type, player, data } = e.data;
@@ -242,6 +246,40 @@ document.querySelectorAll('.player-name').forEach(el => {
         }
     });
 });
+
+const titleEl = document.getElementById("overlay-title");
+titleEl.addEventListener('blur', () => {
+    if (currentEditingTitle) {
+        saveOverlayTitle();
+    }
+});
+titleEl.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+        titleEl.blur();
+    } else if (e.key === 'Escape') {
+        db.once("value").then(snap => {
+            const savedTitle = snap.val()?.settings?.customTitle || "Online_Match.exe";
+            titleEl.textContent = savedTitle;
+            titleEl.contentEditable = "false";
+            currentEditingTitle = false;
+        });
+    }
+});
+
+function enableEditTitle(element) {
+    element.contentEditable = "true";
+    element.focus();
+    currentEditingTitle = true;
+}
+
+function saveOverlayTitle() {
+    const titleEl = document.getElementById("overlay-title");
+    const title = titleEl.textContent.trim() || "Online_Match.exe";
+    db.child("settings").update({ customTitle: title });
+    titleEl.contentEditable = "false";
+    currentEditingTitle = false;
+}
 
 function saveOverlayName(player) {
     const nameEl = document.getElementById("name-" + player);
