@@ -143,9 +143,8 @@ function flashElement(el, type) {
 }
 
 function resetScores() {
-    if (confirm("Reset both scores to 0?")) {
-        db.update({ p1: { ...(db.p1 || {}), score: 0 }, p2: { ...(db.p2 || {}), score: 0 } });
-    }
+    db.child("p1/score").set(0);
+    db.child("p2/score").set(0);
 }
 
 const connectedRef = firebase.database().ref(".info/connected");
