@@ -220,6 +220,44 @@ const bc = new BroadcastChannel('obs_score_sync');
 let currentEditingPlayer = null;
 let currentEditingTitle = false;
 
+const hotkeys = {
+    'Control+1': () => changeScore('p1', 1),
+    'Control+q': () => changeScore('p1', -1),
+    'Control+2': () => changeScore('p2', 1),
+    'Control+w': () => changeScore('p2', -1),
+    'r': () => resetScores()
+};
+
+document.addEventListener('keydown', (e) => {
+    const getKeyPart = () => {
+        if (/^\d$/.test(e.key)) {
+            return e.code.replace('Digit', '');
+        }
+        return e.key.length === 1 ? e.key.toLowerCase() : e.code;
+    };
+    
+    const key = [
+        e.ctrlKey ? 'Control' : '',
+        e.shiftKey ? 'Shift' : '',
+        getKeyPart()
+    ].filter(Boolean).join('+');
+    
+    const action = hotkeys[key];
+    if (action) {
+        e.preventDefault();
+        action();
+    }
+});
+
+function changeScore(player, amount) {
+    db.child(player + "/score").transaction((score) => (score || 0) + amount);
+}
+
+function resetScores() {
+    db.child("p1/score").set(0);
+    db.child("p2/score").set(0);
+}
+
 bc.onmessage = (e) => {
     const { type, player, data } = e.data;
     if (type === 'photo-upload-request') {
