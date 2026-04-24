@@ -106,8 +106,7 @@ function openPhotoPicker(player) {
     input.click();
 }
 
-document.getElementById("photo-input").addEventListener("change", function(event) {
-    const player = event.target.getAttribute("data-player");
+function handlePhotoUpload(event, player) {
     const file = event.target.files[0];
     if (!file || !player) return;
 
@@ -131,8 +130,7 @@ document.getElementById("photo-input").addEventListener("change", function(event
         img.src = e.target.result;
     };
     reader.readAsDataURL(file);
-    event.target.value = "";
-});
+}
 
 function flashElement(el, type) {
     el.classList.remove('flash-success', 'flash-error');
