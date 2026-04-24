@@ -93,6 +93,8 @@ También puedes crear un **panel de control integrado en OBS** para controlar el
 3. Agrega un nombre y el URL `dock.html?room=TUSALA` (ej: `dock.html?room=mistream-a1b2`)
   3.1 También puedes agregar el **overlay** como panel para modificar nombres/foto, título y score: `overlay.html?room=TUSALA`
 
+![Demostración](assets/panel-obs.gif)
+
 ### Notas:
 * El **dock** y el **overlay** pueden estar en la misma escena de OBS
 * El dock es independiente del panel de administración (`control.html`) — puedes usar uno u otro
