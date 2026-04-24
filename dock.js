@@ -105,7 +105,7 @@ function triggerPhotoUpload(player) {
     document.getElementById("photo-input").click();
 }
 
-function handlePhotoUpload(event) {
+document.getElementById("photo-input").addEventListener("change", function(event) {
     const file = event.target.files[0];
     if (!file || !pendingPhotoPlayer) return;
 
@@ -129,9 +129,9 @@ function handlePhotoUpload(event) {
         img.src = e.target.result;
     };
     reader.readAsDataURL(file);
-    document.getElementById("photo-input").value = "";
+    event.target.value = "";
     pendingPhotoPlayer = null;
-}
+});
 
 function flashElement(el, type) {
     el.classList.remove('flash-success', 'flash-error');
