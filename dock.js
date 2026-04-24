@@ -24,9 +24,9 @@ document.getElementById("room-id").textContent = currentRoom;
 
 const hotkeys = {
     'Control+1': () => changeScore('p1', 1),
-    'Control+Shift+1': () => changeScore('p1', -1),
+    'Control+q': () => changeScore('p1', -1),
     'Control+2': () => changeScore('p2', 1),
-    'Control+Shift+2': () => changeScore('p2', -1),
+    'Control+w': () => changeScore('p2', -1),
     'r': () => resetScores()
 };
 
