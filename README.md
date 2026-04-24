@@ -2,7 +2,7 @@
 
 Un widget de marcador interactivo, personalizable y en tiempo real diseñado para transmisiones en vivo (OBS Studio, PRISM Live, XSplit). Permite a los streamers llevar el control de los puntajes, nombres y fotografías de los jugadores desde un panel de administración web, reflejando los cambios instantáneamente en la transmisión.
 
-![Estado del Proyecto](https://img.shields.io/badge/Estado-Versión%201.1.2(Estable)-success)
+![Estado del Proyecto](https://img.shields.io/badge/Estado-Versión%201.2.1(Estable)-success)
 ![Tecnologías](https://img.shields.io/badge/Stack-HTML5%20%7C%20CSS3%20%7C%20Vanilla%20JS-blue)
 ![Backend](https://img.shields.io/badge/BaaS-Firebase%20Realtime%20Database-orange)
 
