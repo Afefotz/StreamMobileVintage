@@ -27,12 +27,16 @@ const hotkeys = {
     'Control+Shift+1': () => changeScore('p1', -1),
     'Control+2': () => changeScore('p2', 1),
     'Control+Shift+2': () => changeScore('p2', -1),
-    'KeyR': () => resetScores()
+    'r': () => resetScores()
 };
 
 document.addEventListener('keydown', (e) => {
-    const key = `${e.ctrlKey ? 'Control+' : ''}${e.shiftKey ? 'Shift+' : ''}${e.code || e.key}`;
-    const action = hotkeys[key] || hotkeys[e.key];
+    const key = [
+        e.ctrlKey ? 'Control' : '',
+        e.shiftKey ? 'Shift' : '',
+        e.key.length === 1 ? e.key.toLowerCase() : e.code
+    ].filter(Boolean).join('+');
+    const action = hotkeys[key];
     if (action) {
         e.preventDefault();
         action();
