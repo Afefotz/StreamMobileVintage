@@ -31,11 +31,20 @@ const hotkeys = {
 };
 
 document.addEventListener('keydown', (e) => {
+    const getKeyPart = () => {
+        // Si es un dígito, usar e.code (Digit1 -> 1) para manejar Shift+1 correctamente
+        if (/^\d$/.test(e.key)) {
+            return e.code.replace('Digit', '');
+        }
+        return e.key.length === 1 ? e.key.toLowerCase() : e.code;
+    };
+    
     const key = [
         e.ctrlKey ? 'Control' : '',
         e.shiftKey ? 'Shift' : '',
-        e.key.length === 1 ? e.key.toLowerCase() : e.code
+        getKeyPart()
     ].filter(Boolean).join('+');
+    
     const action = hotkeys[key];
     if (action) {
         e.preventDefault();
