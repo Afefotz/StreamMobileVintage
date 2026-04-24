@@ -81,17 +81,17 @@ Este proyecto está construido sin frameworks pesados para garantizar la máxima
 También puedes crear un **panel de control integrado en OBS** para controlar el marcador sin salir del programa:
 
 ### Características del Dock:
-* **Edición Inline:** Doble-click en los nombres del overlay para editarlos directamente
-* **Fotos Clickeables:** Click en las fotos del overlay para cambiar imágenes
-* **Hotkeys Locales:** `Ctrl+1/2` = score P1/P2, `Ctrl+Shift+1/2` = restar, `R` = reset
+* **Edición Inline:** Doble-click en los nombres y el título para editarlos directamente
+* **Fotos Clickeables:** Click en las fotos para cambiar imágenes
+* **Hotkeys Locales:** `Ctrl+1/2` = score P1/P2, `Ctrl+q/w` = restar, `R` = reset
+* **Click a botones:** Incrementa o decrementa el puntaje con un solo click
 * **Sincronización Firebase:** Todos los cambios se reflejan instantáneamente en el overlay
 
 ### Configuración:
-1. Desde el **Panel de Administración**, copia también el "Enlace de sala permanente"
-2. En OBS, crea una nueva fuente **Navegador (Browser Source)**
-3. Agrega `dock.html?room=TUSALA` (ej: `dock.html?room=Mistream-a1b2`)
-4. Ajusta el tamaño a `300x400` px
-5. Para hotkeys globales, configura atajos en OBS que envíen clicks a los botones del dock
+1. Desde el **Panel de Administración**, copia también el "Enlace de programa de streaming"
+2. En el menú superior del OBS, selecciona **Paneles** -> **Paneles de navegador personalizados**
+3. Agrega un nombre y el URL `dock.html?room=TUSALA` (ej: `dock.html?room=mistream-a1b2`)
+  3.1 También puedes agregar el **overlay** como panel para modificar nombres/foto, título y score: `overlay.html?room=TUSALA`
 
 ### Notas:
 * El **dock** y el **overlay** pueden estar en la misma escena de OBS
@@ -105,4 +105,4 @@ También puedes crear un **panel de control integrado en OBS** para controlar el
 Desarrollador de software con sólida experiencia en programación y arquitectura de sistemas. Enfocado en crear herramientas web eficientes, reactivas y con arquitecturas escalables que resuelven problemas reales.
 
 ---
-*Hecho con dedicación para la comunidad de Pump It Up*
+*Hecho con dedicación para la comunidad de Pump It Up 🢅*
